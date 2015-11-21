@@ -1,0 +1,12 @@
+<ion-view view-title="Products" ng-controller="ProductsCtrl as vm">
+  <ion-content on-swipe-up="vm.onSwipeUp()">
+    <h1 style="text-align: center;margin-bottom:40px;">Products</h1>
+		<ion-slide-box on-slide-changed="slideHasChanged($index)" active-slide="vm.currentProduct" style="margin-bottom:50px;">
+		  <ion-slide ng-repeat="product in vm.products" >
+		  	<div style="text-align:center;">{{product.name}}</div>
+		    <img style="height:300px;width: 100%;" src="{{product.image}}"/>
+		  </ion-slide>
+		</ion-slide-box>
+		<button ng-click="vm.bookAppointment()" style="margin:auto;display:block;">Book Appointment</button>
+  </ion-content>
+</ion-view>
