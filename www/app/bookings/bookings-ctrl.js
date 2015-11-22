@@ -20,7 +20,7 @@
 		}
 
 		vm.selectTime = function(time){
-
+			
 		}
 	};
 })();

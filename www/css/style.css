@@ -6,7 +6,7 @@
 	background-color:#ed5f5e;
 	font-family: Helvetica Neue, Helvetica;
 	font-size: 15px;
-	font-weight: medium;
+	font-weight: bold;
 	width:80%;
 	text-align:center;
 	height: 44px;
@@ -18,11 +18,11 @@
 	color: #ffffff;
 	font-family: Helvetica Neue;
 	margin-left: 20px;
+	position:absolute; 
 
 }
 
 .big-header {
-	position:absolute; 
 	padding-top: 10%;
 	font-size: 40px;
 	font-weight: light;
@@ -30,8 +30,7 @@
 }
 
 .small-header {
-	position:absolute; 
-	padding-top: 20%;
+	padding-top:5%;
 	font-size: 24px;
 	font-weight: light;
 	font-align: left;
@@ -39,12 +38,34 @@
 }
 
 .product-description{
-	position:absolute; 
-	padding-top: 30%;
-	font-size: 18px;
+	padding-top:5%;
+	font-size: 15px;
 	font-weight: thin;
 	font-align: left;
 	width:60%;
+}
+
+.slider {
+	height:100%;
+}
+
+.scroll {
+	height:100%;
+}
+
+.fullscreen-image {
+   	background-size: cover;
+   	background-repeat: no-repeat;
+   	background-position: center;
+	height:100%;
+}
+
+.slider-pager {
+ 	color: #000; 
+ 	margin-bottom:15%;
+}
+.slider-pager-page.active {
+	color: #ffffff;
 }
 
 /* PRODUTS PAGE */
