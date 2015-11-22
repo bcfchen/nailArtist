@@ -9,9 +9,13 @@
 	font-weight: bold;
 	width:80%;
 	text-align:center;
-	height: 44px;
+	height: 35px;
 	margin-left:10%;
 	margin-right:10%;
+	text-shadow:none;
+	border:none;
+	box-shadow:none;
+    border-radius: 4px;
 }
 
 .product-desc-container {
@@ -68,7 +72,44 @@
 	color: #ffffff;
 }
 
-/* PRODUTS PAGE */
+/* PRODUCTS PAGE */
+.price-container {
+	width:30%;
+	display:inline-block;
+  vertical-align:middle;
+}
+
+.deadline-msg {
+	width:40%;
+	font-size:12px;
+	display:inline-block;
+  vertical-align:middle;
+}
+
+.arrow-btn {
+	display:inline-block;
+	font-size:22px;
+  	vertical-align:middle;
+  	text-align:right;
+  	background-color:transparent;
+	border:none;
+	color:#ffffff;
+	margin-left:5%;
+}
+
+.price-deadline-container {
+	position:absolute;
+	margin-left:20px;
+	color:#ffffff;
+	font-size:40px;
+	margin-top:120%;
+	height:50px;
+	font-weight:ultralight;
+	font-family: Helvetica Neue, Helvetica;
+	vertical-align:middle;
+}
+
+
 /* BOOKINGS PAGE */
 .wide-as-needed {
   overflow: scroll;
