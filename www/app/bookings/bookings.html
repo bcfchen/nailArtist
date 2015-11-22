@@ -1,5 +1,11 @@
 <ion-view view-title="Bookings" ng-controller="BookingsCtrl as vm">
   <ion-content>
     <h1>Bookings</h1>
+    <ion-scroll direction="x" id="date-selector" class="wide-as-needed" style="height:30px;">
+		<button ng-repeat="date in vm.schedule" ng-click="vm.selectDate(date)">{{date.$id}}</button>	
+    </ion-scroll>
+    <ion-scroll direction="x" id="date-selector" class="wide-as-needed" style="height:30px;">
+		<button ng-repeat="time in vm.times">{{time}}</button>	
+    </ion-scroll>
   </ion-content>
 </ion-view>
