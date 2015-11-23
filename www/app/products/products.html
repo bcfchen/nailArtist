@@ -1,23 +1,23 @@
 <ion-view view-title="Products" ng-controller="ProductsCtrl as vm">
-  <ion-content on-swipe-up="vm.onSwipeUp()">
+  <ion-content on-swipe-up="vm.toProductDetails()">
 		<ion-slide-box style="z-index:-1" on-slide-changed="slideHasChanged($index)" active-slide="vm.currentProduct">
 		  <ion-slide ng-repeat="product in vm.products" style="height:100%">
 		  	<div class="product-desc-container">
-			    <div class="big-header">#CoffeeMorning</div>
+			    <div class="big-header">{{product.name}}</div>
 			  	<div class="small-header">#lattenails #fallstyle #autum</div>
-			  	<div class="product-description">this is an example of a product description that has three line items</div>
+			  	<div class="product-description">{{product.description}}</div>
 		  	</div>
 		  	<div class="price-deadline-container">
 				<div class="price-container">
-				  		<div style="float:left;width:20px;">$</div>
-						<div style="float:left;width:70px">100</div>
+				  		<div class="dollar-sign">$</div>
+						<div class="product-price">{{product.price}}</div>
 				  	</div>
-				 <div class="deadline-msg">last chance to book this style in 3 days</div>
-				 <button class="arrow-btn ion-ios-arrow-down"></button>
+				 <div class="deadline-msg">last chance to book this style in 3 days!</div>
+				 <button class="arrow-btn ion-ios-arrow-down" ng-click="vm.toProductDetails()"></button>
 		  	</div>
 		  	<div class="fullscreen-image" ng-style="{'background-image':'url({{product.image}})'}">
 		  </ion-slide>
 		</ion-slide-box>
-		<button class="primary-button" ng-click="vm.bookAppointment()" style="position:absolute;top:90%;">Book</button>
+		<button id="products-booking-btn" class="primary-button" ng-click="vm.bookAppointment()">Book</button>
   </ion-content>
 </ion-view>

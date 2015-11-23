@@ -1,11 +1,43 @@
 <ion-view view-title="Bookings" ng-controller="BookingsCtrl as vm">
   <ion-content>
-    <h1>Bookings</h1>
-    <ion-scroll direction="x" id="date-selector" class="wide-as-needed" style="height:30px;">
-		<button ng-repeat="date in vm.schedule" ng-click="vm.selectDate(date)">{{date.$id}}</button>	
-    </ion-scroll>
-    <ion-scroll direction="x" id="date-selector" class="wide-as-needed" style="height:30px;">
-		<button ng-repeat="time in vm.times">{{time}}</button>	
-    </ion-scroll>
+    <div class="product-desc-container">
+	    <div class="big-header">{{vm.product.name}}</div>
+	  	<div class="small-header">#lattenails #fallstyle #autum</div>
+	  	<div class="product-description">{{vm.product.description}}</div>
+  	</div>
+  	<div class="fullscreen-image"  ng-style="{'background-image':'url({{vm.product.image}})'}">
+  	<div class="booking-container">
+  		<div class="date-container" style="opacity:1">
+  			<div class="booking-sub-header">Pick a date and time</div>
+	  		<ion-scroll direction="x" id="date-selector" class="wide-as-needed date-time-selector" >
+				<button ng-repeat="date in vm.schedule" ng-click="vm.selectDate(date)">
+				<div id="day-of-week">{{date.dayOfWeek}}</div>
+				<div id="month-day">{{date.monthDay}}</div>
+				</button>	
+		    </ion-scroll>
+		    <ion-scroll direction="x" id="date-selector" class="wide-as-needed">
+				<button ng-repeat="time in vm.times">{{time}}</button>	
+		    </ion-scroll>
+  		</div>
+  		<hr class="horizontal-divider">
+  		<div>
+  			<div class="booking-sub-header">Pick a location</div>
+  		</div>
+  		<div class="address-selector">
+			<button class="address-btn" ng-click="vm.selectAddress('home')">
+				<div class="address-type">Home</div>
+				<div class="address-text">One Harrison St</div>
+			</button>	
+			<button class="address-btn" ng-click="vm.selectAddress('home')">
+				<div class="address-type">Work</div>
+				<div class="address-text">One Harrison St</div>
+			</button>	
+			<button class="address-btn" ng-click="vm.selectAddress('home')">
+				<div class="address-type">Other</div>
+				<div class="address-text">One Harrison St</div>
+			</button>	
+  		</div>
+    </div>
+    <button id="booking-confirm-btn" class="primary-button" ng-click="vm.bookAppointment()">Confirm for ${{vm.product.price}}</button>
   </ion-content>
 </ion-view>

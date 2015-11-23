@@ -7,11 +7,11 @@
 	font-family: Helvetica Neue, Helvetica;
 	font-size: 15px;
 	font-weight: bold;
-	width:80%;
+	width:88%;
 	text-align:center;
 	height: 35px;
-	margin-left:10%;
-	margin-right:10%;
+	margin-left:6%;
+	margin-right:6%;
 	text-shadow:none;
 	border:none;
 	box-shadow:none;
@@ -28,14 +28,14 @@
 
 .big-header {
 	padding-top: 10%;
-	font-size: 40px;
+	font-size: 30px;
 	font-weight: light;
 	font-align: left;
 }
 
 .small-header {
 	padding-top:5%;
-	font-size: 24px;
+	font-size: 20px;
 	font-weight: light;
 	font-align: left;
 	opacity:0.75;
@@ -76,7 +76,7 @@
 .price-container {
 	width:30%;
 	display:inline-block;
-  vertical-align:middle;
+  	vertical-align:middle;
 }
 
 .deadline-msg {
@@ -109,8 +109,102 @@
 	vertical-align:middle;
 }
 
+.dollar-sign {
+	float:left;
+	width:20px;
+	font-size:20px;
+	vertical-align:top;
+}
+
+.product-price {
+	float:left;
+	width:70px;
+}
+
+#products-booking-btn {
+	position:absolute;
+	top:90%;
+}
 
 /* BOOKINGS PAGE */
+.scroll-bar-indicator
+{
+	display: none;
+}
+
+.booking-container {
+	position:absolute;
+	width:100%;
+	height:300px;
+	margin-top:70%;
+	background-color:#ffffff;
+	background: rgba(250, 250, 250, 0.85);
+}
+
+.date-container {
+	margin-left:20px;
+}
+
+.date-container button {
+	width:60px;
+}
+
+.date-time-selector {
+	height:60px;
+}
+
+#day-of-week {
+	font-size:15px;
+	margin-bottom:-5px;
+}
+
+#month-day {
+	font-size:11px;
+}
+
+.booking-container button {
+	margin-right:-1px;
+	border-right: solid #D6D6D6;
+	border-bottom:solid #D6D6D6;
+	border-width:1px;
+	border-color:#D6D6D6;
+	background-color:#ffffff;
+	color:#D6D6D6;
+	height:45px;
+	box-shadow:none;
+}
+
+.booking-sub-header {
+	text-align:center;
+	margin-top:3%;
+	margin-bottom:3%;
+	font-weight:bold;
+}
+
+.horizontal-divider {
+	margin-top:17px;
+	width:85%;
+}
+
+#booking-confirm-btn {
+	position:absolute;
+	top:90%;
+}
+
+.address-selector {
+	margin-left:8%;
+	margin-right:7%;
+}
+
+.address-selector button{
+	margin-right:-1.8%;
+	width:33%;
+}
+
+.address-text {
+	font-size:8px;
+}
+
 .wide-as-needed {
   overflow: scroll;
   white-space: nowrap;

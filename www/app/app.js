@@ -24,11 +24,11 @@ angular.module('nailArtist', ['ionic', 'firebase'])
         templateUrl: 'app/products/products.html',
         cache: false
     }).state('productDetails', {
-        url: '/productDetails/:productId',
+        url: '/productDetails',
         templateUrl: 'app/productDetails/product-details.html',
         cache: false
     }).state('bookings', {
-        url: '/bookings/:productId',
+        url: '/bookings',
         templateUrl: 'app/bookings/bookings.html',
         cache: false
     });
