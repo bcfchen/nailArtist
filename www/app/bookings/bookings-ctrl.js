@@ -18,10 +18,11 @@
 		vm.selectDate = function(date){
 			vm.selectedDate = date.$id;
 			vm.times = Object.keys(date.times);
+			vm.selectTime(vm.times[0]);
 		}
 
 		vm.selectTime = function(time){
-			
+			vm.selectedTime = time;
 		}
 
 		function initialize(){

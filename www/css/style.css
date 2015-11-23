@@ -153,6 +153,13 @@
 	height:60px;
 }
 
+.date-time-selector .active
+{
+    border-color: red;
+    z-index: 1;
+    color:red;
+}
+
 #day-of-week {
 	font-size:15px;
 	margin-bottom:-5px;
@@ -163,7 +170,6 @@
 }
 
 .booking-container button {
-	margin-right:-1px;
 	border-right: solid #D6D6D6;
 	border-bottom:solid #D6D6D6;
 	border-width:1px;

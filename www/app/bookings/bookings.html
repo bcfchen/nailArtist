@@ -9,14 +9,14 @@
   	<div class="booking-container">
   		<div class="date-container" style="opacity:1">
   			<div class="booking-sub-header">Pick a date and time</div>
-	  		<ion-scroll direction="x" id="date-selector" class="wide-as-needed date-time-selector" >
-				<button ng-repeat="date in vm.schedule" ng-click="vm.selectDate(date)">
-				<div id="day-of-week">{{date.dayOfWeek}}</div>
-				<div id="month-day">{{date.monthDay}}</div>
+	  		<ion-scroll direction="x" class="wide-as-needed date-time-selector" >
+				<button ng-repeat="date in vm.schedule" ng-class="{active: date.$id === vm.selectedDate}" ng-click="vm.selectDate(date)">
+					<div id="day-of-week">{{date.dayOfWeek}}</div>
+					<div id="month-day">{{date.monthDay}}</div>
 				</button>	
 		    </ion-scroll>
-		    <ion-scroll direction="x" id="date-selector" class="wide-as-needed">
-				<button ng-repeat="time in vm.times">{{time}}</button>	
+		    <ion-scroll direction="x" class="wide-as-needed date-time-selector">
+				<button ng-repeat="time in vm.times" ng-class="{active: time === vm.selectedTime}" ng-click="vm.selectTime(time)">{{time}}</button>	
 		    </ion-scroll>
   		</div>
   		<hr class="horizontal-divider">
