@@ -16,7 +16,9 @@
 				</button>	
 		    </ion-scroll>
 		    <ion-scroll direction="x" class="wide-as-needed date-time-selector">
-				<button ng-repeat="time in vm.times" ng-class="{active: time === vm.selectedTime}" ng-click="vm.selectTime(time)">{{time}}</button>	
+				<button ng-repeat="time in vm.times" ng-class="{active: time === vm.selectedTime}" ng-click="vm.selectTime(time)">
+					<div id="time-of-day">{{time}}</div>
+				</button>	
 		    </ion-scroll>
   		</div>
   		<hr class="horizontal-divider">
@@ -24,17 +26,9 @@
   			<div class="booking-sub-header">Pick a location</div>
   		</div>
   		<div class="address-selector">
-			<button class="address-btn" ng-click="vm.selectAddress('home')">
-				<div class="address-type">Home</div>
-				<div class="address-text">One Harrison St</div>
-			</button>	
-			<button class="address-btn" ng-click="vm.selectAddress('home')">
-				<div class="address-type">Work</div>
-				<div class="address-text">One Harrison St</div>
-			</button>	
-			<button class="address-btn" ng-click="vm.selectAddress('home')">
-				<div class="address-type">Other</div>
-				<div class="address-text">One Harrison St</div>
+			<button class="address-btn" ng-repeat="address in vm.addresses" ng-class="{active: address === vm.selectedAddress}" ng-click="vm.selectAddress(address)">
+				<div class="address-type">{{address.type}}</div>
+				<div class="address-text">{{address.text}}</div>
 			</button>	
   		</div>
     </div>

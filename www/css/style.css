@@ -136,7 +136,7 @@
 	position:absolute;
 	width:100%;
 	height:300px;
-	margin-top:70%;
+	margin-top:75%;
 	background-color:#ffffff;
 	background: rgba(250, 250, 250, 0.85);
 }
@@ -150,7 +150,7 @@
 }
 
 .date-time-selector {
-	height:60px;
+	height:50px;
 }
 
 .date-time-selector .active
@@ -160,13 +160,23 @@
     color:red;
 }
 
+.address-selector .active {
+	border-color: red;
+    z-index: 1;
+    color:red;
+}
+
 #day-of-week {
-	font-size:15px;
+	font-size:12px;
 	margin-bottom:-5px;
 }
 
+#time-of-day {
+	font-size:12px;
+}
+
 #month-day {
-	font-size:11px;
+	font-size:8px;
 }
 
 .booking-container button {
@@ -176,7 +186,7 @@
 	border-color:#D6D6D6;
 	background-color:#ffffff;
 	color:#D6D6D6;
-	height:45px;
+	height:40px;
 	box-shadow:none;
 }
 
@@ -188,7 +198,7 @@
 }
 
 .horizontal-divider {
-	margin-top:17px;
+	margin-top:8px;
 	width:85%;
 }
 
@@ -203,12 +213,15 @@
 }
 
 .address-selector button{
-	margin-right:-1.8%;
 	width:33%;
 }
 
 .address-text {
 	font-size:8px;
+}
+
+.address-type {
+	font-size:12px;
 }
 
 .wide-as-needed {
