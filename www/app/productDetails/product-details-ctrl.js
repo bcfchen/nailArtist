@@ -1,9 +1,11 @@
 (function(){
 	'use strict';
-	angular.module('nailArtist').controller('ProductDetailsCtrl', ["$stateParams", "$firebaseArray", ProductDetailsCtrl]);
+	angular.module('nailArtist').controller('ProductDetailsCtrl', ["constants", "userSelectionService", "$firebaseArray", ProductDetailsCtrl]);
 
-	function ProductDetailsCtrl($stateParams, $firebaseArray){
+	function ProductDetailsCtrl(constants, userSelectionService, $firebaseArray){
 		var vm = this;
-		var productId = $stateParams.productId;
+		vm.product = userSelectionService.product;
+		var ref = new Firebase(constants.FIREBASE_URL + "/instagram/" + vm.product.$id);
+		vm.instagrams = $firebaseArray(ref);
 	};
 })();

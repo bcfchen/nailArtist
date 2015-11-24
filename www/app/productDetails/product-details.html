@@ -1,5 +1,24 @@
 <ion-view view-title="Details" ng-controller="ProductDetailsCtrl as vm">
   <ion-content>
-    <h1>Product Details</h1>
+	<div class="product-info-container">
+		<div class="product-text-container">
+			<div class="product-name">#CoffeeMorning</div>
+			<div class="product-hashtags">#lattenails #autum #fallfashion</div>
+		</div>
+	</div>
+    <div class="instagram-container" ng-repeat="instagram in vm.instagrams">
+    	<div class="image-container" ng-style="{'background-image':'url({{instagram.image}})'}">
+    		<div class="user-info-container">
+    			<div class="user-profile-image">
+    				<div class="img-circle" ng-style="{'background-image':'url({{instagram.author.profileImage}})'}"></div>
+    			</div>
+    			<div class="user-name">{{instagram.author.name}}</div>
+    		</div>
+    	</div>
+    	<div class="user-text-container">
+    		<div class="comments">{{instagram.comments}}</div>
+    		<div class="hashtags">{{instagram.hashtags}}</div>
+    	</div>
+    </div>
   </ion-content>
 </ion-view>
