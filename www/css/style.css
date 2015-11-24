@@ -266,6 +266,19 @@
  	border: 1.5px solid #ffffff;
 }
 
+.img-small-circle {
+	position:absolute;
+	height:17px;
+	width:17px;
+    border-radius: 50%;
+    background-size:cover;
+    margin-left:4%;
+    margin-top:10%;
+ 	border: 1.5px solid #ffffff;
+ 	background-color:#ffffff;
+ 	background-image: url('https://cdn1.iconfinder.com/data/icons/simple-icons/4096/instagram-4096-black.png');
+}
+
 .user-name {
 	float:left;
 	width:75%;
