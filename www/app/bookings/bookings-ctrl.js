@@ -1,8 +1,8 @@
 (function(){
 	'use strict';
-	angular.module('nailArtist').controller('BookingsCtrl', ["userSelectionService", "$firebaseArray", "constants",BookingsCtrl]);
+	angular.module('nailArtist').controller('BookingsCtrl', ["$state", "userSelectionService", "$firebaseArray", "constants",BookingsCtrl]);
 
-	function BookingsCtrl(userSelectionService, $firebaseArray, constants){
+	function BookingsCtrl($state, userSelectionService, $firebaseArray, constants){
 		var vm = this;
 		vm.selectedDate = {};
 		vm.selectedTime = {};
@@ -40,6 +40,10 @@
 
 		vm.selectAddress = function(address){
 			vm.selectedAddress = address;
+		}
+
+		vm.bookAppointment = function(){
+			$state.go("complete");
 		}
 
 		function initialize(){

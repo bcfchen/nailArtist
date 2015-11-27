@@ -310,7 +310,7 @@
 }
 
 .product-name {
-	font-size:35px;
+	font-size:30px;
 	margin-bottom:4%;
 }
 
@@ -322,5 +322,74 @@
 #product-details-confirm-btn {
 	position:fixed;
 	bottom:6%;
+}
+
+/* COMPLETE PAGE */
+
+#appt-info-container {
+	position:absolute;
+	margin-top:130%;
+	width:100%;
+	text-align:center;
+	color:#ffffff;
+}
+
+.status-module {
+	position:absolute;
+	width:80%;
+	margin-top:75%;
+	margin-left:10%;
+	border-radius:10px;
+	text-align:center;
+	background-color:#ffffff;
+}
+
+.status-icon-circle {
+	position:absolute;
+	height:55px;
+	width:55px;
+	margin-left:40%;
+    border-radius: 50%;
+    background-size:cover;
+    margin-top:-12%;
+}
+
+.short-status-msg {
+	font-size:20px;
+	margin-bottom:5%;
+	margin-top:10%;
+}
+
+.long-status-msg {
+	font-size:12px;
+	width:80%;
+	margin-left:10%;
+	text-align:center;
+}
+
+.contact-us-btn {
+	width:90%;
+	background-color:#7ed321;
+	text-shadow:none;
+	border:none;
+	box-shadow:none;
+	border-radius:2.5px;
+	opacity:0.9;
+	color:#ffffff;
+	margin-top:2.5%;
+	margin-bottom:2.5%;
+}
+
+.dismiss-btn {
+	width:90%;
+	background-color:#ed5f5e;
+	text-shadow:none;
+	border:none;
+	box-shadow:none;
+	border-radius:2.5px;
+	opacity:0.9;
+	color:#ffffff;
+	margin-top:2.5%;
+	margin-bottom:2.5%;
 }
 
