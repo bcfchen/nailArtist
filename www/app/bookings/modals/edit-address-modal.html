@@ -1,0 +1,10 @@
+<div class="edit-address-container">
+	<div id="add-address-title">Add your address</div>
+    <input class="edit-address" placeholder="Street Address" type="text" ng-model="vm.nickname" ng-change="vm.setNickname()"/>        
+    <input class="edit-address" placeholder="City" type="text" ng-model="vm.nickname" ng-change="vm.setNickname()"/>
+	<div class="state-zip-container">
+		<input class="edit-state" placeholder="State" type="text"/>
+		<input class="edit-zipcode" placeholder="ZIP" type="text"/>
+	</div>
+	<button class="primary-button confirm-address-btn" ng-click="editAddressModal.done()">Confirm Address</button>
+</div>

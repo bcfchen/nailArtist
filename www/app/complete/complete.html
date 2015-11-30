@@ -1,0 +1,31 @@
+<ion-view view-title="Products" ng-controller="CompleteCtrl as vm">
+  <ion-content>
+	  	<div class="product-desc-container">
+		    <div class="big-header">{{vm.product.name}}</div>
+		  	<div class="small-header">#lattenails #fallstyle #autum</div>
+		  	<div class="product-description">{{vm.product.description}}</div>
+	  	</div>
+		<div class="status-module" ng-if="vm.bookingSuccessful">
+			<div class="status-icon-circle" style="background-image:url('../img/icon_success@3x.png')"></div>	
+			<div class="short-status-msg">Thank you so much!</div>
+			<div class="long-status-msg">Your appointment is confirmed. If you need to make changes, or have questions, please contact us</div>
+			<button class="contact-us-btn">Contact Us</button>
+			<button class="close-status-btn">Close</button>
+		</div>
+		<div class="status-module" ng-if="!vm.bookingSuccessful">
+			<div class="status-icon-circle" style="background-image:url('../img/icon_error@3x.png')"></div>	
+			<div class="short-status-msg">Oops!</div>
+			<div class="long-status-msg">The request did not go through. Please try again or contact the team :( </div>
+			<button class="dismiss-btn">Dismiss</button>
+		</div>
+
+	  	<div id="appt-info-container">
+			<div id="appt-schedule-container">
+			  		<div id="scheduled-for-msg">You are scheduled for</div>
+					<div id="appt-date-time">Today at 10:30am</div>
+			  	</div>
+			 <div id="appt-address">12000 Sunridge Dr. #520</div>
+	  	</div>
+	  	<div class="fullscreen-image" ng-style="{'background-image':'url({{vm.product.image}})'}">
+  </ion-content>
+</ion-view>
