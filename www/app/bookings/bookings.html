@@ -6,7 +6,7 @@
 	  	<div class="product-description">{{vm.product.description}}</div>
   	</div>
   	<div class="fullscreen-image"  ng-style="{'background-image':'url({{vm.product.image}})'}">
-  	<div class="booking-container">
+  	<div class="booking-container" ng-hide="!vm.showBookingContainer">
   		<div class="date-container" style="opacity:1">
   			<div class="booking-sub-header">Pick a date and time</div>
 	  		<ion-scroll direction="x" class="wide-as-needed date-time-selector" >
@@ -26,12 +26,20 @@
   			<div class="booking-sub-header">Pick a location</div>
   		</div>
   		<div class="address-selector">
-			<button class="address-btn" ng-repeat="address in vm.addresses" ng-class="{active: address === vm.selectedAddress}" ng-click="vm.selectAddress(address)">
-				<div class="address-type">{{address.type}}</div>
-				<div class="address-text">{{address.text}}</div>
+			<button class="address-btn" ng-class="{active: vm.user.addresses.home === vm.selectedAddress}" ng-click="vm.selectAddress(address)">
+				<div class="address-type">Home</div>
+				<div class="address-text">{{vm.user.addresses.home.street}}</div>
+			</button>	
+			<button class="address-btn" ng-class="{active: vm.user.addresses.work === vm.selectedAddress}" ng-click="vm.selectAddress(vm.user.addresses.work)">
+				<div class="address-type">Work</div>
+				<div class="address-text">{{vm.user.addresses.work.street}}</div>
+			</button>	
+			<button class="address-btn" ng-class="{active: vm.user.addresses.custom === vm.selectedAddress}" ng-click="vm.selectAddress(vm.user.addresses.custom)">
+				<div class="address-type">Custom</div>
+				<div class="address-text">{{vm.user.addresses.custom.street}}</div>
 			</button>	
   		</div>
+  		<button id="booking-confirm-btn" class="primary-button" ng-click="vm.bookAppointment()">Confirm for ${{vm.product.price}}</button>
     </div>
-    <button id="booking-confirm-btn" class="primary-button" ng-click="vm.bookAppointment()">Confirm for ${{vm.product.price}}</button>
   </ion-content>
 </ion-view>

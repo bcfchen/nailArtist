@@ -180,7 +180,7 @@
 	font-size:8px;
 }
 
-.booking-container button {
+.booking-container div button {
 	border-right: solid #D6D6D6;
 	border-bottom:solid #D6D6D6;
 	border-width:1px;
@@ -204,17 +204,16 @@
 }
 
 #booking-confirm-btn {
-	position:absolute;
-	top:90%;
+	margin-top:5%;
 }
 
 .address-selector {
-	margin-left:8%;
-	margin-right:7%;
+	margin-left:5%;
+	margin-right:5%;
 }
 
-.address-selector button{
-	width:33%;
+.address-btn{
+	width:32%;
 }
 
 .address-text {
@@ -324,11 +323,61 @@
 	bottom:6%;
 }
 
+/* EDIT ADDRESS MODAL */
+.edit-address-container {
+	position:absolute;
+	height:270px;
+	width:100%;
+	background-color:#ffffff;
+	background: rgba(250, 250, 250, 0.85);
+	margin-top:70%;
+}
+
+#add-address-title {
+	text-align:center;
+	margin-top:5%;
+	margin-bottom:5%;
+}
+
+.edit-address {
+	width:90%;
+	margin-left:5%;
+	margin-right:5%;
+	border-radius:5px;
+	margin-bottom:5%;
+}
+
+
+.state-zip-container {
+	width:90%;
+	margin-left:5%;
+	margin-right:5%;
+	background-color:blue;
+}
+
+.edit-state {
+	float:left;
+	width:45%;
+	border-radius:5px;
+}
+
+.edit-zipcode {
+	float:left;
+	width:45%;
+	margin-left:10%;
+	border-radius:5px;
+}
+
+.confirm-address-btn {
+	margin-top:5%;
+}
+
+
 /* COMPLETE PAGE */
 
 #appt-info-container {
 	position:absolute;
-	margin-top:130%;
+	margin-top:135%;
 	width:100%;
 	text-align:center;
 	color:#ffffff;
@@ -337,7 +386,7 @@
 .status-module {
 	position:absolute;
 	width:80%;
-	margin-top:75%;
+	margin-top:70%;
 	margin-left:10%;
 	border-radius:10px;
 	text-align:center;
@@ -393,3 +442,15 @@
 	margin-bottom:2.5%;
 }
 
+.close-status-btn {
+	width:90%;
+	background-color:#edbe5e;
+	text-shadow:none;
+	border:none;
+	box-shadow:none;
+	border-radius:2.5px;
+	opacity:0.9;
+	color:#ffffff;
+	margin-top:2.5%;
+	margin-bottom:2.5%;
+}

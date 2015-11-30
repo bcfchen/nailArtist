@@ -1,24 +1,12 @@
 (function(){
 	'use strict';
-	angular.module('nailArtist').controller('BookingsCtrl', ["$state", "userSelectionService", "$firebaseArray", "constants",BookingsCtrl]);
+	angular.module('nailArtist').controller('BookingsCtrl', ["localStorageService", "$ionicModal", "$scope", "$state", "userSelectionService", "$firebaseArray", "constants",BookingsCtrl]);
 
-	function BookingsCtrl($state, userSelectionService, $firebaseArray, constants){
+	function BookingsCtrl(localStorageService, $ionicModal, $scope, $state, userSelectionService, $firebaseArray, constants){
 		var vm = this;
 		vm.selectedDate = {};
 		vm.selectedTime = {};
 		vm.selectedAddress = {};
-
-		/* dummy address */
-		vm.addresses = [{
-			type: "Home",
-			text: "One Harrison St"
-		}, {
-			type: "Work",
-			text: "One Market St"
-		}, {
-			type: "Custom",
-			text: "86 Malta Dr"
-		}];
 
 		initialize();
 		var ref = new Firebase(constants.FIREBASE_URL + "/schedule");
@@ -39,7 +27,11 @@
 		}
 
 		vm.selectAddress = function(address){
-			vm.selectedAddress = address;
+			if (address){
+				vm.selectedAddress = address;
+			} else {
+				toggleModalVisibility(false, true);
+			}
 		}
 
 		vm.bookAppointment = function(){
@@ -47,7 +39,38 @@
 		}
 
 		function initialize(){
+			vm.showBookingContainer = true;
 			vm.product = userSelectionService.product;
+			vm.user = localStorageService.getUser();
+
+			initializeEditProfileModal();
+		}
+
+		function initializeEditProfileModal(){
+			$ionicModal.fromTemplateUrl('app/bookings/modals/edit-address-modal.html', {
+		    scope: $scope,
+		    animation: 'slide-in-up'
+		  }).then(function(modal) {
+		    $scope.editAddressModal = modal;
+		    $scope.editAddressModal.done = function() {
+		    	/* set input values */
+		    	// $localstorage.setUserNickname(vm.nickname);
+		    	toggleModalVisibility(true, false);
+		  	}
+		  });
+		}
+
+		function toggleModalVisibility(showBookingContainer, showEditAddress){
+			if(showEditAddress){
+				vm.showBookingContainer = showBookingContainer;
+				$scope.editAddressModal.show();
+			} else {
+				$scope.editAddressModal.hide().then(function(){
+					vm.showBookingContainer = showBookingContainer;
+				});
+			}
+			// vm.showBookingContainer = showBookingContainer;
+
 		}
 
 		function attachDateProperties(dateObjs){
