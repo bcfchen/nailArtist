@@ -26,7 +26,7 @@
   			<div class="booking-sub-header">Pick a location</div>
   		</div>
   		<div class="address-selector">
-			<button class="address-btn" ng-class="{active: vm.user.addresses.home === vm.selectedAddress}" ng-click="vm.selectAddress(address)">
+			<button class="address-btn" ng-class="{active: vm.user.addresses.home === vm.selectedAddress}" ng-click="vm.selectAddress(vm.user.addresses.home)">
 				<div class="address-type">Home</div>
 				<div class="address-text">{{vm.user.addresses.home.street}}</div>
 			</button>	

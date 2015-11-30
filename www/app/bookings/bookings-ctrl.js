@@ -27,11 +27,12 @@
 		}
 
 		vm.selectAddress = function(address){
-			if (address){
-				vm.selectedAddress = address;
+			var streetAddressExists = address.street && address.street != "";
+			if (streetAddressExists){
 			} else {
 				toggleModalVisibility(false, true);
 			}
+			vm.selectedAddress = address;
 		}
 
 		vm.bookAppointment = function(){
@@ -43,10 +44,10 @@
 			vm.product = userSelectionService.product;
 			vm.user = localStorageService.getUser();
 
-			initializeEditProfileModal();
+			initializeEditAddressModal();
 		}
 
-		function initializeEditProfileModal(){
+		function initializeEditAddressModal(){
 			$ionicModal.fromTemplateUrl('app/bookings/modals/edit-address-modal.html', {
 		    scope: $scope,
 		    animation: 'slide-in-up'
