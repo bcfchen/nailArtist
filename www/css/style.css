@@ -163,7 +163,6 @@
 
 .address-selector .active {
 	border-color: red;
-    z-index: 1;
     color:red;
 }
 
@@ -220,14 +219,14 @@
 	font-size:8px;
 }
 
+.address-text-placeholder {
+	font-size:8px;
+}
+
 .address-type {
 	font-size:12px;
 }
 
-.wide-as-needed {
-  overflow: scroll;
-  white-space: nowrap;
-}
 .scroll { 
   min-width: 100%;
 }
