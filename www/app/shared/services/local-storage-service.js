@@ -40,6 +40,11 @@
       var currObject = this.getUser();
       currObject.setPhoneNumber(phoneNumber);
       this.setUser(currObject);    
+    },
+    setUserName: function(name){
+      var currObject = this.getUser();
+      currObject.setName(name);
+      this.setUser(currObject);    
     }
 
   }

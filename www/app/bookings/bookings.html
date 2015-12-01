@@ -26,17 +26,17 @@
   			<div class="booking-sub-header">Pick a location</div>
   		</div>
   		<div class="address-selector">
-			<button class="address-btn" ng-class="{active: vm.user.addresses.home === vm.selectedAddress}" ng-click="vm.selectAddress(vm.user.addresses.home)">
+			<button class="address-btn" ng-class="{active: vm.user.addresses.home === vm.selectedAddress}" ng-click="vm.selectAddress('home', vm.user.addresses.home)">
 				<div class="address-type">Home</div>
 				<div class="address-text" ng-show="vm.user.addresses.home.street">{{vm.user.addresses.home.street}}</div>
 				<div class="address-text-placeholder" ng-show="!vm.user.addresses.home.street">Add location</div>
 			</button>	
-			<button class="address-btn" ng-class="{active: vm.user.addresses.work === vm.selectedAddress}" ng-click="vm.selectAddress(vm.user.addresses.work)">
+			<button class="address-btn" ng-class="{active: vm.user.addresses.work === vm.selectedAddress}" ng-click="vm.selectAddress('work', vm.user.addresses.work)">
 				<div class="address-type">Work</div>
 				<div class="address-text" ng-show="vm.user.addresses.work.street">{{vm.user.addresses.work.street}}</div>
 				<div class="address-text-placeholder" ng-show="!vm.user.addresses.work.street">Add location</div>
 			</button>	
-			<button class="address-btn" ng-class="{active: vm.user.addresses.custom === vm.selectedAddress}" ng-click="vm.selectAddress(vm.user.addresses.custom)">
+			<button class="address-btn" ng-class="{active: vm.user.addresses.custom === vm.selectedAddress}" ng-click="vm.selectAddress('custom', vm.user.addresses.custom)">
 				<div class="address-type">Custom</div>
 				<div class="address-text" ng-show="vm.user.addresses.custom.street">{{vm.user.addresses.custom.street}}</div>
 				<div class="address-text-placeholder" ng-show="!vm.user.addresses.custom.street">Add location</div>

@@ -7,6 +7,7 @@
 		vm.selectedDate = {};
 		vm.selectedTime = {};
 		vm.selectedAddress = {};
+		vm.selectedAddressType = "";
 
 		initialize();
 		var ref = new Firebase(constants.FIREBASE_URL + "/schedule");
@@ -26,13 +27,14 @@
 			vm.selectedTime = time;
 		}
 
-		vm.selectAddress = function(address){
+		vm.selectAddress = function(type, address){
 			var streetAddressExists = address.street && address.street != "";
 			if (streetAddressExists){
 			} else {
 				toggleModalVisibility(false, true);
 			}
 			vm.selectedAddress = address;
+			vm.selectedAddressType = type;
 		}
 
 		vm.bookAppointment = function(){
@@ -55,7 +57,7 @@
 		    $scope.editAddressModal = modal;
 		    $scope.editAddressModal.done = function() {
 		    	/* set input values */
-		    	// $localstorage.setUserNickname(vm.nickname);
+		    	localStorageService.setUserAddress(vm.selectedAddressType, vm.selectedAddress);
 		    	toggleModalVisibility(true, false);
 		  	}
 		  });
