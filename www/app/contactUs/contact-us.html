@@ -1,0 +1,12 @@
+<ion-view view-title="ContactUs" ng-controller="ContactUsCtrl as vm">
+  <ion-content >
+	  	<div class="fullscreen-image blurry" ng-style="{'background-image':'url({{vm.product.image}})'}">
+		<div id="contact-us-modal" class="complete-page-modal">
+			<div class="status-icon-circle" style="background-image:url('../img/icon_contact_us@3x.png')"></div>
+			<div class="complete-modal-title">Your satisfaction is our priority</div>
+			<div class="complete-modal-description">We love to get your feedback. Please feel free to contact us via phone or email</div>
+		</div>
+		<button id="call-btn" class="primary-button"><a href="tel: 110">Call</a></button>
+		<button id="email-btn" class="primary-button" ng-click="vm.email()">Email</button>
+  </ion-content>
+</ion-view>

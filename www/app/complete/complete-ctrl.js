@@ -1,8 +1,8 @@
 (function(){
 	'use strict';
-	angular.module('nailArtist').controller('CompleteCtrl', ["$scope", "localStorageService", "$ionicModal", "constants", "userSelectionService", "$firebaseArray", CompleteCtrl]);
+	angular.module('nailArtist').controller('CompleteCtrl', ["$scope", "localStorageService", "$ionicModal", "constants", "userSelectionService", "$firebaseArray", "$state", CompleteCtrl]);
 
-	function CompleteCtrl($scope, localStorageService, $ionicModal, constants, userSelectionService, $firebaseArray){
+	function CompleteCtrl($scope, localStorageService, $ionicModal, constants, userSelectionService, $firebaseArray, $state){
 		var vm = this;
 		vm.product = userSelectionService.product;
 
@@ -61,7 +61,9 @@
 		  }).then(function(modal) {
 		    $scope.apptConfirmedModal = modal;
 		    $scope.apptConfirmedModal.contactUs = function(){
-		    	$scope.apptConfirmedModal.hide();
+		    	$scope.apptConfirmedModal.hide().then(function(){
+		    		$state.go("contactUs");
+		    	});
 		    }
 
 		    $scope.apptConfirmedModal.close = function() {

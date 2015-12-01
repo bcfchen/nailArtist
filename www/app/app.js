@@ -35,6 +35,9 @@ angular.module('nailArtist', ['ionic', 'firebase'])
         url: '/complete',
         templateUrl: 'app/complete/complete.html',
         cache: false
+    }).state('contactUs', {
+        url: '/contactUs',
+        templateUrl: 'app/contactUs/contact-us.html'
     });
 
     // if none of the above states are matched, use this as the fallback

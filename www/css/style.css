@@ -518,3 +518,31 @@
 	-webkit-filter: blur(5px);
 	opacity: .3;
 }
+
+/* contact us */
+#call-btn{
+	position:absolute;
+	bottom:12%;
+}
+
+#call-btn a{
+	color:#ffffff;
+	text-decoration: none;
+}
+
+#email-btn{
+	position:absolute;
+	bottom:3%;
+	background-color:#80cfc5;
+}
+
+#contact-us-modal {
+	position:absolute;
+	top:35%;
+	height:160px;
+}
+
+.blurry {
+	background-color: rgba(0, 0, 250, 0.1);
+	z-index: 5;
+}
