@@ -37,7 +37,7 @@
         	handler.open({
 	            name: 'Example Product',
 	            description: 'Example Product ' + price,
-	            amount: price
+	            amount: price * 100
 	        });
         }
 

@@ -29,16 +29,20 @@
 
 		vm.selectAddress = function(type, address){
 			var streetAddressExists = address.street && address.street != "";
+			vm.selectedAddressType = type;
+			vm.selectedAddress = address
 			if (streetAddressExists){
+				// vm.selectedAddress = address;
 			} else {
 				toggleModalVisibility(false, true);
 			}
-			vm.selectedAddress = address;
-			vm.selectedAddressType = type;
 		}
 
 		vm.bookAppointment = function(){
-			  stripeService.open(100);
+			// set selected schedule & address onto userSelectedService
+			userSelectionService.appointment.setAddress(vm.selectedAddress);
+			userSelectionService.schedule = new Schedule(vm.selectedDate, vm.selectedTime);
+			stripeService.open(userSelectionService.product.price);
 		}
 
 		function initialize(){
@@ -67,7 +71,6 @@
 		  }).then(function(modal) {
 		    $scope.editAddressModal = modal;
 		    $scope.editAddressModal.done = function() {
-		    	/* set input values */
 		    	localStorageService.setUserAddress(vm.selectedAddressType, vm.selectedAddress);
 		    	toggleModalVisibility(true, false);
 		  	}

@@ -4,6 +4,8 @@
 (function() {
     'use strict';
     angular.module('nailArtist').value("userSelectionService", {
-    	product: {}
+    	product: {},
+    	appointment: null,
+    	schedule: {}
     });
 })();
