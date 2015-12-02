@@ -18,6 +18,7 @@ angular.module('nailArtist', ['ionic', 'firebase'])
   });
 }).config(function($stateProvider, $urlRouterProvider) {
 
+    // setup routing
     $stateProvider
     .state('products', {
         url: '/products',

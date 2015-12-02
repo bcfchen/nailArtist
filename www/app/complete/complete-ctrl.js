@@ -37,23 +37,6 @@
 		  });
 		}
 
-		function initializeReminderModal(){
-			$ionicModal.fromTemplateUrl('app/complete/modals/reminder-modal.html', {
-		    scope: $scope,
-		    animation: 'slide-in-up'
-		  }).then(function(modal) {
-		    $scope.reminderModal = modal;
-		    $scope.reminderModal.done = function() {
-		    	/* set input values */
-		    	// localStorageService.setUserName(vm.user.name);
-		    	// localStorageService.setUserPhoneNumber(vm.user.phoneNumber);
-		    	$scope.reminderModal.hide().then(function(){
-		    		$scope.apptConfirmedModal.show();
-		    	});
-		  	}
-		  });
-		}
-
 		function initializeAppointmentConfirmedModal(){
 			$ionicModal.fromTemplateUrl('app/complete/modals/appt-confirmed-modal.html', {
 		    scope: $scope,

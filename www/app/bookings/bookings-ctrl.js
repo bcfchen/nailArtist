@@ -1,8 +1,8 @@
 (function(){
 	'use strict';
-	angular.module('nailArtist').controller('BookingsCtrl', ["localStorageService", "$ionicModal", "$scope", "$state", "userSelectionService", "$firebaseArray", "constants",BookingsCtrl]);
+	angular.module('nailArtist').controller('BookingsCtrl', ["localStorageService", "$ionicModal", "$scope", "$state", "userSelectionService", "$firebaseArray", "constants", "stripeService", BookingsCtrl]);
 
-	function BookingsCtrl(localStorageService, $ionicModal, $scope, $state, userSelectionService, $firebaseArray, constants){
+	function BookingsCtrl(localStorageService, $ionicModal, $scope, $state, userSelectionService, $firebaseArray, constants, stripeService){
 		var vm = this;
 		vm.selectedDate = {};
 		vm.selectedTime = {};
@@ -38,7 +38,7 @@
 		}
 
 		vm.bookAppointment = function(){
-			$state.go("complete");
+			  stripeService.open(100);
 		}
 
 		function initialize(){
@@ -47,6 +47,17 @@
 			vm.user = localStorageService.getUser();
 
 			initializeEditAddressModal();
+			stripeService.initialize(stripeSuccessCallback, stripeErrorCallback);
+		}
+
+		function stripeSuccessCallback(response){
+			console.log("payment success!", response);
+			$state.go("complete");
+		}
+
+		function stripeErrorCallback(err){
+			console.log("payment failed with msg: ", err);
+			alert("Your payment failed. Please try again");
 		}
 
 		function initializeEditAddressModal(){
