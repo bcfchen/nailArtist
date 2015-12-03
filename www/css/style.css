@@ -601,12 +601,23 @@
 	padding-right:16px;
 }
 
-icon ion-chevron-right icon-accessory"{
-	content: url('../img/icon_caret_ash_right@3x.png');
+.settings-right-btn-address {
+	float:right;
+	background-image:url('../img/icon_caret_ash_right@3x.png');
+	height:25px;
+	width:25px;
+	background-size:cover; 
+	font-size:25px;
+	margin-top:8px;
 }
 
-.test {
-	font-size:15px !important;
+.settings-right-btn-email-phone {
+	float:right;
+	background-image:url('../img/icon_caret_ash_right@3x.png');
+	height:25px;
+	width:25px;
+	background-size:cover; 
+	font-size:25px;
 }
 
 .settings-address {

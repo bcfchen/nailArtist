@@ -7,7 +7,7 @@
   <ion-content>
   <div class="list" style="padding-bottom:50px;">
     <div class="item item-divider settings-label">Home Address</div>
-    <a class="item item-icon-right" ng-click="vm.editAddress('home')">
+    <a class="item" ng-click="vm.editAddress('home')">
       <div class="address-settings">
         <div>
           <div class="address-placeholder" ng-show="!vm.user.addresses.home.street">Street Address</div>
@@ -18,10 +18,10 @@
           {{vm.user.addresses.home.city}} {{vm.user.addresses.home.state}} {{vm.user.addresses.home.zipCode}}
         </div>
       </div>
-        <i class="icon ion-chevron-right icon-accessory" style="content: url('../img/icon_caret_ash_right@3x.png'); height:25px;width:25px;margin-top:23px;margin-right:16px;"></i>      
+        <div class="settings-right-btn-address"></div>      
     </a>
       <div class="item item-divider settings-label">Work Address</div>
-      <a class="item item-icon-right" ng-click="vm.editAddress('work')">
+      <a class="item" ng-click="vm.editAddress('work')">
         <div class="address-settings">
           <div>
             <div class="address-placeholder" ng-show="!vm.user.addresses.work.street">Street Address</div>
@@ -31,17 +31,17 @@
               <div class="address-placeholder" ng-show="!vm.user.addresses.work.city">City, State, Zip</div>
               {{vm.user.addresses.work.city}} {{vm.user.addresses.work.state}} {{vm.user.addresses.work.zipCode}}</div>
         </div>
-        <i class="icon ion-chevron-right icon-accessory" style="content: url('../img/icon_caret_ash_right@3x.png'); height:25px;width:25px;margin-top:23px;margin-right:16px;"></i>      
+        <div class="settings-right-btn-address"></div>         
       </a>
       <div class="item item-divider settings-label">Contact Email</div>
-      <a class="item item-icon-right" ng-click="vm.editEmail()">
+      <a class="item" ng-click="vm.editEmail()">
         <div class="email-phone-text">{{vm.user.email}}</div>
-        <i class="icon ion-chevron-right icon-accessory" style="content: url('../img/icon_caret_ash_right@3x.png'); height:25px;width:25px;margin-top:13px;margin-right:16px;"></i>      
+        <div class="settings-right-btn-email-phone"></div>         
       </a>  
       <div class="item item-divider settings-label">Phone</div>
-      <a class="item item-icon-right" ng-click="vm.editPhoneNumber()">
+      <a class="item" ng-click="vm.editPhoneNumber()">
         <div class="email-phone-text">{{vm.user.phoneNumber}}</div>
-        <i class="icon ion-chevron-right icon-accessory" style="content: url('../img/icon_caret_ash_right@3x.png'); height:25px;width:25px;margin-top:13px;margin-right:16px;"></i>         
+        <div class="settings-right-btn-email-phone"></div>              
       </a>  
   </div>
   </ion-content>
