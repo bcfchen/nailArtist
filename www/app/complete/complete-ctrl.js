@@ -1,8 +1,8 @@
 (function(){
 	'use strict';
-	angular.module('nailArtist').controller('CompleteCtrl', ["$scope", "localStorageService", "$ionicModal", "constants", "userSelectionService", "$firebaseArray", "$state", CompleteCtrl]);
+	angular.module('nailArtist').controller('CompleteCtrl', ["$scope", "localStorageService", "$ionicModal", "constants", "userSelectionService", "$state", "firebaseService", CompleteCtrl]);
 
-	function CompleteCtrl($scope, localStorageService, $ionicModal, constants, userSelectionService, $firebaseArray, $state){
+	function CompleteCtrl($scope, localStorageService, $ionicModal, constants, userSelectionService, $state, firebaseService){
 		var vm = this;
 		vm.product = userSelectionService.product;
 		vm.appointment = userSelectionService.appointment;
@@ -11,31 +11,26 @@
 		vm.bookingComplete = false;
 		vm.bookingSuccessful = false;
 		vm.user = localStorageService.getUser();
-		var usersRef, appointmentsRef;
+		var userRef, appointmentsRef;
 		initialize();
 
 		function initialize(){
-			initializeFirebaseReferences();
 			initializeNameNumberModal().then(function(){
 				return initializeAppointmentConfirmedModal();
 			}).then(function(){
 				// if user's name and number already exist then don't show 
 				if (vm.user.name && vm.user.phoneNumber){
-					$scope.apptConfirmedModal.show();
+					userSelectionService.appointment.userPhone = vm.user.phoneNumber;
+					firebaseService.book(localStorageService.getUser(), userSelectionService.appointment, userSelectionService.schedule).then(function(){
+						$scope.apptConfirmedModal.show();
+					}, function error(err){
+							console.log("Booking failed with: ",  err);
+							alert("Booking unsuccessful. Please try again later");
+						});
 				} else {
 		    		$scope.nameNumberModal.show();
 				}
 			});
-		}
-
-		function save(){
-			saveUserInfo();
-			saveAppointment();
-		}
-
-		function initializeFirebaseReferences(){
-			usersRef = constants.FIREBASE_URL + "/users";
-			appointmentsRef = constants.FIREBASE_URL + "/schedule/" + userSelectionService.schedule.date + "/times/" + userSelectionService.schedule.time + "/appointments";
 		}
 
 		function initializeNameNumberModal(){
@@ -48,8 +43,11 @@
 		    	/* set input values */
 		    	localStorageService.setUserName(vm.user.name);
 		    	localStorageService.setUserPhoneNumber(vm.user.phoneNumber);
-		    	$scope.nameNumberModal.hide().then(function(){
-		    		$scope.apptConfirmedModal.show();
+		    	userSelectionService.appointment.userPhone = vm.user.phoneNumber;
+		    	firebaseService.book(localStorageService.getUser(), userSelectionService.appointment, userSelectionService.schedule).then(function(){
+			    	$scope.nameNumberModal.hide().then(function(){
+			    		$scope.apptConfirmedModal.show();
+			    	});
 		    	});
 		  	}
 		  });

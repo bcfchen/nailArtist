@@ -39,7 +39,7 @@
 		}
 
 		vm.bookAppointment = function(){
-			// set selected schedule & address onto userSelectedService
+			// set selected schedule & address onto userSelectionService
 			userSelectionService.appointment.setAddress(vm.selectedAddress);
 			userSelectionService.schedule = new Schedule(vm.selectedDate, vm.selectedTime);
 			stripeService.open(userSelectionService.product.price);
@@ -56,6 +56,7 @@
 
 		function stripeSuccessCallback(response){
 			console.log("payment success!", response);
+			userSelectionService.appointment.setTransactionId(response.data.id);
 			$state.go("complete");
 		}
 

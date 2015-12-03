@@ -2,8 +2,7 @@ function User(){
 	this.name = "";
 	this.addresses = {
 		home: new Address(),
-		work: new Address(),
-		custom: new Address()
+		work: new Address()
 	};
 	this.phoneNumber = "";
 }
