@@ -158,7 +158,7 @@
 }
 
 .date-container button {
-	width:60px;
+	width:65px;
 }
 
 .date-time-selector {
@@ -207,6 +207,11 @@
 	color:#D6D6D6;
 	height:40px;
 	box-shadow:none;
+}
+
+.wide-as-needed {
+  overflow: scroll;
+  white-space: nowrap;
 }
 
 .booking-sub-header {
