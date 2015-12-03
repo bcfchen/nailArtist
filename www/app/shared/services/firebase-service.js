@@ -31,6 +31,7 @@
 			userObj.name = user.name;
 			userObj.phoneNumber = user.phoneNumber;
 			userObj.addresses = user.addresses;
+			userObj.email = user.email;
 
 			return userObj.$save();
         }

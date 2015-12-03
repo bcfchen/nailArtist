@@ -5,6 +5,7 @@ function User(){
 		work: new Address()
 	};
 	this.phoneNumber = "";
+	this.email = "";
 }
 
 User.prototype.setName = function(name){
@@ -18,3 +19,8 @@ User.prototype.setPhoneNumber = function(phoneNumber){
 User.prototype.setAddress = function(type, address){
 	this.addresses[type] = address;
 }
+
+User.prototype.setEmail = function(email){
+	this.email = email;
+}
+

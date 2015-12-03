@@ -27,6 +27,10 @@
 			$state.go("bookings");
 		}
 
+		vm.toSettings = function(){
+			$state.go("settings");
+		}
+
 		function getCurrentProduct(){
 			return vm.products[$ionicSlideBoxDelegate.currentIndex()];
 		}

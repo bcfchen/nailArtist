@@ -28,6 +28,11 @@
       user.setAddress(type, address);
       this.setUser(user);
     },
+    setUserEmail: function(email){
+      var user = this.getUser();
+      user.setEmail(email);
+      this.setUser(user);
+    },
     getUserPhoneNumber: function(){
       var phoneNumber = null;
       if (this.getUser()){

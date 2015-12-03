@@ -39,6 +39,10 @@ angular.module('nailArtist', ['ionic', 'firebase'])
     }).state('contactUs', {
         url: '/contactUs',
         templateUrl: 'app/contactUs/contact-us.html'
+    }).state('settings', {
+        url: '/settings',
+        templateUrl: 'app/settings/settings.html',
+        cache: false
     });
 
     // if none of the above states are matched, use this as the fallback

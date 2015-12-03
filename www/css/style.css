@@ -1,6 +1,17 @@
 /* Empty. Add your own CSS if you like */
 
 /* GENERAL */
+.hamburger {
+	background-color:transparent;
+	position:absolute;
+	top:0px;
+	color:#ffffff;
+	font-size:35px;
+	margin-left:20px;
+	padding-left:0px;
+	border-width:0px;
+}
+
 .primary-button {
 	color: #ffffff;
 	background-color:#ed5f5e;
@@ -28,7 +39,7 @@
 }
 
 .big-header {
-	padding-top: 10%;
+	padding-top: 16%;
 	font-size: 30px;
 	font-weight: light;
 	font-align: left;
@@ -545,4 +556,155 @@
 .blurry {
 	background-color: rgba(0, 0, 250, 0.1);
 	z-index: 5;
+}
+
+/* settings */
+.settings-container {
+	margin-top:50px;
+	width:100%;
+	height:100%;
+	background-color:red;
+}
+
+.settings-label {
+	color: #3d3c3a;
+	height:50px;
+	line-height: 50px;
+	width:100%;
+	padding-left:16px;
+}
+
+.settings-address-parent {
+	width:100%;
+	display:table;
+	height:80px;
+}
+
+.settings-text-container {
+	position: relative;
+	width:100%;
+	background-color:blue;
+	border-style:solid;
+	border-width:1px;
+	border-color:green;
+	display: table-cell;
+	vertical-align: middle;
+	padding-left:16px;
+	padding-right:16px;
+}
+
+icon ion-chevron-right icon-accessory"{
+	content: url('../img/icon_caret_ash_right@3x.png');
+}
+
+.test {
+	font-size:15px !important;
+}
+
+.settings-address {
+	float:left;
+}
+
+.settings-email {
+	float:left;
+}
+
+.settings-header {
+	position:absolute;
+	top:0%;
+	height:50px;
+	line-height:50px;
+	width:100%;
+	background-color:#ffffff;
+	z-index:5;
+	font-size:20px;
+}
+
+.settings-header-text {
+	float:left;
+	margin-left:5px;
+}
+
+.settings-header-btn {
+	float:left;
+	margin-right:10px;
+	background-image:url('../img/icon_close_red@3x.png');
+	height:20px;
+	width:20px;
+	margin-top:15px;
+	margin-left:16px;
+	background-size:cover;
+}
+
+.settings-footer {
+	position:absolute;
+	bottom:0%;
+	height:50px;
+	line-height:50px;
+	width:100%;
+	background-color:#ffffff;
+	z-index:5;
+	font-size:20px;
+	border-top-width: 1px;
+	border-top-color:#9d9c9a;
+	border-style:solid;
+}
+
+.settings-footer-text {
+	float:left;
+	margin-left:16px;
+	font-size:15px;
+	color:#ed5f5e;
+}
+
+.settings-footer-btn {
+	float:left;
+	margin-right:16px;
+	background-image:url('../img/icon_caret_red_right@3x.png');
+	height:25px;
+	width:25px;
+	margin-top:12px;
+	background-size:cover;
+	position:absolute;
+	right:0px;
+}
+
+.settings-btn-positive {
+	color: #ffffff;
+	background-color:#ed5f5e;
+	font-family: Helvetica Neue, Helvetica;
+	font-size: 15px;
+	font-weight: bold;
+	text-align:center;
+	height: 35px;
+	text-shadow:none;
+	border:none;
+	box-shadow:none;
+    border-radius: 4px;
+    opacity: 0.9;
+}
+
+.settings-btn-negative {
+	color: #ffffff;
+	background-color:#fcf2db;
+	font-family: Helvetica Neue, Helvetica;
+	font-size: 15px;
+	font-weight: bold;
+	text-align:center;
+	height: 35px;
+	text-shadow:none;
+	border:none;
+	box-shadow:none;
+    border-radius: 4px;
+    opacity: 0.9;
+}
+
+.email-phone-text {
+	color: #9d9c9a;
+	float:left;
+}
+
+.address-settings {
+	color: #9d9c9a;
+	float:left;
 }

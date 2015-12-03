@@ -57,6 +57,7 @@
 		function stripeSuccessCallback(response){
 			console.log("payment success!", response);
 			userSelectionService.appointment.setTransactionId(response.data.id);
+			localStorageService.setUserEmail(response.data.email);
 			$state.go("complete");
 		}
 
