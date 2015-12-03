@@ -1,8 +1,8 @@
 (function(){
 	'use strict';
-	angular.module('nailArtist').controller("SettingsCtrl", ["$scope", "$ionicModal", "localStorageService", "userSelectionService", "$state", SettingsCtrl]);
+	angular.module('nailArtist').controller("SettingsCtrl", ["firebaseService", "$ionicHistory", "$scope", "$ionicModal", "localStorageService", "userSelectionService", "$state", SettingsCtrl]);
 
-	function SettingsCtrl($scope, $ionicModal, localStorageService, userSelectionService, $state){
+	function SettingsCtrl(firebaseService, $ionicHistory, $scope, $ionicModal, localStorageService, userSelectionService, $state){
 		var vm = this;
 		vm.product = userSelectionService.product;
 		vm.user = localStorageService.getUser();
@@ -13,7 +13,9 @@
 		initialize();
 
 		vm.goBack = function(){
-
+			saveUser().then(function(){
+				$ionicHistory.goBack();
+			});
 		}
 
 		vm.editAddress = function(addressType){
@@ -46,7 +48,7 @@
 			    $scope.editAddressModal = modal;
 			    $scope.editAddressModal.done = function() {
 			    	vm.user.addresses[selectedAddressType] = vm.selectedAddress;
-			    	syncUser();
+			    	syncUserLocally();
 			    	$scope.editAddressModal.hide();
 			  	}
 			  	$scope.editAddressModal.cancel = function() {
@@ -62,7 +64,7 @@
 			  }).then(function(modal) {
 			    $scope.editEmailModal = modal;
 			    $scope.editEmailModal.done = function() {
-			    	syncUser();
+			    	syncUserLocally();
 			    	$scope.editEmailModal.hide();
 			  	}
 			  	$scope.editEmailModal.cancel = function() {
@@ -78,7 +80,7 @@
 			  }).then(function(modal) {
 			    $scope.editPhoneNumberModal = modal;
 			    $scope.editPhoneNumberModal.done = function() {
-			    	syncUser();
+			    	syncUserLocally();
 			    	$scope.editPhoneNumberModal.hide();
 			  	}
 			  	$scope.editPhoneNumberModal.cancel = function() {
@@ -87,8 +89,15 @@
 			  });
 		}
 
-		function syncUser(){
+		function syncUserLocally(){
 			localStorageService.setUser(vm.user);
+		}
+
+		function saveUser(){
+			return firebaseService.saveUser(localStorageService.getUser()).then(function success(){
+			}, function error(){
+				alert("Please enter valid phone number!");
+			});
 		}
 	}
 })();

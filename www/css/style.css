@@ -154,7 +154,7 @@
 }
 
 .date-container {
-	margin-left:20px;
+	margin-left:6%;
 }
 
 .date-container button {
@@ -170,6 +170,14 @@
     border-color: red;
     z-index: 1;
     color:red;
+}
+
+#address-btn-left {
+	float:left;
+}
+
+#address-btn-right {
+	float:right;
 }
 
 .address-selector .active {
@@ -218,12 +226,12 @@
 }
 
 .address-selector {
-	margin-left:5%;
-	margin-right:5%;
+	margin-left:6%;
+	margin-right:6%;
 }
 
 .address-btn{
-	width:32%;
+	width:48.3%;
 }
 
 .address-text {

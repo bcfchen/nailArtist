@@ -2,9 +2,9 @@
 
     angular
         .module("nailArtist")
-        .factory("firebaseService", ["$firebaseObject", "$firebaseArray", "constants", firebaseService]);
+        .factory("firebaseService", ["$q", "$firebaseObject", "$firebaseArray", "constants", firebaseService]);
 
-    function firebaseService($firebaseObject, $firebaseArray, constants) {
+    function firebaseService($q, $firebaseObject, $firebaseArray, constants) {
         var service = {
             book: book,
             saveUser: saveUser
@@ -19,21 +19,27 @@
         }
 
         function saveUser(user){
-        	var invalidUser = !user || !user.phoneNumber;
-        	if (invalidUser){
-        		throw new Error("Invalid user");
-        	}
+            var deferred = $q.defer();
+        	var validUser = user && user.phoneNumber;
 
-        	var userRefUrl = constants.FIREBASE_URL + "/users/" + user.phoneNumber;
-			var userRef = new Firebase(userRefUrl);
-			var userObj = $firebaseObject(userRef);
+            if (validUser){
+            	var userRefUrl = constants.FIREBASE_URL + "/users/" + user.phoneNumber;
+    			var userRef = new Firebase(userRefUrl);
+    			var userObj = $firebaseObject(userRef);
 
-			userObj.name = user.name;
-			userObj.phoneNumber = user.phoneNumber;
-			userObj.addresses = user.addresses;
-			userObj.email = user.email;
+    			userObj.name = user.name;
+    			userObj.phoneNumber = user.phoneNumber;
+    			userObj.addresses = user.addresses;
+    			userObj.email = user.email;
 
-			return userObj.$save();
+    			userObj.$save().then(function(){
+                    deferred.resolve();
+                });
+            } else {
+                deferred.reject("User is invalid");
+            }
+
+            return deferred.promise;
         }
 
         function saveAppointment(appointment, schedule){
