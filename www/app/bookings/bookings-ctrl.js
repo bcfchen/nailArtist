@@ -95,7 +95,8 @@
 		function attachDateProperties(dateObjs){
 			for(var index in dateObjs){
 				var dateObj = dateObjs[index];
-				var momentObj = moment(dateObj.$id);
+				var dateStr = dateObj.$id.replace(/-/g, '/');
+				var momentObj = new moment(dateStr);
 				dateObjs[index].dayOfWeek = momentObj.format("ddd");
 				dateObjs[index].monthDay = momentObj.format("MMM DD");
 			}
