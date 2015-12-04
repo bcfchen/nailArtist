@@ -1,6 +1,6 @@
 <ion-view view-title="Bookings" ng-controller="BookingsCtrl as vm">
   <ion-content>
-    <div class="product-desc-container">
+    <div class="product-desc-container" ng-click="vm.goBack()">
 	    <div class="big-header">{{vm.product.name}}</div>
 	  	<div class="small-header">#lattenails #fallstyle #autum</div>
 	  	<div class="product-description">{{vm.product.description}}</div>
@@ -49,6 +49,8 @@
   		</div>
   		<button id="booking-confirm-btn" class="primary-button" ng-click="vm.bookAppointment()">Confirm for ${{vm.product.price}}</button>
     </div>
-    <button class="nav-settings-btn" ng-click="vm.toSettings()"></button>
+    <div ng-click="$event.stopPropagation()">
+    	<button class="nav-settings-btn" ng-click="vm.toSettings()"></button>
+    </div>
   </ion-content>
 </ion-view>

@@ -19,5 +19,9 @@
     		  	function () {},
             this);   
 		}
+
+		vm.goBack = function(){
+
+		}
 	}
 })();

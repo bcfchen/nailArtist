@@ -6,6 +6,7 @@
   },
    "dependencies": {
     "moment": "~2.9.0",
-    "underscore": "~1.8.2"
+    "underscore": "~1.8.2",
+    "ngCordova": "0.1.23-alpha" 
   }
 }
