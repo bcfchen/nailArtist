@@ -550,6 +550,23 @@
 }
 
 /* contact us */
+
+.ion-close-round {
+	margin-left:5%;
+	margin-right:10%;
+	color:#ed5f5e;
+/*	font-size:25px;*/
+}
+
+.button-clear {
+	margin-left:2%;
+}
+
+.ion-ios-arrow-back {
+	margin-right:10%;
+	color:#ed5f5e;
+}
+
 #call-btn{
 	position:absolute;
 	bottom:12%;

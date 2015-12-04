@@ -1,7 +1,7 @@
-<ion-view view-title="{{vm.user.name}}" ng-controller="SettingsCtrl as vm">
+<ion-view ng-controller="SettingsCtrl as vm">
   <ion-nav-bar>
  <ion-nav-back-button class="button-clear" ng-click="vm.goBack()">
-    <i class="ion-arrow-left-c"></i> Back
+    <i class="ion-close-round"></i> {{vm.user.name}}
   </ion-nav-back-button>
 </ion-nav-bar>
   <ion-content>
