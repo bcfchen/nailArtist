@@ -45,6 +45,10 @@
 			stripeService.open(userSelectionService.product.price);
 		}
 
+		vm.toSettings = function(){
+			$state.go("settings");
+		}
+
 		function initialize(){
 			vm.showBookingContainer = true;
 			vm.product = userSelectionService.product;

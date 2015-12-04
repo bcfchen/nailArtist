@@ -1,15 +1,19 @@
 /* Empty. Add your own CSS if you like */
 
 /* GENERAL */
-.hamburger {
+.nav-settings-btn {
 	background-color:transparent;
 	position:absolute;
-	top:0px;
+	right:25px;
+	top:25px;
 	color:#ffffff;
-	font-size:35px;
 	margin-left:20px;
 	padding-left:0px;
 	border-width:0px;
+	height:35px;
+	width:35px;
+	background-image:url('../img/icon_profile_light@3x.png');
+	background-size:cover;
 }
 
 .primary-button {
