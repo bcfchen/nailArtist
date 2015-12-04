@@ -22,6 +22,7 @@
 				if (vm.user.name && vm.user.phoneNumber){
 					userSelectionService.appointment.userPhone = vm.user.phoneNumber;
 					firebaseService.book(localStorageService.getUser(), userSelectionService.appointment, userSelectionService.schedule).then(function(){
+						localStorageService.addAppointment(userSelectionService.appointment);
 						$scope.apptConfirmedModal.show();
 					}, function error(err){
 							console.log("Booking failed with: ",  err);
@@ -45,6 +46,7 @@
 		    	localStorageService.setUserPhoneNumber(vm.user.phoneNumber);
 		    	userSelectionService.appointment.userPhone = vm.user.phoneNumber;
 		    	firebaseService.book(localStorageService.getUser(), userSelectionService.appointment, userSelectionService.schedule).then(function(){
+			    	localStorageService.addAppointment(userSelectionService.appointment);
 			    	$scope.nameNumberModal.hide().then(function(){
 			    		$scope.apptConfirmedModal.show();
 			    	});

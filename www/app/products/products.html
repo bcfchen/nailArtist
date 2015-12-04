@@ -7,12 +7,21 @@
 			  	<div class="small-header">#lattenails #fallstyle #autum</div>
 			  	<div class="product-description">{{product.description}}</div>
 		  	</div>
-		  	<div class="price-deadline-container">
+		  	<div id="appt-info-container" ng-show="product.appointment">
+				<div id="appt-schedule-container">
+						<div id="appt-schedule-icon" class="status-icon-circle" style="background-image:url('../img/icon_success@3x.png')"></div>
+				  		<div id="scheduled-for-msg">You are scheduled for</div>
+						<div id="appt-date-time">{{product.dateTime.date}} at {{product.dateTime.time}}</div>
+				  	</div>
+				 <div id="appt-address">{{product.appointment.address.street}}</div>
+		  	</div>
+
+		  	<div class="price-deadline-container" ng-show="!product.appointment">
 				<div class="price-container">
 				  		<div class="dollar-sign">$</div>
 						<div class="product-price">{{product.price}}</div>
 				  	</div>
-				 <div class="deadline-msg">last chance to book this style in 3 days!</div>
+				 <div class="deadline-msg">last chance to book this style in {{vm.purchaseDeadline}} days!</div>
 				 <button class="arrow-btn ion-ios-arrow-down" ng-click="vm.toProductDetails()"></button>
 		  	</div>
 		  	<div class="fullscreen-image" ng-style="{'background-image':'url({{product.image}})'}">

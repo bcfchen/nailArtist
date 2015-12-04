@@ -4,6 +4,7 @@ function Appointment(){
 	this.transactionId = "";
 	this.productKey = "";
 	this.address = "";
+	this.schedule = "";
 }
 
 Appointment.prototype.setUserPhone = function(phone){
@@ -24,4 +25,8 @@ Appointment.prototype.setProductKey = function(productKey){
 
 Appointment.prototype.setAddress = function(address){
 	this.address = address;
+}
+
+Appointment.prototype.setSchedule = function(schedule){
+	this.schedule = schedule;
 }

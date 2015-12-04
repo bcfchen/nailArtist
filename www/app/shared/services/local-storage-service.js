@@ -50,8 +50,34 @@
       var currObject = this.getUser();
       currObject.setName(name);
       this.setUser(currObject);    
-    }
+    },
+    getAppointments: function(){
+      var rawAppointments = this.getObject("appointments");
+      var hasAppointments = rawAppointments && rawAppointments.length > 0;
+      var appointments = hasAppointments ? transformer.transform(rawAppointments, Appointment) : [];
+      return appointments;
+    },
+    addAppointment: function(appointment){
+      var currentAppointments = this.getAppointments();
+      currentAppointments.push(appointment);
+      return this.setAppointments(currentAppointments);
+    },
+    setAppointments: function(appointments){
+      return this.setObject("appointments", appointments);
+    },
+    cleanAppointments: function(){
+      var appointments = this.getAppointments();
+      var cleanedAppointments = [];
+      appointments.forEach(function(appointment){
+        var currentDate = new moment();
+        var appointmentDate = new moment(appointment.schedule.date + " " + appointment.schedule.time);
+        if (appointmentDate > currentDate){
+          cleanedAppointments.push(appointment);
+        }
+      });
 
+      this.setAppointments(cleanedAppointments);
+    }
   }
   }]);
 })();
