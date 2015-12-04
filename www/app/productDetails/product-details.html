@@ -1,5 +1,5 @@
 <ion-view view-title="Details" ng-controller="ProductDetailsCtrl as vm">
-  <ion-content>
+  <ion-content on-swipe-down="vm.toProducts()">>
 	<div class="product-info-container">
 		<div class="product-text-container">
 			<div class="product-name">{{vm.product.name}}</div>
@@ -10,7 +10,7 @@
     	<div class="image-container" ng-style="{'background-image':'url({{instagram.image}})'}">
     		<div class="user-info-container">
     			<div class="user-profile-image">
-    				<div class="img-small-circle" ng-style="{'background-image':'url({{instagram.author.profileImage}})'}"></div>
+    				<div class="img-small-circle" ></div>
     				<div class="img-circle" ng-style="{'background-image':'url({{instagram.author.profileImage}})'}"></div>
     			</div>
     			<div class="user-name">{{instagram.author.name}}</div>

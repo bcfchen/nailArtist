@@ -297,8 +297,7 @@
     margin-left:4%;
     margin-top:10%;
  	border: 1.5px solid #ffffff;
- 	background-color:#ffffff;
- 	background-image: url('https://cdn1.iconfinder.com/data/icons/simple-icons/4096/instagram-4096-black.png');
+    background-image:url('../img/icon_instagram_active_large@3x.png');
 }
 
 .user-name {
