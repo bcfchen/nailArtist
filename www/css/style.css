@@ -152,7 +152,7 @@
 	position:absolute;
 	width:100%;
 	height:300px;
-	margin-top:75%;
+	bottom:0%;
 	background-color:#ffffff;
 	background: rgba(250, 250, 250, 0.85);
 }
@@ -356,7 +356,7 @@
 	width:100%;
 	background-color:#ffffff;
 	background: rgba(250, 250, 250, 0.85);
-	margin-top:70%;
+	bottom:0%;
 }
 
 #add-address-title {
@@ -403,7 +403,7 @@
 
 #appt-info-container {
 	position:absolute;
-	margin-top:135%;
+	bottom:20%;
 	width:100%;
 	text-align:center;
 	color:#ffffff;
@@ -522,8 +522,7 @@
 }
 
 #close-appt-btn {
-	margin-top:5%;
-	margin-bottom:5%;
+	margin-top:2%;
 	background-color:#9d9c9a;
 }
 
@@ -539,6 +538,10 @@
 
 #appt-confirmed-modal {
 	height:230px;
+}
+
+#appt-confirm-contact-us-btn {
+	background-color:#80cfc5;
 }
 
 .menu-blur {

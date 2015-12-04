@@ -9,10 +9,7 @@
 		vm.products.$loaded(function(){
 			$ionicSlideBoxDelegate.update();
 			assignAppointmentInfo(vm.products);
-			//assignPurchaseDeadline(vm.products);
-			// vm.existingAppointment = getExistingAppointment();
-			// vm.appointmentDateTime = getAppointmentDateTime(vm.existingAppointment);
-			// vm.purchaseDeadline = getPurchaseDeadline();
+			assignPurchaseDeadline(vm.products);
 		});
 
 		vm.toProductDetails = function(){
@@ -37,16 +34,6 @@
 		}
 
 		/* private method implementation */
-
-		/* get all future appointments. if any one of them is for this current product, 
-		 * then assign that to existingAppointment variable
-		*/
-
-		function getPurchaseDeadline(){
-			var currentProduct = getCurrentProduct();
-
-		}
-
 		function getAppointmentDateTime(appointment){
 			if (!appointment){
 				return;
@@ -59,6 +46,16 @@
 			}
 		}
 
+		function assignPurchaseDeadline(products){
+			products.forEach(function(product){
+				var productDeadline = product.deadline.replace(/-/g, '/');
+				product.deadlineText = moment(productDeadline).fromNow();
+			});
+		}
+
+		/* get all future appointments. if any one of them is for this current product, 
+		 * then assign that to appointment property of the product
+		*/
 		function assignAppointmentInfo(products){
 			localStorageService.cleanAppointments();
 			var allAppointments = localStorageService.getAppointments();

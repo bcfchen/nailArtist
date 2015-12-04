@@ -5,8 +5,18 @@
 	  	<div class="small-header">#lattenails #fallstyle #autum</div>
 	  	<div class="product-description">{{vm.product.description}}</div>
   	</div>
-  	<div class="fullscreen-image"  ng-style="{'background-image':'url({{vm.product.image}})'}">
-  	<div class="booking-container" ng-hide="!vm.showBookingContainer">
+  	<div class="fullscreen-image" ng-click="vm.goBack()" ng-style="{'background-image':'url({{vm.product.image}})'}">
+  	<div class="edit-address-container" ng-click="$event.stopPropagation()" ng-show="!vm.showBookingContainer">
+		<div id="add-address-title">Add your address</div>
+	    <input class="user-text-input" placeholder="Street Address" type="text" ng-model="vm.selectedAddress.street"/>        
+	    <input class="user-text-input" placeholder="City" type="text" ng-model="vm.selectedAddress.city"/>
+		<div class="state-zip-container">
+			<input class="edit-state" placeholder="State" ng-model="vm.selectedAddress.state" type="text"/>
+			<input class="edit-zipcode" placeholder="ZIP" ng-model="vm.selectedAddress.zipCode" type="text"/>
+		</div>
+		<button class="primary-button confirm-address-btn" ng-click="vm.closeEditAddress()">Confirm Address</button>
+	</div>
+  	<div class="booking-container" ng-click="$event.stopPropagation()" ng-show="vm.showBookingContainer">
   		<div class="date-container" style="opacity:1">
   			<div class="booking-sub-header">Pick a date and time</div>
 	  		<ion-scroll direction="x" class="wide-as-needed date-time-selector" >

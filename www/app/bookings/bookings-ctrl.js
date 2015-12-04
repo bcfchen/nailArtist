@@ -1,8 +1,8 @@
 (function(){
 	'use strict';
-	angular.module('nailArtist').controller('BookingsCtrl', ["localStorageService", "$ionicModal", "$scope", "$state", "userSelectionService", "$firebaseArray", "constants", "stripeService", BookingsCtrl]);
+	angular.module('nailArtist').controller('BookingsCtrl', ["$ionicHistory", "localStorageService", "$ionicModal", "$scope", "$state", "userSelectionService", "$firebaseArray", "constants", "stripeService", BookingsCtrl]);
 
-	function BookingsCtrl(localStorageService, $ionicModal, $scope, $state, userSelectionService, $firebaseArray, constants, stripeService){
+	function BookingsCtrl($ionicHistory, localStorageService, $ionicModal, $scope, $state, userSelectionService, $firebaseArray, constants, stripeService){
 		var vm = this;
 		vm.selectedDate = {};
 		vm.selectedTime = {};
@@ -17,10 +17,17 @@
 			//vm.selectDate(dates[0]);
 		});
 
+		vm.goBack = function(){
+			if (vm.showBookingContainer){
+				$ionicHistory.goBack();
+			} else {
+				vm.showBookingContainer = true;
+			}
+		}
+
 		vm.selectDate = function(date){
 			vm.selectedDate = date.$id;
 			vm.times = Object.keys(date.times);
-			//vm.selectTime(vm.times[0]);
 		}
 
 		vm.selectTime = function(time){
@@ -32,9 +39,8 @@
 			vm.selectedAddressType = type;
 			vm.selectedAddress = address
 			if (streetAddressExists){
-				// vm.selectedAddress = address;
 			} else {
-				toggleModalVisibility(false, true);
+				vm.showBookingContainer = false;
 			}
 		}
 
@@ -50,12 +56,16 @@
 			$state.go("settings");
 		}
 
+		vm.closeEditAddress = function(){
+			localStorageService.setUserAddress(vm.selectedAddressType, vm.selectedAddress);
+			vm.showBookingContainer = true;
+		}
+
 		function initialize(){
 			vm.showBookingContainer = true;
 			vm.product = userSelectionService.product;
 			vm.user = localStorageService.getUser();
 
-			initializeEditAddressModal();
 			stripeService.initialize(stripeSuccessCallback, stripeErrorCallback);
 		}
 
@@ -69,32 +79,6 @@
 		function stripeErrorCallback(err){
 			console.log("payment failed with msg: ", err);
 			alert("Your payment failed. Please try again");
-		}
-
-		function initializeEditAddressModal(){
-			$ionicModal.fromTemplateUrl('app/bookings/modals/edit-address-modal.html', {
-		    scope: $scope,
-		    animation: 'slide-in-up'
-		  }).then(function(modal) {
-		    $scope.editAddressModal = modal;
-		    $scope.editAddressModal.done = function() {
-		    	localStorageService.setUserAddress(vm.selectedAddressType, vm.selectedAddress);
-		    	toggleModalVisibility(true, false);
-		  	}
-		  });
-		}
-
-		function toggleModalVisibility(showBookingContainer, showEditAddress){
-			if(showEditAddress){
-				vm.showBookingContainer = showBookingContainer;
-				$scope.editAddressModal.show();
-			} else {
-				$scope.editAddressModal.hide().then(function(){
-					vm.showBookingContainer = showBookingContainer;
-				});
-			}
-			// vm.showBookingContainer = showBookingContainer;
-
 		}
 
 		function attachDateProperties(dateObjs){

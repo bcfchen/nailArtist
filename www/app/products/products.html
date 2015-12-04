@@ -9,7 +9,7 @@
 		  	</div>
 		  	<div id="appt-info-container" ng-show="product.appointment">
 				<div id="appt-schedule-container">
-						<div id="appt-schedule-icon" class="status-icon-circle" style="background-image:url('../img/icon_success@3x.png')"></div>
+						<div id="appt-schedule-icon" class="status-icon-circle" style="background-image:url('../img/icon_check@3x.png')"></div>
 				  		<div id="scheduled-for-msg">You are scheduled for</div>
 						<div id="appt-date-time">{{product.dateTime.date}} at {{product.dateTime.time}}</div>
 				  	</div>
@@ -21,13 +21,13 @@
 				  		<div class="dollar-sign">$</div>
 						<div class="product-price">{{product.price}}</div>
 				  	</div>
-				 <div class="deadline-msg">last chance to book this style in {{vm.purchaseDeadline}} days!</div>
+				 <div class="deadline-msg">last chance to book this style {{product.deadlineText}}!</div>
 				 <button class="arrow-btn ion-ios-arrow-down" ng-click="vm.toProductDetails()"></button>
 		  	</div>
 		  	<div class="fullscreen-image" ng-style="{'background-image':'url({{product.image}})'}">
 		  </ion-slide>
+		  <button id="products-booking-btn" ng-show="!product.appointment" class="primary-button" ng-click="vm.bookAppointment()">Book</button>
 		</ion-slide-box>
 		<button class="nav-settings-btn" ng-click="vm.toSettings()"></button>
-		<button id="products-booking-btn" class="primary-button" ng-click="vm.bookAppointment()">Book</button>
   </ion-content>
 </ion-view>

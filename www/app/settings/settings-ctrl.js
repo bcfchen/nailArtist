@@ -12,6 +12,10 @@
 
 		initialize();
 
+		vm.toContactUs = function(){
+			$state.go("contactUs");
+		}
+
 		vm.goBack = function(){
 			saveUser().then(function(){
 				$ionicHistory.goBack();

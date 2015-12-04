@@ -69,8 +69,7 @@
 
 		    $scope.apptConfirmedModal.close = function() {
 		    	$scope.apptConfirmedModal.hide().then(function(){
-		    		vm.bookingComplete = true;
-		    		vm.bookingSuccessful = true;	
+		    		$state.go("products");
 		    	});
 		  	}
 		  });
