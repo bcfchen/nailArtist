@@ -1,16 +1,14 @@
 (function(){
 	'use strict';
-	angular.module('nailArtist').controller("SettingsCtrl", ["firebaseService", "$ionicHistory", "$scope", "$ionicModal", "localStorageService", "userSelectionService", "$state", SettingsCtrl]);
+	angular.module('nailArtist').controller("SettingsCtrl", ["$ionicPopup", "firebaseService", "$ionicHistory", "$scope", "$ionicModal", "localStorageService", "userSelectionService", "$state", SettingsCtrl]);
 
-	function SettingsCtrl(firebaseService, $ionicHistory, $scope, $ionicModal, localStorageService, userSelectionService, $state){
+	function SettingsCtrl($ionicPopup, firebaseService, $ionicHistory, $scope, $ionicModal, localStorageService, userSelectionService, $state){
 		var vm = this;
 		vm.product = userSelectionService.product;
 		vm.user = localStorageService.getUser();
 		vm.selectedAddress = {};
 
 		var selectedAddressType;
-
-		initialize();
 
 		vm.toContactUs = function(){
 			$state.go("contactUs");
@@ -23,75 +21,76 @@
 		}
 
 		vm.editAddress = function(addressType){
-			selectedAddressType = addressType;
 			vm.selectedAddress = vm.user.addresses[addressType];
-			$scope.editAddressModal.show();
-		}
+			$ionicPopup.show({
+			    template: '<input type="text" placeholder="Street" ng-model="vm.selectedAddress.street">\n<input type="text" placeholder="City" ng-model="vm.selectedAddress.city">\n<input type="text" placeholder="State" ng-model="vm.selectedAddress.state">\n<input type="text" placeholder="ZIP" ng-model="vm.selectedAddress.zipCode">',
+			    title: "Edit Address",
+			    cssClass: 'myPopup',
+			    scope: $scope,
+			    buttons: [
+			      {
+			        text: '<b>Ok</b>',
+			        type: 'button-energized',
+			        onTap: function(e) {
+			          if (!vm.selectedAddress ) {
+			            //don't allow the user to close unless he enters a name
+			            e.preventDefault();
+			          } else {
+			          	vm.user.addresses[addressType] = vm.selectedAddress;
+			          	syncUserLocally();
+			          }
+			        }
+			      }
+		    	]
+		  	});		}
 
 		vm.editEmail = function(){
-			$scope.editEmailModal.show();
+			$ionicPopup.show({
+			    template: '<input type="text" ng-model="vm.user.email">',
+			    title: "Edit Email",
+			    cssClass: 'myPopup',
+			    scope: $scope,
+			    buttons: [
+			      {
+			        text: '<b>Ok</b>',
+			        type: 'button-energized',
+			        onTap: function(e) {
+			          if (!vm.user.email) {
+			            //don't allow the user to close unless he enters a name
+			            e.preventDefault();
+			          } else {
+			          	syncUserLocally();
+			          }
+			        }
+			      }
+		    	]
+		  	});
 		}
 
 		vm.editPhoneNumber = function(){
-			$scope.editPhoneNumberModal.show();
-		}
+			$ionicPopup.show({
+			    template: '<input type="text" ng-model="vm.user.phoneNumber">',
+			    title: "Edit Phone Number",
+			    cssClass: 'myPopup',
+			    scope: $scope,
+			    buttons: [
+			      {
+			        text: '<b>Ok</b>',
+			        type: 'button-energized',
+			        onTap: function(e) {
+			          if (!vm.user.phoneNumber) {
+			            //don't allow the user to close unless he enters a name
+			            e.preventDefault();
+			          } else {
+			          	syncUserLocally();
+			          }
+			        }
+			      }
+		    	]
+		  	});
+		 }
 
 		/* private function implementations */
-
-		function initialize(){
-			initializeAddressModal();
-			initializeEmailModal();
-			initializePhoneNumberModal();
-		}
-
-		function initializeAddressModal(){
-			$ionicModal.fromTemplateUrl('app/settings/modals/settings-address-modal.html', {
-			    scope: $scope,
-			    animation: 'slide-in-up'
-			  }).then(function(modal) {
-			    $scope.editAddressModal = modal;
-			    $scope.editAddressModal.done = function() {
-			    	vm.user.addresses[selectedAddressType] = vm.selectedAddress;
-			    	syncUserLocally();
-			    	$scope.editAddressModal.hide();
-			  	}
-			  	$scope.editAddressModal.cancel = function() {
-			    	$scope.editAddressModal.hide();
-			  	}
-			  });
-		}
-		
-		function initializeEmailModal(){
-			$ionicModal.fromTemplateUrl('app/settings/modals/settings-email-modal.html', {
-			    scope: $scope,
-			    animation: 'slide-in-up'
-			  }).then(function(modal) {
-			    $scope.editEmailModal = modal;
-			    $scope.editEmailModal.done = function() {
-			    	syncUserLocally();
-			    	$scope.editEmailModal.hide();
-			  	}
-			  	$scope.editEmailModal.cancel = function() {
-			    	$scope.editEmailModal.hide();
-			  	}
-			  });
-		}
-
-		function initializePhoneNumberModal(){
-			$ionicModal.fromTemplateUrl('app/settings/modals/settings-phone-number-modal.html', {
-			    scope: $scope,
-			    animation: 'slide-in-up'
-			  }).then(function(modal) {
-			    $scope.editPhoneNumberModal = modal;
-			    $scope.editPhoneNumberModal.done = function() {
-			    	syncUserLocally();
-			    	$scope.editPhoneNumberModal.hide();
-			  	}
-			  	$scope.editPhoneNumberModal.cancel = function() {
-			    	$scope.editPhoneNumberModal.hide();
-			  	}
-			  });
-		}
 
 		function syncUserLocally(){
 			localStorageService.setUser(vm.user);

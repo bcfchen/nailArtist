@@ -1,8 +1,8 @@
 (function(){
 	'use strict';
-	angular.module('nailArtist').controller('CompleteCtrl', ["TwilioVerification", "$scope", "localStorageService", "$ionicModal", "constants", "userSelectionService", "$state", "firebaseService", CompleteCtrl]);
+	angular.module('nailArtist').controller('CompleteCtrl', ["$ionicLoading", "TwilioVerification", "$scope", "localStorageService", "$ionicModal", "constants", "userSelectionService", "$state", "firebaseService", CompleteCtrl]);
 
-	function CompleteCtrl(TwilioVerification, $scope, localStorageService, $ionicModal, constants, userSelectionService, $state, firebaseService){
+	function CompleteCtrl($ionicLoading, TwilioVerification, $scope, localStorageService, $ionicModal, constants, userSelectionService, $state, firebaseService){
 		var vm = this;
 		vm.product = userSelectionService.product;
 		vm.appointment = userSelectionService.appointment;
@@ -19,10 +19,21 @@
 			initializeNameNumberModal().then(function(){
 				return initializeAppointmentConfirmedModal();
 			}).then(function(){
-				// if user's name and number already exist then don't show 
+				/* if user's name and number already exist then don't show 
+				   nameNumberModal, but instead save record directly to firebase
+				*/
 				if (vm.user.name && vm.user.phoneNumber){
 					userSelectionService.appointment.userPhone = vm.user.phoneNumber;
+					$ionicLoading.show({
+	                    content: 'Loading',
+	                    animation: 'fade-in',
+	                    showBackdrop: false,
+	                    maxWidth: 200,
+	                    showDelay: 0
+	                });
+
 					firebaseService.book(localStorageService.getUser(), userSelectionService.appointment, userSelectionService.schedule).then(function(){
+						$ionicLoading.hide();
 						localStorageService.addAppointment(userSelectionService.appointment);
 						$scope.apptConfirmedModal.show();
 					}, function error(err){
@@ -76,7 +87,15 @@
 			    	localStorageService.setUserName(vm.user.name);
 			    	localStorageService.setUserPhoneNumber(vm.user.phoneNumber);
 			    	userSelectionService.appointment.userPhone = vm.user.phoneNumber;
+			    	$ionicLoading.show({
+	                    content: 'Loading',
+	                    animation: 'fade-in',
+	                    showBackdrop: false,
+	                    maxWidth: 200,
+	                    showDelay: 0
+	                });
 			    	firebaseService.book(localStorageService.getUser(), userSelectionService.appointment, userSelectionService.schedule).then(function(){
+				    	$ionicLoading.hide();
 				    	localStorageService.addAppointment(userSelectionService.appointment);
 				    	$scope.nameNumberModal.hide().then(function(){
 				    		$scope.apptConfirmedModal.show();

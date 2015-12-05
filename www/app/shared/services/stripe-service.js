@@ -2,9 +2,9 @@
 
     angular
         .module("nailArtist")
-        .factory("stripeService", ["$q", "$http", "constants", stripeService]);
+        .factory("stripeService", ["$ionicLoading", "$q", "$http", "constants", stripeService]);
 
-    function stripeService($q, $http, constants) {
+    function stripeService($ionicLoading, $q, $http, constants) {
         var service = {
             open: open,
             initialize: initialize
@@ -28,9 +28,19 @@
         }
 
         function tokenHandler(response, successCallback, errorCallback){
-			//successCallback(response);
-			var card = response;
-        	return $http.post(constants.SERVER_URL, card).then(successCallback, errorCallback);
+            $ionicLoading.show({
+                content: 'Loading',
+                animation: 'fade-in',
+                showBackdrop: true,
+                maxWidth: 200,
+                showDelay: 0
+            });			
+            var card = response;
+        	return $http.post(constants.SERVER_URL, card).then(function success(response){successCallback(response);}, 
+                    function error(err){errorCallback(err);})
+                .finally(function(){
+                    $ionicLoading.hide();
+                });
         }
 
         function open(product){
