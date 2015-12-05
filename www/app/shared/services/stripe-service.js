@@ -33,11 +33,11 @@
         	return $http.post(constants.SERVER_URL, card).then(successCallback, errorCallback);
         }
 
-        function open(price){
+        function open(product){
         	handler.open({
-	            name: 'Example Product',
-	            description: 'Example Product ' + price,
-	            amount: price * 100
+	            name: 'RARE',
+	            description: product.name,
+	            amount: product.price * 100
 	        });
         }
 

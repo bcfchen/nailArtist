@@ -49,7 +49,7 @@
 			userSelectionService.schedule = new Schedule(vm.selectedDate, vm.selectedTime);
 			userSelectionService.appointment.setAddress(vm.selectedAddress);
 			userSelectionService.appointment.setSchedule(userSelectionService.schedule);
-			stripeService.open(userSelectionService.product.price);
+			stripeService.open(userSelectionService.product);
 		}
 
 		vm.toSettings = function(){

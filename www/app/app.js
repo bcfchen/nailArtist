@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('nailArtist', ['ionic', 'firebase', 'ngCordova'])
+angular.module('nailArtist', ['ionic', 'firebase', 'ngCordova', 'mcwebb.twilio', 'mcwebb.twilio-verification'])
 
 .run(function($ionicPlatform, $window) {
   $ionicPlatform.ready(function() {
@@ -16,7 +16,15 @@ angular.module('nailArtist', ['ionic', 'firebase', 'ngCordova'])
       StatusBar.styleDefault();
     }
   });
-}).config(function($stateProvider, $urlRouterProvider) {
+}).config(function($stateProvider, $urlRouterProvider, TwilioProvider, TwilioVerificationProvider) {
+
+    // setup Twilio 
+    TwilioProvider.setCredentials({
+        accountSid: 'ACe79928940d39103df64d9bac1fd06a9f',
+        authToken: '839a92ea384334275a5871970b5be354'
+    });
+
+    TwilioVerificationProvider.setFromNumber('+19252415828');
 
     // setup routing
     $stateProvider
