@@ -58,7 +58,15 @@
 
 		  }).then(function(modal) {
 		    $scope.nameNumberModal = modal;
+		    $scope.validNamePhoneNumber = true;
+
 		    $scope.nameNumberModal.done = function() {
+		    	// check if name & number are valid. if not, do nothing
+		    	$scope.validNamePhoneNumber = vm.user.name && vm.user.phoneNumber;
+		    	if (!$scope.validNamePhoneNumber){
+		    		return;
+		    	}
+
 		    	// use Twilio to verify the number 
 		    	sendText().then(function success(){
 		    		// launch modal to confirm phone number

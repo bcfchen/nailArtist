@@ -22,5 +22,5 @@
     	</div>
     </div>
   </ion-content>
-      <button id="product-details-confirm-btn" class="primary-button" ng-click="vm.bookAppointment()">Book</button>
+      <button id="product-details-confirm-btn" ng-disabled="vm.product.appointment"  class="primary-button" ng-click="vm.bookAppointment()">{{vm.product.appointment ? "Booked" : "Book"}}</button>
 </ion-view>

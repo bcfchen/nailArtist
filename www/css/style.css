@@ -20,6 +20,21 @@
 	background-color:#9d9c9a;
 }
 
+.myPopup button {
+		color: #ffffff;
+	background-color:#ed5f5e;
+	font-family: Helvetica Neue, Helvetica;
+	font-size: 15px;
+	font-weight: bold;
+	width:100%;
+	text-align:center;
+	height: 35px;
+	line-height:35px;
+    opacity: 0.9;
+    overflow: auto;
+    text-decoration: none;
+}
+
 .primary-button {
 	color: #ffffff;
 	background-color:#ed5f5e;
@@ -105,6 +120,12 @@
    	background-repeat: no-repeat;
    	background-position: center;
 	height:100%;
+
+  background-size:cover;
+}
+
+.blur-fullscreen {
+  -webkit-filter: blur(5px);
 }
 
 .slider-pager {
@@ -596,6 +617,10 @@
     font-size:25px;
 }
 
+#name-number-validation-msg {
+	bottom:20%;
+}
+
 #confirm-phone-sent-to {
 	text-align:center;
 	margin-top:2%;
@@ -820,9 +845,42 @@
     opacity: 0.9;
 }
 
+#policies-container {
+	margin-top:1%;
+	text-align:center;
+	width:100%;
+	height:17px;
+	line-height:17px;
+	font-size:17px;
+	color:#9d9c9a;
+	padding-bottom:30%;
+}
+
+#privacy-policy {
+	float:left;
+	text-align:right;
+	width:50%;
+	padding-right:1%;
+	border-right-style: solid;
+	border-right-width:1px;
+
+}
+
+#cancellation-policy{
+	float:right;
+	text-align:left;
+	width:50%;
+	padding-left:1%;
+}
+
 .email-phone-text {
 	color: #9d9c9a;
 	float:left;
+}
+
+.email-phone-text a{
+	text-decoration: none;
+	color: inherit;;
 }
 
 .address-settings {

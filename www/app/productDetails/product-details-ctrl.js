@@ -11,5 +11,9 @@
 		vm.toProducts = function(){
 			$state.go("products");
 		}
+
+		vm.bookAppointment = function(){
+			$state.go("bookings");
+		}
 	};
 })();

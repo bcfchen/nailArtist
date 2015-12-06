@@ -29,7 +29,7 @@
 		vm.selectDate = function(date){
 			vm.selectedDate = date.$id;
 			vm.times = filterTimesOfDate(date); 
-			vm.selectedTime = {};
+			vm.selectedTime = null;
 		}
 
 		vm.selectTime = function(time){

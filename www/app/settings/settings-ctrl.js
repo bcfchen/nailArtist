@@ -1,8 +1,8 @@
 (function(){
 	'use strict';
-	angular.module('nailArtist').controller("SettingsCtrl", ["$ionicPopup", "firebaseService", "$ionicHistory", "$scope", "$ionicModal", "localStorageService", "userSelectionService", "$state", SettingsCtrl]);
+	angular.module('nailArtist').controller("SettingsCtrl", ["policies", "$ionicPopup", "firebaseService", "$ionicHistory", "$scope", "$ionicModal", "localStorageService", "userSelectionService", "$state", SettingsCtrl]);
 
-	function SettingsCtrl($ionicPopup, firebaseService, $ionicHistory, $scope, $ionicModal, localStorageService, userSelectionService, $state){
+	function SettingsCtrl(policies, $ionicPopup, firebaseService, $ionicHistory, $scope, $ionicModal, localStorageService, userSelectionService, $state){
 		var vm = this;
 		vm.product = userSelectionService.product;
 		vm.user = localStorageService.getUser();
@@ -84,6 +84,24 @@
 			          } else {
 			          	syncUserLocally();
 			          }
+			        }
+			      }
+		    	]
+		  	});
+		 }
+
+		 vm.openPolicy = function(policyType){
+		 	$scope.policyText = policies[policyType].text;
+			$ionicPopup.show({
+			    template: '<div>{{policyText}}</div>',
+			    title: policies[policyType].title,
+			     cssClass: 'myPopup',
+			    scope: $scope,
+			    buttons: [
+			      {
+			        text: '<b>Ok</b>',
+			         // type: 'button-assertive',
+			        onTap: function(e) {
 			        }
 			      }
 		    	]
