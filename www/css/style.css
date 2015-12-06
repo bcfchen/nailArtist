@@ -24,6 +24,15 @@
     top:12%;
 }
 
+.static-footer {
+    background-color: transparent;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
 .big-header {
     font-size: 30px;
     font-weight: light;
@@ -326,11 +335,6 @@
 .product-hashtags {
     color:#D6D6D6;
     font-size:18px;
-}
-
-#product-details-confirm-btn {
-    position:fixed;
-    bottom:6%;
 }
 
 /* EDIT ADDRESS MODAL */
