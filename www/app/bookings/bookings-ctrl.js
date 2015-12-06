@@ -36,7 +36,7 @@
 		}
 
 		vm.selectAddress = function(type, address){
-			var streetAddressExists = address.street && address.street != "";
+			var streetAddressExists = address && address.street && address.street != "";
 			vm.selectedAddressType = type;
 			vm.selectedAddress = address
 			if (streetAddressExists){
@@ -137,7 +137,8 @@
 
 			// compare dateObj with today's date to see if it's equal or after today
 			var todaysMoment = new moment();
-			var dateObjMoment = new moment(dateStr);
+			var modDateStr = dateStr.replace(/-/g, '/');
+			var dateObjMoment = new moment(modDateStr);
 			var dateIsInRange = (dateObjMoment.year() >= todaysMoment.year())
 								&& (dateObjMoment.dayOfYear() >= todaysMoment.dayOfYear());
 

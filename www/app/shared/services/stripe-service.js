@@ -35,6 +35,13 @@
                 maxWidth: 200,
                 showDelay: 0
             });			
+
+            // hackaround to get around checkout.js bug
+             delete window.StripeCheckout
+              var script = document.createElement('script')
+              script.src="https://checkout.stripe.com/checkout.js"
+              document.body.appendChild(script)
+
             var card = response;
         	return $http.post(constants.SERVER_URL, card).then(function success(response){successCallback(response);}, 
                     function error(err){errorCallback(err);})
