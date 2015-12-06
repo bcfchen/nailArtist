@@ -70,7 +70,8 @@
       var cleanedAppointments = [];
       appointments.forEach(function(appointment){
         var currentDate = new moment();
-        var appointmentDate = new moment(appointment.schedule.date + " " + appointment.schedule.time);
+        var apptDate = appointment.schedule.date.replace(/-/g, '/');
+        var appointmentDate = new moment(apptDate + " " + appointment.schedule.time);
         if (appointmentDate > currentDate){
           cleanedAppointments.push(appointment);
         }

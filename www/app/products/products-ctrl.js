@@ -38,7 +38,9 @@
 			if (!appointment){
 				return;
 			}
-			var scheduleObj = new moment(appointment.schedule.date + " " + appointment.schedule.time);
+			
+			var apptDate = appointment.schedule.date.replace(/-/g, '/');
+			var scheduleObj = new moment(apptDate + " " + appointment.schedule.time);
 			
 			return {
 				date: scheduleObj.format("MMM DD"),
