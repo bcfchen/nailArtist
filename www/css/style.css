@@ -1,82 +1,10 @@
 /* Empty. Add your own CSS if you like */
 
+/* Imports, need to change later to be pre-compiled */
+@import "buttons.css";
+@import "typography.css";
+
 /* GENERAL */
-.nav-settings-btn {
-	background-color:transparent;
-	position:absolute;
-	right:25px;
-	top:25px;
-	color:#ffffff;
-	margin-left:20px;
-	padding-left:0px;
-	border-width:0px;
-	height:35px;
-	width:35px;
-	background-image:url('../img/icon_profile_light@3x.png');
-	background-size:cover;
-}
-
-.primary-button:disabled {
-	background-color:#9d9c9a;
-}
-
-.myPopup button {
-		color: #ffffff;
-	background-color:#ed5f5e;
-	font-family: Helvetica Neue, Helvetica;
-	font-size: 15px;
-	font-weight: bold;
-	width:100%;
-	text-align:center;
-	height: 35px;
-	line-height:35px;
-    opacity: 0.9;
-    overflow: auto;
-    text-decoration: none;
-}
-
-.primary-button {
-	color: #ffffff;
-	background-color:#ed5f5e;
-	font-family: Helvetica Neue, Helvetica;
-	font-size: 15px;
-	font-weight: bold;
-	width:88%;
-	text-align:center;
-	height: 35px;
-	line-height:35px;
-	margin-left:6%;
-	margin-right:6%;
-	text-shadow:none;
-	border:none;
-	box-shadow:none;
-    border-radius: 4px;
-    opacity: 0.9;
-    overflow: auto;
-    text-decoration: none;
-}
-
-.dismiss-button {
-	color: #ffffff;
-	background-color:#9d9c9a;
-	font-family: Helvetica Neue, Helvetica;
-	font-size: 15px;
-	font-weight: bold;
-	width:88%;
-	text-align:center;
-	height: 35px;
-	line-height:35px;
-	margin-left:6%;
-	margin-right:6%;
-	text-shadow:none;
-	border:none;
-	box-shadow:none;
-    border-radius: 4px;
-    opacity: 0.9;
-    overflow: auto;
-    text-decoration: none;
-}
-
 .product-desc-container {
 	color: #ffffff;
 	font-family: Helvetica Neue;
@@ -183,11 +111,6 @@
 .product-price {
 	float:left;
 	width:70px;
-}
-
-#products-booking-btn {
-	position:absolute;
-	top:90%;
 }
 
 /* BOOKINGS PAGE */
