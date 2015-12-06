@@ -1,8 +1,8 @@
 (function(){
 	'use strict';
-	angular.module('nailArtist').controller('BookingsCtrl', ["$ionicHistory", "localStorageService", "$ionicModal", "$scope", "$state", "userSelectionService", "$firebaseArray", "constants", "stripeService", BookingsCtrl]);
+	angular.module('nailArtist').controller('BookingsCtrl', ["addressValidatorService", "$ionicHistory", "localStorageService", "$ionicModal", "$scope", "$state", "userSelectionService", "$firebaseArray", "constants", "stripeService", BookingsCtrl]);
 
-	function BookingsCtrl($ionicHistory, localStorageService, $ionicModal, $scope, $state, userSelectionService, $firebaseArray, constants, stripeService){
+	function BookingsCtrl(addressValidatorService, $ionicHistory, localStorageService, $ionicModal, $scope, $state, userSelectionService, $firebaseArray, constants, stripeService){
 		var vm = this;
 		vm.selectedDate = {};
 		vm.selectedTime = {};
@@ -28,7 +28,8 @@
 
 		vm.selectDate = function(date){
 			vm.selectedDate = date.$id;
-			vm.times = filterTimesOfDate(date); //Object.keys(date.times);
+			vm.times = filterTimesOfDate(date); 
+			vm.selectedTime = {};
 		}
 
 		vm.selectTime = function(time){
@@ -58,15 +59,6 @@
 			$state.go("settings");
 		}
 
-		// vm.closeEditAddress = function(){
-		// 	localStorageService.setUserAddress(vm.selectedAddressType, vm.selectedAddress);
-		// 	vm.showBookingContainer = true;
-		// }
-
-		function showEditAddressModal(){
-
-		}
-
 		function initialize(){
 			vm.showBookingContainer = true;
 			vm.product = userSelectionService.product;
@@ -80,17 +72,35 @@
 			return $ionicModal.fromTemplateUrl('app/bookings/modals/edit-address-modal.html', {
 		    scope: $scope,
 		    animation: 'slide-in-up'
-
 		  }).then(function(modal) {
 		    $scope.editAddressModal = modal;
+		    $scope.isAddressValid = true;
 		    $scope.editAddressModal.done = function() {
-		    	// use Twilio to verify the number 
-			localStorageService.setUserAddress(vm.selectedAddressType, vm.selectedAddress);
-			$scope.editAddressModal.hide().then(function(){
-				vm.showBookingContainer = true;
-			});
-		  	}
+		    	/* perform validation to check if values are populated */
+		    	$scope.isAddressValid = addressValidatorService.validate(vm.selectedAddress);
+		    	if ($scope.isAddressValid){
+		    		localStorageService.setUserAddress(vm.selectedAddressType, vm.selectedAddress);
+					$scope.editAddressModal.hide();
+		    	}
+			 }
+
+			 $scope.$on('modal.hidden', function(){
+			 	/* reset selected address property to whatever's stored in local storage. this is */
+				/* to handle when user clicks cancel and we dont want to display whatever he put  */
+				/* in the edit address modal before cancelling out								  */
+				var storedAddress = localStorageService.getUserAddresses()[vm.selectedAddressType];
+				setAddressFields(vm.selectedAddress, storedAddress);
+				setAddressFields(vm.user.addresses[vm.selectedAddressType], storedAddress);
+			 	vm.showBookingContainer = true;
+			 });
 		  });
+		}
+
+		function setAddressFields(address1, address2){
+			address1.street = address2.street;
+			address1.city = address2.city;
+			address1.state = address2.state;
+			address1.zipCode = address2.zipCode;
 		}
 
 		function stripeSuccessCallback(response){

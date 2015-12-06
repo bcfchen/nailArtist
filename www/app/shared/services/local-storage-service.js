@@ -28,6 +28,9 @@
       user.setAddress(type, address);
       this.setUser(user);
     },
+    getUserAddresses: function(){
+      return this.getUser().addresses;
+    },
     setUserEmail: function(email){
       var user = this.getUser();
       user.setEmail(email);
