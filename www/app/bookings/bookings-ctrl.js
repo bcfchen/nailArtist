@@ -42,6 +42,7 @@
 			if (streetAddressExists){
 			} else {
 				vm.showBookingContainer = false;
+				$scope.editAddressModal.show();
 			}
 		}
 
@@ -57,9 +58,13 @@
 			$state.go("settings");
 		}
 
-		vm.closeEditAddress = function(){
-			localStorageService.setUserAddress(vm.selectedAddressType, vm.selectedAddress);
-			vm.showBookingContainer = true;
+		// vm.closeEditAddress = function(){
+		// 	localStorageService.setUserAddress(vm.selectedAddressType, vm.selectedAddress);
+		// 	vm.showBookingContainer = true;
+		// }
+
+		function showEditAddressModal(){
+
 		}
 
 		function initialize(){
@@ -68,6 +73,24 @@
 			vm.user = localStorageService.getUser();
 
 			stripeService.initialize(stripeSuccessCallback, stripeErrorCallback);
+			initializeEditAddressModal();
+		}
+
+		function initializeEditAddressModal(){
+			return $ionicModal.fromTemplateUrl('app/bookings/modals/edit-address-modal.html', {
+		    scope: $scope,
+		    animation: 'slide-in-up'
+
+		  }).then(function(modal) {
+		    $scope.editAddressModal = modal;
+		    $scope.editAddressModal.done = function() {
+		    	// use Twilio to verify the number 
+			localStorageService.setUserAddress(vm.selectedAddressType, vm.selectedAddress);
+			$scope.editAddressModal.hide().then(function(){
+				vm.showBookingContainer = true;
+			});
+		  	}
+		  });
 		}
 
 		function stripeSuccessCallback(response){

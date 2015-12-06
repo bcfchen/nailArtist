@@ -16,7 +16,10 @@ angular.module('nailArtist', ['ionic', 'firebase', 'ngCordova', 'mcwebb.twilio',
       StatusBar.styleDefault();
     }
   });
-}).config(function($stateProvider, $urlRouterProvider, TwilioProvider, TwilioVerificationProvider) {
+}).config(function($ionicConfigProvider, $stateProvider, $urlRouterProvider, TwilioProvider, TwilioVerificationProvider) {
+
+    // override default page transitions
+    $ionicConfigProvider.views.transition("none");
 
     // setup Twilio 
     TwilioProvider.setCredentials({

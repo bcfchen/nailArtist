@@ -1,4 +1,4 @@
-<div class="edit-address-container">
+<div class="edit-address-container" ng-click="$event.stopPropagation()" ng-show="!vm.showBookingContainer">
 	<div id="add-address-title">Add your address</div>
     <input class="user-text-input" placeholder="Street Address" type="text" ng-model="vm.selectedAddress.street"/>        
     <input class="user-text-input" placeholder="City" type="text" ng-model="vm.selectedAddress.city"/>
