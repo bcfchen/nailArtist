@@ -7,6 +7,9 @@ angular.module('nailArtist', ['ionic', 'firebase', 'ngCordova', 'mcwebb.twilio',
 
 .run(function($ionicPlatform, $window) {
   $ionicPlatform.ready(function() {
+    // resolve white screen in between splash & app screen
+    navigator.splashscreen.hide();
+
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if(window.cordova && window.cordova.plugins.Keyboard) {
