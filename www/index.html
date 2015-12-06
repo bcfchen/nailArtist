@@ -21,6 +21,7 @@
     <script src="cordova.js"></script>
 
     <!-- 3rd party libraries -->
+    <script src="lib/lodash/lodash.min.js"></script>
     <script src="lib/moment/min/moment-with-locales.min.js"></script>
     <script src="https://checkout.stripe.com/checkout.js"></script>    
     <script src="lib/angular-twilio/angular-twilio.js"></script>
@@ -61,13 +62,15 @@
     <script src="app/shared/services/transformer-service.js"></script>    
     <script src="app/shared/services/stripe-service.js"></script>    
     <script src="app/shared/services/firebase-service.js"></script>    
-    <script src="app/shared/services/validators/address-validator-service.js"></script>    
+    <script src="app/shared/services/validators/address-validator-service.js"></script><script src="app/shared/services/utilities/schedule-processor-service.js"></script> 
 
     <!-- models -->
     <script src="app/shared/models/User.js"></script>
     <script src="app/shared/models/Address.js"></script>
     <script src="app/shared/models/Appointment.js"></script>
     <script src="app/shared/models/Schedule.js"></script>
+    <script src="app/shared/models/Time.js"></script>
+
 
   </head>
   <body ng-app="nailArtist">

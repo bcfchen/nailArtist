@@ -1,8 +1,8 @@
 (function(){
 	'use strict';
-	angular.module('nailArtist').controller('BookingsCtrl', ["addressValidatorService", "$ionicHistory", "localStorageService", "$ionicModal", "$scope", "$state", "userSelectionService", "$firebaseArray", "constants", "stripeService", BookingsCtrl]);
+	angular.module('nailArtist').controller('BookingsCtrl', ["scheduleProcessorService", "addressValidatorService", "$ionicHistory", "localStorageService", "$ionicModal", "$scope", "$state", "userSelectionService", "$firebaseArray", "constants", "stripeService", BookingsCtrl]);
 
-	function BookingsCtrl(addressValidatorService, $ionicHistory, localStorageService, $ionicModal, $scope, $state, userSelectionService, $firebaseArray, constants, stripeService){
+	function BookingsCtrl(scheduleProcessorService, addressValidatorService, $ionicHistory, localStorageService, $ionicModal, $scope, $state, userSelectionService, $firebaseArray, constants, stripeService){
 		var vm = this;
 		vm.selectedDate = {};
 		vm.selectedTime = {};
@@ -14,8 +14,11 @@
 		var rawSchedule = $firebaseArray(ref);
 		vm.schedule = [];
 		rawSchedule.$loaded(function(dates){
-			vm.schedule = processDateProperties(dates);
-			vm.selectDate(vm.schedule[0]);
+			vm.schedule = scheduleProcessorService.processDateProperties(dates);
+			var firstAvailableDate = _.find(vm.schedule, function(date){ return date.available === true});
+			if (firstAvailableDate){
+				vm.selectDate(firstAvailableDate);
+			}
 		});
 
 		vm.goBack = function(){
@@ -28,7 +31,7 @@
 
 		vm.selectDate = function(date){
 			vm.selectedDate = date.$id;
-			vm.times = filterTimesOfDate(date); 
+			vm.times = date.times; //  scheduleProcessorService.filterTimesOfDate(date); 
 			vm.selectedTime = null;
 		}
 
@@ -49,7 +52,7 @@
 
 		vm.bookAppointment = function(){
 			// set selected schedule & address onto userSelectionService
-			userSelectionService.schedule = new Schedule(vm.selectedDate, vm.selectedTime);
+			userSelectionService.schedule = new Schedule(vm.selectedDate, vm.selectedTime.$id);
 			userSelectionService.appointment.setAddress(vm.selectedAddress);
 			userSelectionService.appointment.setSchedule(userSelectionService.schedule);
 			stripeService.open(userSelectionService.product);
@@ -115,67 +118,5 @@
 			alert("Your payment failed. Please try again");
 		}
 
-		function processDateProperties(dateObjs){
-			var dates = [];
-			for(var index in dateObjs){
-				var dateObj = dateObjs[index];
-				var dateInRange = isDateInRange(dateObj.$id);
-				if (dateInRange){
-					var dateStr = dateObj.$id.replace(/-/g, '/');
-					var momentObj = new moment(dateStr);
-					dateObj.dayOfWeek = momentObj.format("ddd");
-					dateObj.monthDay = momentObj.format("MMM DD");
-					dates.push(dateObj);
-				}
-			}
-
-			return dates;
-		}
-
-		function filterTimesOfDate(date){
-			// null check
-			if (!date || !date.times){
-				return [];
-			}
-
-			var filteredTimes = [];
-			var timeStrings = Object.keys(date.times);
-			timeStrings.forEach(function(time){
-				var dateStr = date.$id.replace(/-/g, '/');
-				var timeIsInRange = isTimeInRange(time, dateStr);
-				if (timeIsInRange){
-					filteredTimes.push(time);
-				}
-			});
-
-			return filteredTimes;
-		}
-
-		function isTimeInRange(time, date){
-			var now = new moment();
-			var givenDateMoment = new moment(date);
-			var givenTimeMoment = new moment(time);
-			givenDateMoment.hour = givenTimeMoment.get('hour');
-			givenDateMoment.minute = givenTimeMoment.get('minute');
-
-			var isInRange = givenDateMoment > now;
-			return isInRange;
-		}
-
-		function isDateInRange(dateStr){
-			// check if the date object is even valid
-			if (!dateStr){
-				return false;
-			}
-
-			// compare dateObj with today's date to see if it's equal or after today
-			var todaysMoment = new moment();
-			var modDateStr = dateStr.replace(/-/g, '/');
-			var dateObjMoment = new moment(modDateStr);
-			var dateIsInRange = (dateObjMoment.year() >= todaysMoment.year())
-								&& (dateObjMoment.dayOfYear() >= todaysMoment.dayOfYear());
-
-			return dateIsInRange;			
-		}
 	};
 })();

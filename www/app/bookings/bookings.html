@@ -10,14 +10,14 @@
   		<div class="date-container" style="opacity:1">
   			<div class="booking-sub-header">Pick a date and time</div>
 	  		<ion-scroll direction="x" class="wide-as-needed date-time-selector" >
-				<button ng-repeat="date in vm.schedule" ng-class="{active: date.$id === vm.selectedDate}" ng-click="vm.selectDate(date)">
+				<button ng-repeat="date in vm.schedule" ng-class="{active: date.$id === vm.selectedDate}" ng-click="vm.selectDate(date)" ng-disabled="!date.available">
 					<div id="day-of-week">{{date.dayOfWeek}}</div>
 					<div id="month-day">{{date.monthDay}}</div>
 				</button>	
 		    </ion-scroll>
 		    <ion-scroll direction="x" class="wide-as-needed date-time-selector">
-				<button ng-repeat="time in vm.times" ng-class="{active: time === vm.selectedTime}" ng-click="vm.selectTime(time)">
-					<div id="time-of-day">{{time}}</div>
+				<button ng-repeat="time in vm.times" ng-class="{active: time.$id === vm.selectedTime.$id}" ng-click="vm.selectTime(time)" ng-disabled="!time.available">
+					<div id="time-of-day">{{time.$id}}</div>
 				</button>	
 		    </ion-scroll>
   		</div>
@@ -37,7 +37,7 @@
 				<div class="address-text-placeholder" ng-show="!vm.user.addresses.work.street">Add location</div>
 			</button>	
   		</div>
-  		<button id="booking-confirm-btn" class="primary-button" ng-disabled="!(vm.selectedDate && vm.selectedTime && vm.selectedAddress.street)" ng-click="vm.bookAppointment()">Confirm for ${{vm.product.price}}</button>
+  		<button id="booking-confirm-btn" class="primary-button" ng-disabled="!(vm.selectedDate && vm.selectedTime.$id && vm.selectedAddress.street)" ng-click="vm.bookAppointment()">Confirm for ${{vm.product.price}}</button>
     </div>
     <div ng-click="$event.stopPropagation()">
     	<button class="nav-settings-btn" ng-click="vm.toSettings()"></button>

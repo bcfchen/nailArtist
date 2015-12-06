@@ -24,6 +24,8 @@
                     var momentObj = new moment(dateStr);
                     dateObj.dayOfWeek = momentObj.format("ddd");
                     dateObj.monthDay = momentObj.format("MMM DD");
+                    dateObj.times = filterTimesOfDate(dateObj);
+                    dateObj.available = isDateAvailable(dateObj);
                     dates.push(dateObj);
                 }
             }
@@ -45,6 +47,25 @@
                                 && (dateObjMoment.dayOfYear() >= todaysMoment.dayOfYear());
 
             return dateIsInRange;           
+        }
+
+        /* looks at the times under a date. 
+         * if all times are unavailable then 
+         * mark date as unavailable as well */
+        function isDateAvailable(dateObj){
+            // null check
+            if (!dateObj.times){
+                return false;
+            }
+
+            var available = false;
+            dateObj.times.forEach(function(time){
+                if(time.available){
+                    available = true;
+                }
+            });
+
+            return available;
         }
 
         function filterTimesOfDate(date){

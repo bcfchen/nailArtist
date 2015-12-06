@@ -8,7 +8,9 @@ angular.module('nailArtist', ['ionic', 'firebase', 'ngCordova', 'mcwebb.twilio',
 .run(function($ionicPlatform, $window) {
   $ionicPlatform.ready(function() {
     // resolve white screen in between splash & app screen
-    navigator.splashscreen.hide();
+    if (navigator && navigator.splashscreen){
+        navigator.splashscreen.hide();
+    }
 
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -26,11 +28,11 @@ angular.module('nailArtist', ['ionic', 'firebase', 'ngCordova', 'mcwebb.twilio',
 
     // setup Twilio 
     TwilioProvider.setCredentials({
-        accountSid: 'ACe79928940d39103df64d9bac1fd06a9f',
-        authToken: '839a92ea384334275a5871970b5be354'
+        accountSid: 'AC8b36caff6e2efe2cc52ba9c3adca65aa',
+        authToken: 'd7487cf487722e6167895d74e11a70d0'
     });
 
-    TwilioVerificationProvider.setFromNumber('+19252415828');
+    TwilioVerificationProvider.setFromNumber('+14152756413');
 
     // setup routing
     $stateProvider
