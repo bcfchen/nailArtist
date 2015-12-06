@@ -11,10 +11,11 @@
 
 		initialize();
 		var ref = new Firebase(constants.FIREBASE_URL + "/schedule");
-		vm.schedule = $firebaseArray(ref);
-		vm.schedule.$loaded(function(dates){
-			attachDateProperties(dates);
-			//vm.selectDate(dates[0]);
+		var rawSchedule = $firebaseArray(ref);
+		vm.schedule = [];
+		rawSchedule.$loaded(function(dates){
+			vm.schedule = processDateProperties(dates);
+			vm.selectDate(vm.schedule[0]);
 		});
 
 		vm.goBack = function(){
@@ -27,7 +28,7 @@
 
 		vm.selectDate = function(date){
 			vm.selectedDate = date.$id;
-			vm.times = Object.keys(date.times);
+			vm.times = filterTimesOfDate(date); //Object.keys(date.times);
 		}
 
 		vm.selectTime = function(time){
@@ -81,16 +82,66 @@
 			alert("Your payment failed. Please try again");
 		}
 
-		function attachDateProperties(dateObjs){
+		function processDateProperties(dateObjs){
+			var dates = [];
 			for(var index in dateObjs){
 				var dateObj = dateObjs[index];
-				if (dateObj.$id){
+				var dateInRange = isDateInRange(dateObj.$id);
+				if (dateInRange){
 					var dateStr = dateObj.$id.replace(/-/g, '/');
 					var momentObj = new moment(dateStr);
-					dateObjs[index].dayOfWeek = momentObj.format("ddd");
-					dateObjs[index].monthDay = momentObj.format("MMM DD");
+					dateObj.dayOfWeek = momentObj.format("ddd");
+					dateObj.monthDay = momentObj.format("MMM DD");
+					dates.push(dateObj);
 				}
 			}
+
+			return dates;
+		}
+
+		function filterTimesOfDate(date){
+			// null check
+			if (!date || !date.times){
+				return [];
+			}
+
+			var filteredTimes = [];
+			var timeStrings = Object.keys(date.times);
+			timeStrings.forEach(function(time){
+				var dateStr = date.$id.replace(/-/g, '/');
+				var timeIsInRange = isTimeInRange(time, dateStr);
+				if (timeIsInRange){
+					filteredTimes.push(time);
+				}
+			});
+
+			return filteredTimes;
+		}
+
+		function isTimeInRange(time, date){
+			var now = new moment();
+			var givenDateMoment = new moment(date);
+			var givenTimeMoment = new moment(time);
+			givenDateMoment.hour = givenTimeMoment.get('hour');
+			givenDateMoment.minute = givenTimeMoment.get('minute');
+
+			var isInRange = givenDateMoment > now;
+			return isInRange;
+		}
+
+		function isDateInRange(dateStr){
+			// check if the date object is even valid
+			if (!dateStr){
+				return false;
+			}
+
+			// compare dateObj with today's date to see if it's equal or after today
+			var todaysMoment = new moment();
+			var dateObjMoment = new moment(dateStr);
+			var dateIsInRange = (dateObjMoment.year() >= todaysMoment.year())
+								&& (dateObjMoment.dayOfYear() >= todaysMoment.dayOfYear());
+
+			return dateIsInRange;			
 		}
 	};
 })();
