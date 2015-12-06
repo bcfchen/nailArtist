@@ -1,3 +1,15 @@
+/****************************
+* COLORS                    *
+* #edbe5e   mellow yellow   *
+* #ed5f5e   rare red        *
+* #4b1039   plum            *
+* #3d3c3a   coal            *
+* #fcf2db   nude            *
+* #a5e6b6   emerald         *
+* #80cfc5   seafoam         *
+* #9d9c9a   ash             *
+****************************/
+
 /* Profile Button */
 .nav-settings-btn {
 	background: transparent url('../img/icon_profile_light@3x.png') no-repeat center center;
@@ -11,81 +23,46 @@
 	width:44px;
 	padding: 10px;
 }
-
 /* Primary Action Buttons */
+.static-footer {
+	display: block;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+.product-button {
+	padding: 10px 20px 20px;
+}
+button {
+	color: #fff;
+	display: block;
+	height: 44px;
+	line-height: 24px;
+	margin: 0;
+	font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	font-size: 21px;
+	font-weight: 800;
+	width: 100%;
+	padding: 10px;
+	text-align:center;
+	text-shadow:none;
+	opacity: .9;
+	border:none;
+	border-radius: 4px;
+	box-shadow:none;
+    overflow: auto;
+    text-decoration: none;
+}
 button:disabled {
 	opacity: .4;
 }
-button.action {
-	border-radius: 4px;
-	color: #fff;
-}
-button.primary-button {
-
-}
-
-#products-booking-btn {
-	position: absolute;
-	bottom: 20px;
-}
-
-.primary-button:disabled {
-	background-color:#9d9c9a;
-}
-
 .myPopup button {
-		color: #ffffff;
 	background-color:#ed5f5e;
-	font-family: Helvetica Neue, Helvetica;
-	font-size: 15px;
-	font-weight: bold;
-	width:100%;
-	text-align:center;
-	height: 35px;
-	line-height:35px;
-    opacity: 0.9;
-    overflow: auto;
-    text-decoration: none;
 }
-
 .primary-button {
-	color: #ffffff;
 	background-color:#ed5f5e;
-	font-family: Helvetica Neue, Helvetica;
-	font-size: 15px;
-	font-weight: bold;
-	width:88%;
-	text-align:center;
-	height: 35px;
-	line-height:35px;
-	margin-left:6%;
-	margin-right:6%;
-	text-shadow:none;
-	border:none;
-	box-shadow:none;
-    border-radius: 4px;
-    opacity: 0.9;
-    overflow: auto;
-    text-decoration: none;
 }
-
 .dismiss-button {
-	color: #ffffff;
 	background-color:#9d9c9a;
-	font-family: Helvetica Neue, Helvetica;
-	font-size: 15px;
-	font-weight: bold;
-	width:88%;
-	text-align:center;
-	height: 35px;
-	line-height:35px;
-	margin-left:6%;
-	margin-right:6%;
-	text-shadow:none;
-	border:none;
-	box-shadow:none;
-    border-radius: 4px;
-    opacity: 0.9;
-    overflow: auto;
-    text-decoration: none;
 }
