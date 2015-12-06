@@ -1,0 +1,68 @@
+/****************************
+* COLORS                    *
+* #edbe5e   mellow yellow   *
+* #ed5f5e   rare red        *
+* #4b1039   plum            *
+* #3d3c3a   coal            *
+* #fcf2db   nude            *
+* #a5e6b6   emerald         *
+* #80cfc5   seafoam         *
+* #9d9c9a   ash             *
+****************************/
+
+/* Profile Button */
+.nav-settings-btn {
+	background: transparent url('../img/icon_profile_light@3x.png') no-repeat center center;
+	background-size: 25px 25px;
+	border-width:0px;
+	position:absolute;
+	right:10px;
+	top:10px;
+	color: #ffffff;
+	height:44px;
+	width:44px;
+	padding: 10px;
+}
+/* Primary Action Buttons */
+.static-footer {
+	display: block;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+.product-button {
+	padding: 10px 20px 20px;
+}
+button {
+	color: #fff;
+	display: block;
+	height: 44px;
+	line-height: 24px;
+	margin: 0;
+	font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	font-size: 21px;
+	font-weight: 800;
+	width: 100%;
+	padding: 10px;
+	text-align:center;
+	text-shadow:none;
+	opacity: .9;
+	border:none;
+	border-radius: 4px;
+	box-shadow:none;
+    overflow: auto;
+    text-decoration: none;
+}
+button:disabled {
+	opacity: .4;
+}
+.myPopup button {
+	background-color:#ed5f5e;
+}
+.primary-button {
+	background-color:#ed5f5e;
+}
+.dismiss-button {
+	background-color:#9d9c9a;
+}
