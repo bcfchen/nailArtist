@@ -42,7 +42,7 @@ button:disabled {
 .dismiss-button,
 .info-button {
 	color: #fff;
-	border:none;
+	border: none;
 }
 .primary-button {
 	background-color: #ed5f5e;
