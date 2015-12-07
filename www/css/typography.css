@@ -2,3 +2,27 @@ body {
    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
    font-weight: 300;
 }
+
+.big-header {
+    font-size: 10vw; /* 42px; */
+    font-weight: 100;
+    text-align: left;
+}
+
+.small-header {
+    padding-top: 18px;
+    font-size: 6vw; /* 24px; */
+    line-height: 7vw;
+    font-weight: 100;
+    text-align: left;
+    opacity: 0.75;
+}
+
+.product-description{
+    padding-top: 22px;
+    font-size: 5vw; /* 21px; */
+    line-height: 6vw;
+    font-weight: thin;
+    text-align: left;
+    width:60%;
+}
