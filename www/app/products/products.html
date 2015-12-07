@@ -1,6 +1,6 @@
 <ion-view view-title="Products" ng-controller="ProductsCtrl as vm">
   <ion-content on-swipe-up="vm.toProductDetails()">
-		<ion-slide-box on-slide-changed="slideHasChanged($index)" active-slide="vm.currentProduct">
+		<ion-slide-box on-slide-changed="slideHasChanged($index)" active-slide="activeProductIndex">
 		  <ion-slide ng-repeat="product in vm.products" style="height:100%">
 		  	<div class="product-desc-container">
 			    <div class="big-header">{{product.name}}</div>

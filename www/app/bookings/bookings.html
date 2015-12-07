@@ -2,7 +2,7 @@
   <ion-content>
     <div class="product-desc-container" ng-click="vm.goBack()">
 	    <div class="big-header">{{vm.product.name}}</div>
-	  	<div class="small-header">#lattenails #fallstyle #autum</div>
+	  	<div class="small-header">{{vm.product.hashtags}}</div>
 	  	<div class="product-description">{{vm.product.description}}</div>
   	</div>
   	<div class="fullscreen-image" ng-click="vm.goBack()" ng-style="{'background-image':'url({{vm.product.image}})'}">

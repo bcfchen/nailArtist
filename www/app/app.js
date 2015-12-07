@@ -39,7 +39,7 @@ angular.module('nailArtist', ['ionic', 'firebase', 'ngCordova', 'mcwebb.twilio',
     .state('products', {
         url: '/products',
         templateUrl: 'app/products/products.html',
-        cache: false
+        cache: true
     }).state('productDetails', {
         url: '/productDetails',
         templateUrl: 'app/productDetails/product-details.html',
