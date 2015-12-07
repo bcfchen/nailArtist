@@ -2,9 +2,9 @@
 
     angular
         .module("nailArtist")
-        .factory("settingsValidatorService", ["addressValidatorService", settingsValidatorService]);
+        .factory("settingsValidatorService", ["phoneValidatorService", "addressValidatorService", settingsValidatorService]);
 
-    function settingsValidatorService(addressValidatorService) {
+    function settingsValidatorService(phoneValidatorService, addressValidatorService) {
         var service = {
             validatePhoneNumber: validatePhoneNumber, 
             validateAddress: validateAddress,
@@ -16,10 +16,7 @@
         /* method implementations */
 
         function validatePhoneNumber(phoneNumber){
-        	var isValid = false;
-			var PHONE_REGEXP = /^[(]{0,1}[0-9]{3}[)\.\- ]{0,1}[0-9]{3}[\.\- ]{0,1}[0-9]{4}$/;
-
-        	return PHONE_REGEXP.test(phoneNumber);
+        	return phoneValidatorService.validate(phoneNumber);
         }
 
         function validateAddress(address){
