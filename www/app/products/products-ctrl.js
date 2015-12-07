@@ -31,6 +31,10 @@
 			$state.go("productDetails");
 		};
 
+		vm.contactUs = function(){
+			$state.go("contactUs");
+		}
+
 		vm.bookAppointment = function(){
 			userSelectionService.product = getCurrentProduct()
 			var appointmentExists = userSelectionService.appointment && userSelectionService.appointment !== {};
