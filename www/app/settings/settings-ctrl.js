@@ -1,8 +1,8 @@
 (function(){
 	'use strict';
-	angular.module('nailArtist').controller("SettingsCtrl", ["policies", "$ionicPopup", "firebaseService", "$ionicHistory", "$scope", "$ionicModal", "localStorageService", "userSelectionService", "$state", SettingsCtrl]);
+	angular.module('nailArtist').controller("SettingsCtrl", ["settingsValidatorService", "policies", "$ionicPopup", "firebaseService", "$ionicHistory", "$scope", "$ionicModal", "localStorageService", "userSelectionService", "$state", SettingsCtrl]);
 
-	function SettingsCtrl(policies, $ionicPopup, firebaseService, $ionicHistory, $scope, $ionicModal, localStorageService, userSelectionService, $state){
+	function SettingsCtrl(settingsValidatorService, policies, $ionicPopup, firebaseService, $ionicHistory, $scope, $ionicModal, localStorageService, userSelectionService, $state){
 		var vm = this;
 		vm.product = userSelectionService.product;
 		vm.user = localStorageService.getUser();
@@ -22,17 +22,19 @@
 
 		vm.editAddress = function(addressType){
 			vm.selectedAddress = vm.user.addresses[addressType];
+			$scope.isValidAddress = true;
 			$ionicPopup.show({
-			    template: '<input type="text" placeholder="Street" ng-model="vm.selectedAddress.street">\n<input type="text" placeholder="City" ng-model="vm.selectedAddress.city">\n<input type="text" placeholder="State" ng-model="vm.selectedAddress.state">\n<input type="text" placeholder="ZIP" ng-model="vm.selectedAddress.zipCode">',
+			    template: '<input type="text" class="settings-address-input" placeholder="Street" ng-model="vm.selectedAddress.street">\n<input type="text" class="settings-address-input"  placeholder="City" ng-model="vm.selectedAddress.city">\n<input type="text" class="settings-address-input"  placeholder="State" ng-model="vm.selectedAddress.state">\n<input type="text" class="settings-address-input"  placeholder="ZIP" ng-model="vm.selectedAddress.zipCode"><div class="settings-validation-msg" ng-show="!isValidAddress">Please enter valid San Francisco address</div>',
 			    title: "Edit Address",
-			    cssClass: 'myPopup',
+			    cssClass: 'popup-vertical-buttons',
 			    scope: $scope,
 			    buttons: [
 			      {
-			        text: '<b>Ok</b>',
-			        type: 'button-energized',
+			        text: 'Done',
+			        type: "primary-button",
 			        onTap: function(e) {
-			          if (!vm.selectedAddress ) {
+			        $scope.isValidAddress = settingsValidatorService.validateAddress(vm.selectedAddress);
+			          if (!$scope.isValidAddress ) {
 			            //don't allow the user to close unless he enters a name
 			            e.preventDefault();
 			          } else {
@@ -40,27 +42,47 @@
 			          	syncUserLocally();
 			          }
 			        }
+			      },
+			      {
+			        text: 'Cancel',
+			        type: "dismiss-button",
+			        onTap: function(e) {
+			        	// revert to stored value
+			        	vm.user.addresses[addressType] = localStorageService.getUser().addresses[addressType];
+			        	vm.selectedAddress = localStorageService.getUser().addresses[addressType];
+			        }
 			      }
 		    	]
-		  	});		}
+		  	});		
+		}
 
 		vm.editEmail = function(){
+			$scope.isValidEmail = true;
 			$ionicPopup.show({
-			    template: '<input type="text" ng-model="vm.user.email">',
+			    template: '<input type="email" ng-model="vm.user.email"><div class="settings-validation-msg" ng-show="!isValidEmail">Please enter valid email</div>',
 			    title: "Edit Email",
-			    cssClass: 'myPopup',
+			    cssClass: 'popup-vertical-buttons',
 			    scope: $scope,
 			    buttons: [
 			      {
-			        text: '<b>Ok</b>',
-			        type: 'button-energized',
+			        text: 'Done',
+			        type: "primary-button",
 			        onTap: function(e) {
-			          if (!vm.user.email) {
+			        	$scope.isValidEmail = settingsValidatorService.validateEmail(vm.user.email);
+			          if (!$scope.isValidEmail) {
 			            //don't allow the user to close unless he enters a name
 			            e.preventDefault();
 			          } else {
 			          	syncUserLocally();
 			          }
+			        }
+			      },
+			      {
+			        text: 'Cancel',
+			        type: "dismiss-button",
+			        onTap: function(e) {
+			        	// revert to stored value
+			        	vm.user.email = localStorageService.getUser().email;
 			        }
 			      }
 		    	]
@@ -68,22 +90,32 @@
 		}
 
 		vm.editPhoneNumber = function(){
+			$scope.isValidPhoneNumber = true;
 			$ionicPopup.show({
-			    template: '<input type="text" ng-model="vm.user.phoneNumber">',
+			    template: '<input type="tel" ng-model="vm.user.phoneNumber"><div class="settings-validation-msg" ng-show="!isValidPhoneNumber">Please enter valid phone number</div>',
 			    title: "Edit Phone Number",
-			    cssClass: 'myPopup',
+			    cssClass: 'popup-vertical-buttons',
 			    scope: $scope,
 			    buttons: [
 			      {
-			        text: '<b>Ok</b>',
-			        type: 'button-energized',
+			        text: 'Done',
+			        type: "primary-button",
 			        onTap: function(e) {
-			          if (!vm.user.phoneNumber) {
+			          $scope.isValidPhoneNumber = settingsValidatorService.validatePhoneNumber(vm.user.phoneNumber);
+			          if (!$scope.isValidPhoneNumber ) {
 			            //don't allow the user to close unless he enters a name
 			            e.preventDefault();
 			          } else {
 			          	syncUserLocally();
 			          }
+			        }
+			      },
+			      {
+			        text: 'Cancel',
+			        type: "dismiss-button",
+			        onTap: function(e) {
+			        	// revert to stored value
+			        	vm.user.phoneNumber = localStorageService.getUser().phoneNumber;
 			        }
 			      }
 		    	]
