@@ -1,6 +1,7 @@
 html {
-   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
-   font-weight: 300;
+	background: #000;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	font-weight: 300;
 }
 
 /* Product */
@@ -62,4 +63,24 @@ html {
     margin-top: 20px;
     margin-bottom: 10px;
     font-weight: bold;
+}
+
+/* Modals */
+.complete-modal-title{
+    text-align:center;
+    margin-top: 52px;
+    margin-bottom: 2vw;
+    font-size: 7vw;
+    line-height: 8vw;
+}
+
+.complete-modal-description{
+    text-align:center;
+    margin-top: 6vw;
+    margin-bottom:5%;
+    margin-left:10%;
+    margin-right:10%;
+    font-size: 5vw;
+    line-height: 6vw;
+    font-weight: 100;
 }

@@ -3,6 +3,7 @@
 /* Imports, need to change later to be pre-compiled */
 @import "typography.css";
 @import "buttons.css";
+@import "forms.css";
 
 /****************************
 * COLORS                    *
@@ -301,14 +302,6 @@
     right: 0;
     padding: 0px 20px;
 }
-.edit-address-container input {
-    height: 48px;
-    line-height: 48px;
-    font-size: 24px;
-    border-radius: 4px;
-    margin-bottom: 20px;
-    padding:10px;
-}
 
 .user-text-input {
     width: 100%;
@@ -366,9 +359,9 @@
 }
 
 .status-icon-circle {
-    position:absolute;
-    height:55px;
-    width:55px;
+    position: absolute;
+    height: 80px;
+    width: 80px;
     margin-left:40%;
     border-radius: 50%;
     background-size:cover;
@@ -430,29 +423,19 @@
 /* NAME NUMBER MODAL */
 .complete-page-modal{
     position:absolute;
-    background-color:#ffffff;
+    background-color:#fff;
     border-radius:5px;
     width:80%;
     height:300px;
     bottom:20%;
-    margin-left:10%;
-    margin-right:10%;
+    left:10%;
+    right:10%;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
-.complete-modal-title{
-    text-align:center;
-    margin-top:10%;
-    margin-bottom:5%;
-    font-size:20px;
-}
-
-.complete-modal-description{
-    text-align:center;
-    margin-top:5%;
-    margin-bottom:5%;
-    margin-left:10%;
-    margin-right:10%;
-    font-size:14px;
+.content {
+    padding: 0 20px;
 }
 
 #user-name-input {
@@ -488,22 +471,6 @@
 
 #appt-confirm-contact-us-btn {
     background-color:#80cfc5;
-}
-
-#security-code-input {
-    width:88%;
-    height: 35px;
-    line-height:35px;
-    margin-left:6%;
-    margin-right:6%;
-    padding-left:3%;
-    text-shadow:none;
-    box-shadow:none;
-    border-radius: 4px;
-    border-color:#9d9c9a;
-    border-width:1px;
-    border-style:solid;
-    font-size:25px;
 }
 
 #name-number-validation-msg {

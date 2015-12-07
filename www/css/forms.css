@@ -1,0 +1,13 @@
+input.form-input {
+    height: 48px;
+    line-height: 28px;
+    font-size: 24px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #edecea;
+}
+
+#security-code-input {
+    width:100%;
+}
