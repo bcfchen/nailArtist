@@ -32,13 +32,16 @@ html {
 
 .product-price {
 	font-size: 16vw; /* 42px; */
+	margin: 0 2vw 0 6vw;
     float:left;
     font-weight: 100;
     text-shadow: 0px 0px 10px #3d3c3a;
 }
 
 .dollar-sign {
-    float:left;
+	position: absolute;
+	top: 2vw;
+	left: 0;
     font-size:8vw;
     font-weight: 100;
     vertical-align: top;
@@ -48,8 +51,7 @@ html {
 .deadline-msg {
 	font-size:5vw;
 	line-height: 7vw;
-	margin-left: 1vw;
-	width: 60%;
+	width: 50%;
 	display:inline-block;
 	vertical-align:middle;
 	text-shadow: 0px 0px 10px #3d3c3a;
@@ -63,6 +65,21 @@ html {
     margin-top: 20px;
     margin-bottom: 10px;
     font-weight: bold;
+}
+.day-of-week,
+.time-of-day,
+.address-type {
+    font-size: 4vw;
+    font-weight: 100;
+    margin-bottom: -1vw;
+}
+.month-day,
+.address-text,
+.address-text-placeholder {
+    font-size: 3vw;
+    white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 /* Modals */

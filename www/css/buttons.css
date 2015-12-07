@@ -80,18 +80,33 @@ button:disabled {
 }
 
 /* Booking Buttons */
+.date-container div button,
+.address-selector button {
+    border-right: solid #D6D6D6;
+    border-bottom:solid #D6D6D6;
+    border-width:1px;
+    border-color:#D6D6D6;
+    background-color:#ffffff;
+    color:#D6D6D6;
+    height: 64px;
+    box-shadow:none;
+}
+
 .date-container button {
-    width: 65px;
+    width: 28vw;
+    height: 20vw;
 }
 
-.date-container button:first-child {
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
+.date-container button:first-child,
+.address-selector button:first-child {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 
-.date-container button:last-child {
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
+.date-container button:last-child,
+.address-selector button:last-child {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 .date-time-selector button {
@@ -107,20 +122,36 @@ button:disabled {
 		#cdccca 6.5px);
 }
 
-.date-container div button,
-.address-selector button {
-    border-right: solid #D6D6D6;
-    border-bottom:solid #D6D6D6;
-    border-width:1px;
-    border-color:#D6D6D6;
-    background-color:#ffffff;
-    color:#D6D6D6;
-    height: 44px;
-    box-shadow:none;
+.date-time-selector .active {
+    border-color: #ed5f5e;
+    z-index: 1;
+    color: #ed5f5e;
+}
+
+#address-btn-left {
+    float:left;
+}
+
+#address-btn-right {
+    float:right;
+}
+
+.address-selector .active {
+    border-color: #ed5f5e;
+    color: #ed5f5e;
+}
+
+.address-selector {
+    padding: 0px 20px;
+    overflow: auto;
+}
+
+.address-btn {
+    width:48.3%;
 }
 
 #booking-confirm-btn {
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 /* Settings Popup button */
