@@ -20,6 +20,11 @@
 			});
 		}
 
+		vm.openBrowser = function(url){
+			window.open(url, '_blank', 'location=yes'); 
+			return false;
+		}
+
 		vm.editAddress = function(addressType){
 			vm.selectedAddress = vm.user.addresses[addressType];
 			$scope.isValidAddress = true;
@@ -37,6 +42,7 @@
 			          if (!$scope.isValidAddress ) {
 			            //don't allow the user to close unless he enters a name
 			            e.preventDefault();
+			            cordova.plugins.Keyboard.close();
 			          } else {
 			          	vm.user.addresses[addressType] = vm.selectedAddress;
 			          	syncUserLocally();
@@ -72,6 +78,7 @@
 			          if (!$scope.isValidEmail) {
 			            //don't allow the user to close unless he enters a name
 			            e.preventDefault();
+			            cordova.plugins.Keyboard.close();
 			          } else {
 			          	syncUserLocally();
 			          }
