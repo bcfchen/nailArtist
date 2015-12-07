@@ -20,6 +20,11 @@
 			});
 		}
 
+		vm.openBrowser = function(url){
+			window.open(url, '_blank', 'location=yes'); 
+			return false;
+		}
+
 		vm.editAddress = function(addressType){
 			vm.selectedAddress = vm.user.addresses[addressType];
 			$scope.isValidAddress = true;
