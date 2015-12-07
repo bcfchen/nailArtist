@@ -1,4 +1,4 @@
-body {
+html {
    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
    font-weight: 300;
 }
@@ -6,7 +6,7 @@ body {
 /* Product */
 .big-header {
     font-size: 10vw; /* 42px; */
-    font-weight: 100;
+    font-weight: 300;
     line-height: 10vw;
     text-align: left;
 }
@@ -15,18 +15,42 @@ body {
 	padding-top: 1.5vw;
     font-size: 6vw; /* 24px; */
     line-height: 7vw;
-    font-weight: 100;
+    font-weight: 300;
     text-align: left;
     opacity: 0.75;
 }
 
 .product-description{
-    padding-top: 22px;
+    padding-top: 4vw;
     font-size: 5vw; /* 21px; */
     line-height: 6vw;
-    font-weight: thin;
+    font-weight: 300;
     text-align: left;
     width:60%;
+}
+
+.product-price {
+	font-size: 16vw; /* 42px; */
+    float:left;
+    font-weight: 100;
+    text-shadow: 0px 0px 10px #3d3c3a;
+}
+
+.dollar-sign {
+    float:left;
+    font-size:8vw;
+    font-weight: 100;
+    vertical-align: top;
+    text-shadow: 0px 0px 10px #3d3c3a;
+}
+
+.deadline-msg {
+	font-size:5vw;
+	line-height: 7vw;
+	width: 45%;
+	display:inline-block;
+	vertical-align:middle;
+	text-shadow: 0px 0px 10px #3d3c3a;
 }
 
 /* Booking */

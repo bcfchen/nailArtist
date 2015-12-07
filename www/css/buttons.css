@@ -21,10 +21,11 @@ button {
     text-decoration: none;
 }
 button:disabled {
-	opacity: .4;
+	opacity: .6;
 }
 .product-button {
 	padding: 10px 20px 20px;
+	z-index: 10;
 }
 .product-button button {
 	width: 100%;
@@ -72,6 +73,7 @@ button:disabled {
 	height:44px;
 	width:44px;
 	padding: 10px;
+	z-index: 10;
 }
 
 /* Booking Buttons */
@@ -102,7 +104,8 @@ button:disabled {
 		#cdccca 6.5px);
 }
 
-.booking-container div button {
+.date-container div button,
+.address-selector button {
     border-right: solid #D6D6D6;
     border-bottom:solid #D6D6D6;
     border-width:1px;
@@ -111,4 +114,8 @@ button:disabled {
     color:#D6D6D6;
     height: 44px;
     box-shadow:none;
+}
+
+#booking-confirm-btn {
+    margin-top: 50px;
 }

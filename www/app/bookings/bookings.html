@@ -37,7 +37,9 @@
 				<div class="address-text-placeholder" ng-show="!vm.user.addresses.work.street">Add location</div>
 			</button>	
   		</div>
-  		<button id="booking-confirm-btn" class="primary-button" ng-disabled="!(vm.selectedDate && vm.selectedTime.$id && vm.selectedAddress.street)" ng-click="vm.bookAppointment()">Confirm for ${{vm.product.price}}</button>
+  		<div class="product-button">
+  			<button id="booking-confirm-btn" class="primary-button" ng-disabled="!(vm.selectedDate && vm.selectedTime.$id && vm.selectedAddress.street)" ng-click="vm.bookAppointment()">Confirm for ${{vm.product.price}}</button>
+  		</div>
     </div>
     <div ng-click="$event.stopPropagation()">
     	<button class="nav-settings-btn" ng-click="vm.toSettings()"></button>
