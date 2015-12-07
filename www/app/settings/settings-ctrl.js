@@ -14,10 +14,17 @@
 			$state.go("contactUs");
 		}
 
+		/* if user already entered phone number, we can save
+		 * against firebase. else, since the data is already 
+		 * in local storage, we can just go back */
 		vm.goBack = function(){
-			saveUser().then(function(){
+			if (localStorageService.getUser().phoneNumber){
+				saveUser().then(function(){
+					$ionicHistory.goBack();
+				});
+			} else {
 				$ionicHistory.goBack();
-			});
+			}
 		}
 
 		vm.openBrowser = function(url){
