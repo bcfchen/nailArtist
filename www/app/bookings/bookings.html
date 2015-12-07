@@ -8,13 +8,14 @@
   	<div class="fullscreen-image" ng-click="vm.goBack()" ng-style="{'background-image':'url({{vm.product.image}})'}">
   	<div class="booking-container" ng-click="$event.stopPropagation()" ng-show="vm.showBookingContainer">
   		<div class="date-container" style="opacity:1">
-  			<div class="booking-sub-header">Pick a date and time</div>
+  			<div class="booking-sub-header">Pick a date</div>
 	  		<ion-scroll direction="x" class="wide-as-needed date-time-selector" >
 				<button ng-repeat="date in vm.schedule" ng-class="{active: date.$id === vm.selectedDate}" ng-click="vm.selectDate(date)" ng-disabled="!date.available">
 					<div id="day-of-week">{{date.dayOfWeek}}</div>
 					<div id="month-day">{{date.monthDay}}</div>
 				</button>	
 		    </ion-scroll>
+		    <div class="booking-sub-header">Pick a time</div>
 		    <ion-scroll direction="x" class="wide-as-needed date-time-selector">
 				<button ng-repeat="time in vm.times" ng-class="{active: time.$id === vm.selectedTime.$id}" ng-click="vm.selectTime(time)" ng-disabled="!time.available">
 					<div id="time-of-day">{{time.$id}}</div>
@@ -37,7 +38,7 @@
 				<div class="address-text-placeholder" ng-show="!vm.user.addresses.work.street">Add location</div>
 			</button>	
   		</div>
-  		<div class="product-button">
+  		<div class="action-button">
   			<button id="booking-confirm-btn" class="primary-button" ng-disabled="!(vm.selectedDate && vm.selectedTime.$id && vm.selectedAddress.street)" ng-click="vm.bookAppointment()">Confirm for ${{vm.product.price}}</button>
   		</div>
     </div>
