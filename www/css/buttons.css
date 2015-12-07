@@ -112,3 +112,21 @@ button:disabled {
     height: 44px;
     box-shadow:none;
 }
+
+/* Settings Popup button */
+.popup-vertical-buttons button {
+	min-width:100%;
+	margin-bottom:5px;
+}
+
+.popup-vertical-buttons .button-positive{
+	background-color:red;
+}
+
+.popup-vertical-buttons .dismiss-button{
+	background-color:#9d9c9a;
+}
+
+.popup-vertical-buttons .popup-buttons {
+	display:block;
+}
