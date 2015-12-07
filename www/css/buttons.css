@@ -51,6 +51,11 @@ button:disabled {
 .primary-button {
 	background-color: #ed5f5e;
 }
+
+.primary-button:disabled {
+	opacity:0.4;
+}
+
 .unavailable-button {
 	background-color: #edbe5e;	
 }

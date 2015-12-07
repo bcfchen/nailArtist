@@ -28,7 +28,8 @@
 		  	<div class="fullscreen-image" ng-style="{'background-image':'url({{product.image}})'}">
 		  </ion-slide>
 		  <div class="static-footer action-button">
-		  	<button id="products-booking-btn" ng-show="!product.appointment" class="primary-button" ng-click="vm.bookAppointment()">Book</button>
+		  	<button ng-show="!product.appointment" class="primary-button" ng-click="vm.bookAppointment()">Book</button>
+		  	<button ng-show="product.appointment" class="info-button" ng-click="vm.contactUs()">Booked</button>
 		  </div>
 		</ion-slide-box>
 		<button class="nav-settings-btn" ng-click="vm.toSettings()"></button>

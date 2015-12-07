@@ -38,7 +38,7 @@
 						$scope.apptConfirmedModal.show();
 					}, function error(err){
 							console.log("Booking failed with: ",  err);
-							alert("Booking unsuccessful. Please try again later");
+							alert("Booking unsuccessful. Please try again later or contact RARE");
 						});
 				} else {
 		    		$scope.nameNumberModal.show();
