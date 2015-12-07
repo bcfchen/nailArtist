@@ -69,14 +69,15 @@ html {
 .day-of-week,
 .time-of-day,
 .address-type {
-    font-size: 4vw;
-    font-weight: 100;
-    margin-bottom: -1vw;
+    font-size: 5vw;
+    font-weight: 400;
+    margin-bottom: -2vw;
 }
 .month-day,
 .address-text,
 .address-text-placeholder {
-    font-size: 3vw;
+    font-size: 4vw;
+    font-weight: 100;
     white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;

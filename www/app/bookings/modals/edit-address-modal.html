@@ -1,10 +1,10 @@
 <div class="edit-address-container" ng-click="$event.stopPropagation()" ng-show="!vm.showBookingContainer">
 	<div id="add-address-title" class="booking-sub-header">Add your address</div>
-    <input class="user-text-input" required placeholder="Street Address" type="text" ng-model="vm.selectedAddress.street"/>        
-    <input class="user-text-input" required placeholder="City" type="text" ng-model="vm.selectedAddress.city"/>
+    <input class="user-text-input form-input" required placeholder="Street Address" type="text" ng-model="vm.selectedAddress.street"/>        
+    <input class="user-text-input form-input" required placeholder="City" type="text" ng-model="vm.selectedAddress.city"/>
 	<div class="state-zip-container">
-		<input class="edit-state" required placeholder="State" ng-model="vm.selectedAddress.state" type="text"/>
-		<input class="edit-zipcode" required placeholder="ZIP" ng-model="vm.selectedAddress.zipCode" type="text"/>
+		<input class="edit-state form-input" required placeholder="State" ng-model="vm.selectedAddress.state" type="text"/>
+		<input class="edit-zipcode form-input" required placeholder="ZIP" ng-model="vm.selectedAddress.zipCode" type="text"/>
 	</div>
 	<div class="validation-msg" ng-show="!isAddressValid">**Please enter correct San Francisco address</div>
 	<div class="action-button no-padding">
