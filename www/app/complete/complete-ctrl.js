@@ -1,8 +1,8 @@
 (function(){
 	'use strict';
-	angular.module('nailArtist').controller('CompleteCtrl', ["$ionicLoading", "TwilioVerification", "$scope", "localStorageService", "$ionicModal", "constants", "userSelectionService", "$state", "firebaseService", CompleteCtrl]);
+	angular.module('nailArtist').controller('CompleteCtrl', ["phoneValidatorService", "$ionicLoading", "TwilioVerification", "$scope", "localStorageService", "$ionicModal", "constants", "userSelectionService", "$state", "firebaseService", CompleteCtrl]);
 
-	function CompleteCtrl($ionicLoading, TwilioVerification, $scope, localStorageService, $ionicModal, constants, userSelectionService, $state, firebaseService){
+	function CompleteCtrl(phoneValidatorService, $ionicLoading, TwilioVerification, $scope, localStorageService, $ionicModal, constants, userSelectionService, $state, firebaseService){
 		var vm = this;
 		vm.product = userSelectionService.product;
 		vm.appointment = userSelectionService.appointment;
@@ -58,12 +58,17 @@
 
 		  }).then(function(modal) {
 		    $scope.nameNumberModal = modal;
-		    $scope.validNamePhoneNumber = true;
-
+		    var validPhoneNumber = true;
+		    var validName = true;
+			$scope.validNamePhoneNumber = true;
+			$scope.errMsg = "";
 		    $scope.nameNumberModal.done = function() {
 		    	// check if name & number are valid. if not, do nothing
-		    	$scope.validNamePhoneNumber = vm.user.name && vm.user.phoneNumber;
+		    	var validPhoneNumber = phoneValidatorService.validate(vm.user.phoneNumber);
+		    	var validName = vm.user.name && vm.user.name !== "";
+		    	$scope.validNamePhoneNumber = validName && validPhoneNumber;
 		    	if (!$scope.validNamePhoneNumber){
+		    		$scope.errMsg = createErrMsg(validName, validPhoneNumber);
 		    		return;
 		    	}
 
@@ -124,6 +129,22 @@
 		    	});
 		  	}
 		  });
+		}
+
+		function createErrMsg(validName, validPhoneNumber){
+			var msg = "Please enter valid ";
+			if (!validName){
+				msg += "name";
+			}
+
+			if (!validPhoneNumber){
+				if (!validName){
+					msg += " and ";
+				}
+				msg += "phone number";
+			}
+
+			return msg;
 		}
 
 		function initializeAppointmentConfirmedModal(){

@@ -24,11 +24,13 @@
         }
 
         function validateState(state){
-            return state && state.toUpperCase() === "CA";
+            var stateExists = state !== null && state !== undefined;
+            return stateExists && state.toUpperCase() === "CA";
         }
 
         function validateCity(city){
-            return city && city.toUpperCase() === "SAN FRANCISCO";
+            var cityExists = city !== null && city !== undefined;
+            return cityExists && city.toUpperCase() === "SAN FRANCISCO";
         }
 
         function validateZipCode(zipCode){

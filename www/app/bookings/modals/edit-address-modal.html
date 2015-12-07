@@ -6,7 +6,7 @@
 		<input class="edit-state" required placeholder="State" ng-model="vm.selectedAddress.state" type="text"/>
 		<input class="edit-zipcode" required placeholder="ZIP" ng-model="vm.selectedAddress.zipCode" type="text"/>
 	</div>
-	<div class="validation-msg" ng-show="!isAddressValid">**Please enter appropriate values</div>
+	<div class="validation-msg" ng-show="!isAddressValid">**Please enter correct San Francisco address</div>
 	<div class="action-button no-padding">
 		<button id="confirm-address-btn" class="primary-button" ng-click="editAddressModal.done()">Confirm Address</button>
 	</div>
