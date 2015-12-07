@@ -42,6 +42,7 @@
 			          if (!$scope.isValidAddress ) {
 			            //don't allow the user to close unless he enters a name
 			            e.preventDefault();
+			            cordova.plugins.Keyboard.close();
 			          } else {
 			          	vm.user.addresses[addressType] = vm.selectedAddress;
 			          	syncUserLocally();
@@ -77,6 +78,7 @@
 			          if (!$scope.isValidEmail) {
 			            //don't allow the user to close unless he enters a name
 			            e.preventDefault();
+			            cordova.plugins.Keyboard.close();
 			          } else {
 			          	syncUserLocally();
 			          }

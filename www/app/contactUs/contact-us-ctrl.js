@@ -6,7 +6,7 @@
 		var vm = this;
 		vm.product = userSelectionService.product;
 
-		var SUPPORT_EMAIL = "nailArtist@gmail.com";
+		var SUPPORT_EMAIL = "friend@rarenails.co";
 		vm.email = function(){
 			var emailInfo = {
                 to:          [SUPPORT_EMAIL], // email addresses for TO field
