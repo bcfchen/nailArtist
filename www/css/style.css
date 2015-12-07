@@ -82,7 +82,7 @@
 .slider-pager {
     color: #000; 
     padding: 20px;
-    margin-bottom:15%;
+    margin-bottom: 54px;
 }
 
 .slider-pager-page.active {
@@ -98,12 +98,15 @@
 
 .arrow-btn {
     display:inline-block;
+    position: absolute;
+    right: 0;
+    top: 3.5vw;
     font-size:22px;
     vertical-align:middle;
     text-align:right;
     background-color:transparent;
     border:none;
-    color:#ffffff;
+    color:#fff;
     margin-left:5%;
 }
 
@@ -114,7 +117,7 @@
 }
 
 .booking-container {
-    background: rgba(256, 256, 256, 0.85);
+    background: rgba(255, 255, 255, 0.85);
     position: absolute;
     bottom: 0px;
     overflow: hidden;
@@ -123,11 +126,10 @@
 
 .price-deadline-container {
     position:absolute;
-    margin-left:20px;
+    left:20px;
+    right: 20px;
     color: #fff;
-    bottom: 120px;
-    overflow: hidden;
-    width: 100%;
+    bottom: 100px;
     vertical-align:middle;
     z-index: 2;
 }
@@ -140,8 +142,7 @@
     height:50px;
 }
 
-.date-time-selector .active
-{
+.date-time-selector .active {
     border-color: #ed5f5e;
     z-index: 1;
     color: #ed5f5e;
