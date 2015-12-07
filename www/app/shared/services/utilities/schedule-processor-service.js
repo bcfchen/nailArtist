@@ -59,8 +59,9 @@
             }
 
             var available = false;
-            dateObj.times.forEach(function(time){
-                if(time.available){
+            Object.keys(dateObj.times).forEach(function(timeStr){
+                var timeObj = dateObj.times[timeStr];
+                if(timeObj.available){
                     available = true;
                 }
             });
@@ -75,7 +76,7 @@
             }
 
             var filteredTimes = [];
-            var filteredTimeObjs = [];
+            var filteredTimeObjs = {};
             var timeObjs = date.times;
             var timeStrings = Object.keys(timeObjs);
 
@@ -87,7 +88,7 @@
                 var timeIsInRange = isTimeInRange(timeStr, dateStr);
                 if (timeIsInRange){
                     timeObj.available = isTimeAvailable(timeObj);
-                    filteredTimeObjs.push(timeObj);//filteredTimes.push(timeStr);
+                    filteredTimeObjs[timeStr] = timeObj;//filteredTimes.push(timeStr);
                 }
             });
 
@@ -95,15 +96,19 @@
         }
 
         function isTimeAvailable(timeObj){
-            var numOfOpenings = timeObj.numOpenings;
             // null check
-            if (!timeObj || !timeObj.appointments || !timeObj.numOfOpenings){
+            if (!timeObj || !timeObj.numOfOpenings){
                 return false;
             }
 
             /* check if number of appointments for this time
              * is greater/equal than number of openings for this time */
-             if (timeObj.appointments.length >= timeObj.numOpenings){
+             if (!timeObj.appointments){
+                timeObj.appointments = {};
+             }
+             
+             var numOfAppointments = Object.keys(timeObj.appointments).length;
+             if (numOfAppointments >= timeObj.numOfOpenings){
                 return false;
              }
 

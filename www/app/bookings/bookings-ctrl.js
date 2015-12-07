@@ -12,13 +12,31 @@
 		initialize();
 		var ref = new Firebase(constants.FIREBASE_URL + "/schedule");
 		var rawSchedule = $firebaseArray(ref);
+		var isFirstLoad = true;
 		vm.schedule = [];
+
+		rawSchedule.$watch(function(event){
+			// only do this if we already have a selected date
+			if (!isFirstLoad){
+				var incomingObj = rawSchedule.$getRecord(event.key);
+				vm.schedule = updateSchedule(vm.schedule, incomingObj);
+				vm.schedule = scheduleProcessorService.processDateProperties(vm.schedule);
+				var firstAvailableDate = _.find(vm.schedule, function(date){ return date.available === true});
+				if (firstAvailableDate){
+					vm.selectDate(firstAvailableDate);
+				} else {
+					vm.times = [];
+				}
+			}
+		});
+
 		rawSchedule.$loaded(function(dates){
 			vm.schedule = scheduleProcessorService.processDateProperties(dates);
 			var firstAvailableDate = _.find(vm.schedule, function(date){ return date.available === true});
 			if (firstAvailableDate){
 				vm.selectDate(firstAvailableDate);
 			}
+			isFirstLoad = false;
 		});
 
 		vm.goBack = function(){
@@ -31,7 +49,8 @@
 
 		vm.selectDate = function(date){
 			vm.selectedDate = date.$id;
-			vm.times = date.times; //  scheduleProcessorService.filterTimesOfDate(date); 
+			// 
+			vm.times = date.times; 
 			vm.selectedTime = null;
 		}
 
@@ -69,6 +88,20 @@
 
 			stripeService.initialize(stripeSuccessCallback, stripeErrorCallback);
 			initializeEditAddressModal();
+		}
+
+		function updateSchedule(currentDateObjs, newDateObj){
+			var existingDateObj = _.find(currentDateObjs, function(dateObj){
+				return dateObj.$id === newDateObj.$id;
+			});
+
+			if (existingDateObj){
+				existingDateObj = newDateObj;
+			} else {
+				currentDateObjs.push(newDateObj);
+			}
+
+			return currentDateObjs;
 		}
 
 		function initializeEditAddressModal(){
