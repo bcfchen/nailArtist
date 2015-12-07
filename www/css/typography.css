@@ -3,14 +3,16 @@ body {
    font-weight: 300;
 }
 
+/* Product */
 .big-header {
     font-size: 10vw; /* 42px; */
     font-weight: 100;
+    line-height: 10vw;
     text-align: left;
 }
 
 .small-header {
-    padding-top: 18px;
+	padding-top: 1.5vw;
     font-size: 6vw; /* 24px; */
     line-height: 7vw;
     font-weight: 100;
@@ -25,4 +27,14 @@ body {
     font-weight: thin;
     text-align: left;
     width:60%;
+}
+
+/* Booking */
+.booking-sub-header {
+	font-size: 5vw; /* 21px; */
+    line-height: 6vw;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
 }
