@@ -8,7 +8,8 @@ function Appointment(){
 }
 
 Appointment.prototype.setUserPhone = function(phone){
-	this.userPhone = phone
+	var formattedPhone = phone ? phone.toString().replace(/\D+/g, '') : null;
+	this.userPhone = formattedPhone
 }
 
 Appointment.prototype.setAvailable = function(available){

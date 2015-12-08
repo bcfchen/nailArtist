@@ -136,24 +136,6 @@
 		  	});
 		 }
 
-		 vm.openPolicy = function(policyType){
-		 	$scope.policyText = policies[policyType].text;
-			$ionicPopup.show({
-			    template: '<div>{{policyText}}</div>',
-			    title: policies[policyType].title,
-			     cssClass: 'myPopup',
-			    scope: $scope,
-			    buttons: [
-			      {
-			        text: '<b>Ok</b>',
-			         // type: 'button-assertive',
-			        onTap: function(e) {
-			        }
-			      }
-		    	]
-		  	});
-		 }
-
 		/* private function implementations */
 
 		function syncUserLocally(){

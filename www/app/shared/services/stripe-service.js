@@ -22,7 +22,7 @@
             var convertedAmount = amount * 100;
         	handler = StripeCheckout.configure({
 			        image: "https://stripe.com/img/documentation/checkout/marketplace.png",
-			        key:'pk_test_mxbGaMJiJcCqhShNWB1FFsZK',
+			        key:'pk_test_eiMfC0If1yWAHJMOSWFTz1FK',
 			        token: function(response){
 			        	tokenHandler(response, convertedAmount, successCallback, errorCallback)
 			        }

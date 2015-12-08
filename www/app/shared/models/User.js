@@ -4,7 +4,7 @@ function User(){
 		home: new Address(),
 		work: new Address()
 	};
-	this.phoneNumber = 0;
+	this.phoneNumber = null;
 	this.email = "";
 }
 
@@ -13,7 +13,8 @@ User.prototype.setName = function(name){
 }
 
 User.prototype.setPhoneNumber = function(phoneNumber){
-	this.phoneNumber = phoneNumber;
+	var formattedPhoneNumber = phoneNumber ? phoneNumber.toString().replace(/\D+/g, '') : null;
+	this.phoneNumber = formattedPhoneNumber;
 }
 
 User.prototype.setAddress = function(type, address){
