@@ -1,6 +1,6 @@
 (function() {
     'use strict';
-    angular.module('nailArtist').factory('localStorageService', ['$window', 'transformer', function($window, transformer) {
+    angular.module('nailArtist').factory('localStorageService', ["formatterService", '$window', 'transformer', function(formatterService, $window, transformer) {
   return {
     set: function(key, value) {
       $window.localStorage[key] = value;
@@ -46,7 +46,8 @@
     },
     setUserPhoneNumber: function(phoneNumber){
       var currObject = this.getUser();
-      currObject.setPhoneNumber(phoneNumber);
+      var formattedPhoneNumber = formatterService.formatPhoneNumber(phoneNumber);
+      currObject.setPhoneNumber(formattedPhoneNumber);
       this.setUser(currObject);    
     },
     setUserName: function(name){

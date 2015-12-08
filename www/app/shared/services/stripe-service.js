@@ -17,17 +17,19 @@
         return service;
 
         /* method implementations */
-        function initialize(successCallback, errorCallback){
+        function initialize(amount, successCallback, errorCallback){
+            // amount is in cents
+            var convertedAmount = amount * 100;
         	handler = StripeCheckout.configure({
 			        image: "https://stripe.com/img/documentation/checkout/marketplace.png",
 			        key:'pk_test_mxbGaMJiJcCqhShNWB1FFsZK',
 			        token: function(response){
-			        	tokenHandler(response, successCallback, errorCallback)
+			        	tokenHandler(response, convertedAmount, successCallback, errorCallback)
 			        }
 			});
         }
 
-        function tokenHandler(response, successCallback, errorCallback){
+        function tokenHandler(response, amount, successCallback, errorCallback){
             $ionicLoading.show({
                 content: 'Loading',
                 animation: 'fade-in',
@@ -43,7 +45,12 @@
               document.body.appendChild(script)
 
             var card = response;
-        	return $http.post(constants.SERVER_URL, card).then(function success(response){successCallback(response);}, 
+            var stripeInfoContainer = {
+                card: card,
+                amount: amount
+            };
+
+        	return $http.post(constants.SERVER_URL, stripeInfoContainer).then(function success(response){successCallback(response);}, 
                     function error(err){errorCallback(err);})
                 .finally(function(){
                     $ionicLoading.hide();

@@ -8,7 +8,7 @@ function Appointment(){
 }
 
 Appointment.prototype.setUserPhone = function(phone){
-	this.userPhone = phone;
+	this.userPhone = phone
 }
 
 Appointment.prototype.setAvailable = function(available){

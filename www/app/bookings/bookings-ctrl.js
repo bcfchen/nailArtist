@@ -74,6 +74,7 @@
 			userSelectionService.schedule = new Schedule(vm.selectedDate, vm.selectedTime.$id);
 			userSelectionService.appointment.setAddress(vm.selectedAddress);
 			userSelectionService.appointment.setSchedule(userSelectionService.schedule);
+			stripeService.initialize(userSelectionService.product.price, stripeSuccessCallback, stripeErrorCallback);
 			stripeService.open(userSelectionService.product);
 		}
 
@@ -85,8 +86,6 @@
 			vm.showBookingContainer = true;
 			vm.product = userSelectionService.product;
 			vm.user = localStorageService.getUser();
-
-			stripeService.initialize(stripeSuccessCallback, stripeErrorCallback);
 			initializeEditAddressModal();
 		}
 
