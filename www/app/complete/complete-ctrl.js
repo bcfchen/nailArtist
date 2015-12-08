@@ -73,11 +73,13 @@
 		    	}
 
 		    	// use Twilio to verify the number 
-		    	sendText().then(function success(){
-		    		// launch modal to confirm phone number
-		    		$scope.confirmPhoneModal.show();
-		    	}, function error(){
-		    		console.log("twilio failed to send text");
+		    	$scope.nameNumberModal.hide().then(function(){
+					sendText().then(function success(){
+						    		// launch modal to confirm phone number
+						    		$scope.confirmPhoneModal.show();
+						    	}, function error(){
+						    		console.log("twilio failed to send text");
+						    	});
 		    	});
 		  	}
 		  });
