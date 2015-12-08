@@ -9,6 +9,8 @@
             validate: validate
         };
 
+        var SF_ZIPCODES = [94102,94103,94104,94105,94107,94108,94109,94110,94111,94114,94115,94117,94118,94121,94122,94123,94129,94133,94158];
+
         return service;
 
         /* method implementations */
@@ -34,8 +36,11 @@
         }
 
         function validateZipCode(zipCode){
-            var ZIP_REGEX = /(^\d{5}$)|(^\d{5}-\d{4}$)/;
-            return ZIP_REGEX.test(zipCode);
+            if (!zipCode){
+                return false;
+            }
+
+            return SF_ZIPCODES.indexOf(Number(zipCode)) > -1;
         }
 
         function isValidValue(value){

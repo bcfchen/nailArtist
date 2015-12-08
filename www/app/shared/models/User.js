@@ -4,7 +4,7 @@ function User(){
 		home: new Address(),
 		work: new Address()
 	};
-	this.phoneNumber = "";
+	this.phoneNumber = 0;
 	this.email = "";
 }
 
