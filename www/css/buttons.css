@@ -10,7 +10,9 @@
 * #9d9c9a   ash             *
 ****************************/
 /* Default Button Styles */
-button {
+button,
+.action-button a {
+	display: block;
 	font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
 	font-size: 21px;
 	font-weight: 800;
@@ -30,6 +32,7 @@ button:disabled {
 .action-button.no-padding {
 	padding: 10px 0px 20px;
 }
+.action-button a,
 .action-button button {
 	width: 100%;
 	padding: 10px;
@@ -49,24 +52,34 @@ button:disabled {
 	border: none;
 }
 .primary-button {
-	background-color: #ed5f5e;
+	background-color: #ed5f5e; /* rare red */
+}
+.unavailable-button {
+	background-color: #edbe5e; /* mellow yellow */
+}
+.dismiss-button {
+	background-color: #9d9c9a; /* ash */
+}
+.info-button {
+	background-color: #80cfc5; /* seafoam */
 }
 
-.primary-button:disabled {
+.primary-button:disabled,
+.unavailable-button:disabled,
+.dismiss-button:disabled,
+.info-button:disabled {
 	opacity:0.4;
 }
 
-.unavailable-button {
-	background-color: #edbe5e;	
-}
-.dismiss-button {
-	background-color: #9d9c9a;
-}
-.info-button {
-	background-color: #80cfc5;
-}
 .myPopup button {
 	background-color: #ed5f5e;
+}
+
+a#call-btn {
+    text-decoration: none;
+}
+#email-btn {
+    background-color:#80cfc5;
 }
 
 /* Profile Button */

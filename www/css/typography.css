@@ -21,7 +21,7 @@ html {
     opacity: 0.75;
 }
 
-.product-description{
+.product-description {
     padding-top: 4vw;
     font-size: 5vw; /* 21px; */
     line-height: 6vw;
@@ -48,13 +48,24 @@ html {
     text-shadow: 0px 0px 10px #3d3c3a;
 }
 
+#scheduled-for-msg,
+#appt-date-time,
+#appt-address,
 .deadline-msg {
 	font-size:5vw;
+	line-height: 6vw;
+	text-shadow: 0px 0px 10px #3d3c3a;	
+}
+
+#appt-date-time {
+	font-weight: 800;
+}
+
+.deadline-msg {
 	line-height: 7vw;
 	width: 50%;
 	display:inline-block;
 	vertical-align:middle;
-	text-shadow: 0px 0px 10px #3d3c3a;
 }
 
 /* Booking */
@@ -84,9 +95,8 @@ html {
 }
 
 /* Modals */
-.complete-modal-title{
+.complete-modal-title {
     text-align:center;
-    margin-top: 52px;
     margin-bottom: 2vw;
     font-size: 7vw;
     line-height: 8vw;

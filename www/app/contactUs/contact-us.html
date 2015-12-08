@@ -4,14 +4,22 @@
       <i class="ion-ios-arrow-back"></i> Contact Us
   </ion-nav-back-button>
 </ion-nav-bar>
-	<ion-content >
-	<div class="fullscreen-image blurry" ng-style="{'background-image':'url({{vm.product.image}})'}">
-		<div id="contact-us-modal" class="complete-page-modal">
+<ion-content >
+	<div class="fullscreen-image blurry" ng-style="{'background-image':'url({{vm.product.image}})'}"></div>
+		<div id="contact-us-modal" class="rare-modal">
 			<div class="status-icon-circle" style="background-image:url('../img/icon_contact_us@3x.png')"></div>
-			<div class="complete-modal-title">Your satisfaction is our priority</div>
-			<div class="complete-modal-description">We love to get your feedback. Please feel free to contact us via phone or email</div>
+			<div class="rare-modal-content">
+				<div class="rare-modal-title">Your satisfaction is our priority</div>
+				<div class="rare-modal-description">We love to get your feedback. Please feel free to contact us via phone or email</div>
+			</div>
 		</div>
-		<a id="call-btn" class="primary-button" href="tel: 4156623856">Call</a>
-		<button id="email-btn" class="primary-button" ng-click="vm.email()">Email</button>
-	</ion-content>
+		<div class="static-footer">
+			<div class="action-button">
+				<a class="primary-button" id="call-btn" class="primary-button" href="tel: 4156623856">Call</a>
+			</div>
+			<div class="action-button">
+				<button id="email-btn" class="primary-button" ng-click="vm.email()">Email</button>
+			</div>
+		</div>
+</ion-content>
 </ion-view>

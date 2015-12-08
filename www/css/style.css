@@ -4,6 +4,7 @@
 @import "typography.css";
 @import "buttons.css";
 @import "forms.css";
+@import "modals.css";
 
 /****************************
 * COLORS                    *
@@ -68,11 +69,10 @@
 }
 
 .fullscreen-image {
-    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    height:100%;
     background-size: cover;
+    height: 100%;
 }
 
 .blur-fullscreen {
@@ -281,6 +281,7 @@
     width:100%;
     text-align:center;
     color:#ffffff;
+    z-index: 10;
 }
 
 .status-module {
@@ -297,10 +298,14 @@
     position: absolute;
     height: 80px;
     width: 80px;
-    margin-left:40%;
+    margin-left:50%;
     border-radius: 50%;
     background-size:cover;
-    margin-top:-12%;
+    margin-top:-40px;
+    transform: translateX(-50%);
+}
+#appt-schedule-container .status-icon-circle {
+    margin-top: -90px;
 }
 
 .short-status-msg {
@@ -356,19 +361,6 @@
 }
 
 /* NAME NUMBER MODAL */
-.complete-page-modal{
-    position:absolute;
-    background-color:#fff;
-    border-radius:5px;
-    width:80%;
-    height:300px;
-    bottom:20%;
-    left:10%;
-    right:10%;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
 .content {
     padding: 0 20px;
 }
@@ -396,8 +388,7 @@
 }
 
 #appt-schedule-icon {
-    margin-top:-18%;
-    margin-left:42%;
+
 }
 
 #appt-confirmed-modal {
@@ -455,28 +446,6 @@
     margin-left:0%;
     color:#ed5f5e;
     font-size:;
-}
-
-#call-btn{
-    position:absolute;
-    bottom:12%;
-}
-
-#call-btn a{
-    color:#ffffff;
-    text-decoration: none;
-}
-
-#email-btn{
-    position:absolute;
-    bottom:3%;
-    background-color:#80cfc5;
-}
-
-#contact-us-modal {
-    position:absolute;
-    top:35%;
-    height:160px;
 }
 
 .blurry {

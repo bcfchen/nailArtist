@@ -1,0 +1,33 @@
+/* ALERT MODALS */
+.rare-modal {
+    background: rgba(255,255,255,.99);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    overflow: visible;
+    border-radius: 4px;
+    transform: translate(-50%, -70%);
+}
+.rare-modal-content {
+    margin-top: 48px;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+.rare-modal-title {
+    text-align: center;
+    margin-bottom: 2vw;
+    font-size: 7vw;
+    line-height: 8vw;
+}
+.rare-modal-description {
+    text-align: center;
+    font-size: 5vw;
+    font-weight: 100;
+    line-height: 6vw;
+    margin: 6vw;
+}
+.rare-modal-button-container {
+    /* TODO: add css here for button wrapper style */
+}
