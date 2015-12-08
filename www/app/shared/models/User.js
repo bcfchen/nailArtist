@@ -13,7 +13,8 @@ User.prototype.setName = function(name){
 }
 
 User.prototype.setPhoneNumber = function(phoneNumber){
-	this.phoneNumber = phoneNumber;
+	var formattedPhoneNumber = phoneNumber ? phoneNumber.toString().replace(/\D+/g, '') : null;
+	this.phoneNumber = formattedPhoneNumber;
 }
 
 User.prototype.setAddress = function(type, address){

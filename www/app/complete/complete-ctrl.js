@@ -1,8 +1,8 @@
 (function(){
 	'use strict';
-	angular.module('nailArtist').controller('CompleteCtrl', ["formatterService", "phoneValidatorService", "$ionicLoading", "TwilioVerification", "$scope", "localStorageService", "$ionicModal", "constants", "userSelectionService", "$state", "firebaseService", CompleteCtrl]);
+	angular.module('nailArtist').controller('CompleteCtrl', ["phoneValidatorService", "$ionicLoading", "TwilioVerification", "$scope", "localStorageService", "$ionicModal", "constants", "userSelectionService", "$state", "firebaseService", CompleteCtrl]);
 
-	function CompleteCtrl(formatterService, phoneValidatorService, $ionicLoading, TwilioVerification, $scope, localStorageService, $ionicModal, constants, userSelectionService, $state, firebaseService){
+	function CompleteCtrl(phoneValidatorService, $ionicLoading, TwilioVerification, $scope, localStorageService, $ionicModal, constants, userSelectionService, $state, firebaseService){
 		var vm = this;
 		vm.product = userSelectionService.product;
 		vm.appointment = userSelectionService.appointment;
@@ -23,7 +23,7 @@
 				   nameNumberModal, but instead save record directly to firebase
 				*/
 				if (vm.user.name && vm.user.phoneNumber){
-					userSelectionService.appointment.userPhone = formatterService.formatPhoneNumber(vm.user.phoneNumber);
+					userSelectionService.appointment.setUserPhone(vm.user.phoneNumber);
 					$ionicLoading.show({
 	                    content: 'Loading',
 	                    animation: 'fade-in',
@@ -98,9 +98,8 @@
 
 			    	/* set input values */
 			    	localStorageService.setUserName(vm.user.name);
-			    	var formattedPhoneNumber = formatterService.formatPhoneNumber(vm.user.phoneNumber);
-			    	localStorageService.setUserPhoneNumber(formattedPhoneNumber);
-			    	userSelectionService.appointment.userPhone = formattedPhoneNumber;
+			    	localStorageService.setUserPhoneNumber(vm.user.phoneNumber);
+			    	userSelectionService.appointment.setUserPhone(vm.user.phoneNumber);
 			    	$ionicLoading.show({
 	                    content: 'Loading',
 	                    animation: 'fade-in',
