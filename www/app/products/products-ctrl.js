@@ -85,7 +85,9 @@
 
 			products.forEach(function(product){
 				allAppointments.forEach(function(appointment){
-					if (appointment.productKey === product.$id){
+					var isFutureAppointment = appointment.productKey === product.$id 
+											&& appointment.transactionId;
+					if (isFutureAppointment){
 						product.appointment = appointment;
 						product.dateTime = getAppointmentDateTime(appointment);
 					}

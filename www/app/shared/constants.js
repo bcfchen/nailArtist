@@ -4,6 +4,7 @@
     	FIREBASE_URL: "https://nailartist.firebaseio.com",
     	    	//SERVER_URL: "http://localhost:3006/charge"
 
-    	SERVER_URL: "https://morning-island-6861.herokuapp.com/charge"
+    	SERVER_URL: "https://morning-island-6861.herokuapp.com/charge",
+    	BUFFER_HOURS: 2
     });
 })();

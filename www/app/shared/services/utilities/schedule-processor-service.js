@@ -2,9 +2,9 @@
 
     angular
         .module("nailArtist")
-        .factory("scheduleProcessorService", [scheduleProcessorService]);
+        .factory("scheduleProcessorService", ["constants", scheduleProcessorService]);
 
-    function scheduleProcessorService() {
+    function scheduleProcessorService(constants) {
         var service = {
             processDateProperties: processDateProperties,
             filterTimesOfDate: filterTimesOfDate
@@ -117,12 +117,8 @@
 
         function isTimeInRange(time, date){
             var now = new moment();
-            var givenDateMoment = new moment(date);
-            var givenTimeMoment = new moment(time);
-            givenDateMoment.hour = givenTimeMoment.get('hour');
-            givenDateMoment.minute = givenTimeMoment.get('minute');
-
-            var isInRange = givenDateMoment > now;
+            var givenDateTimeMoment = new moment(time + " " + date);
+            var isInRange = givenDateTimeMoment > now.add(constants.BUFFER_HOURS, "hours");
             return isInRange;
         }
 
