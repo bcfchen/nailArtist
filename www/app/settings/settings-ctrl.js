@@ -36,7 +36,7 @@
 			vm.selectedAddress = vm.user.addresses[addressType];
 			$scope.isValidAddress = true;
 			$ionicPopup.show({
-			    template: '<input type="text" class="settings-address-input" placeholder="Street" ng-model="vm.selectedAddress.street">\n<input type="text" class="settings-address-input"  placeholder="City" ng-model="vm.selectedAddress.city">\n<input type="text" class="settings-address-input"  placeholder="State" ng-model="vm.selectedAddress.state">\n<input type="text" class="settings-address-input"  placeholder="ZIP" ng-model="vm.selectedAddress.zipCode"><div class="settings-validation-msg" ng-show="!isValidAddress">Please enter valid San Francisco address</div>',
+			    template: '<input type="text" class="settings-address-input form-input" placeholder="Street" ng-model="vm.selectedAddress.street">\n<input type="text" class="settings-address-input form-input"  placeholder="City" ng-model="vm.selectedAddress.city">\n<input type="text" class="settings-address-input form-input"  placeholder="State" ng-model="vm.selectedAddress.state">\n<input type="text" class="settings-address-input form-input"  placeholder="ZIP" ng-model="vm.selectedAddress.zipCode"><div class="settings-validation-msg" ng-show="!isValidAddress">Please enter valid San Francisco address</div>',
 			    title: "Edit Address",
 			    cssClass: 'popup-vertical-buttons',
 			    scope: $scope,
@@ -72,7 +72,7 @@
 		vm.editEmail = function(){
 			$scope.isValidEmail = true;
 			$ionicPopup.show({
-			    template: '<input type="email" ng-model="vm.user.email"><div class="settings-validation-msg" ng-show="!isValidEmail">Please enter valid email</div>',
+			    template: '<input class="form-input" type="email" ng-model="vm.user.email"><div class="settings-validation-msg" ng-show="!isValidEmail">Please enter valid email</div>',
 			    title: "Edit Email",
 			    cssClass: 'popup-vertical-buttons',
 			    scope: $scope,
@@ -106,7 +106,7 @@
 		vm.editPhoneNumber = function(){
 			$scope.isValidPhoneNumber = true;
 			$ionicPopup.show({
-			    template: '<input type="number" ng-model="vm.user.phoneNumber"><div class="settings-validation-msg" ng-show="!isValidPhoneNumber">Please enter valid phone number</div>',
+			    template: '<input class="form-input" type="number form-input" ng-model="vm.user.phoneNumber"><div class="settings-validation-msg" ng-show="!isValidPhoneNumber">Please enter valid phone number</div>',
 			    title: "Edit Phone Number",
 			    cssClass: 'popup-vertical-buttons',
 			    scope: $scope,
