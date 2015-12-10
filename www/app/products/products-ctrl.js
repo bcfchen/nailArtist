@@ -15,13 +15,15 @@
 		 * appointment info */
         $scope.$on( "$ionicView.enter", function( scopes, states ) {
         	if( states.fromCache) {
-			assignAppointmentInfo(vm.products);
-            }
+				assignAppointmentInfo(vm.products);        
+			}
         });
 
 		vm.products.$watch(function(event){
 			$ionicSlideBoxDelegate.update();
-
+			/* if user exists with valid phone number, check 
+			 * to see if user has future appointments for specific products
+			*/
 			assignAppointmentInfo(vm.products);
 			assignPurchaseDeadline(vm.products);
 		});
@@ -78,20 +80,26 @@
 		 * then assign that to appointment property of the product
 		*/
 		function assignAppointmentInfo(products){
-			localStorageService.cleanAppointments();
-			var allAppointments = localStorageService.getAppointments();
-			var currentProduct = getCurrentProduct();
-			var existingAppointment = null;
+			// if there is no user phone number stored, then don't bother
+        	var userPhoneNumber = localStorageService.getUserPhoneNumber();
+        	if (!userPhoneNumber){
+        		return;
+        	}
 
-			products.forEach(function(product){
-				allAppointments.forEach(function(appointment){
-					var isFutureAppointment = appointment.productKey === product.$id 
-											&& appointment.transactionId;
-					if (isFutureAppointment){
-						product.appointment = appointment;
-						product.dateTime = getAppointmentDateTime(appointment);
-					}
-				});
+			var currentProduct = getCurrentProduct();
+			var ref = new Firebase(constants.FIREBASE_URL + "/appointments/" + userPhoneNumber);
+			var userAppointments = $firebaseArray(ref);
+			userAppointments.$watch(function(event){
+				products.forEach(function(product){
+					userAppointments.forEach(function(appointment){
+						var isFutureAppointment = appointment.productKey === product.$id 
+												&& appointment.transactionId;
+						if (isFutureAppointment){
+							product.appointment = appointment;
+							product.dateTime = getAppointmentDateTime(appointment);
+						}
+					});
+				});			
 			});
 		}
 

@@ -15,7 +15,7 @@
         /* method implementations */
 
         function book(user, appointment, schedule){
-        	return saveUser(user).then(saveAppointment(appointment, schedule));
+        	return saveUser(user).then(addAppointmentToUser(user, appointment)).then(saveAppointment(appointment, schedule));
         }
 
         function saveUser(user){
@@ -33,13 +33,20 @@
     			userObj.email = user.email;
 
     			userObj.$save().then(function(){
-                    deferred.resolve();
+                    deferred.resolve(user);
                 });
             } else {
                 deferred.reject("User is invalid");
             }
 
             return deferred.promise;
+        }
+
+        function addAppointmentToUser(user, appointment){
+            var userAppointmentsRefUrl = constants.FIREBASE_URL + "/appointments/" + user.phoneNumber;
+            var userAppointmentsRef = new Firebase(userAppointmentsRefUrl);
+            var userAppointmentsArray = $firebaseArray(userAppointmentsRef);
+            return userAppointmentsArray.$add(appointment);
         }
 
         function saveAppointment(appointment, schedule){

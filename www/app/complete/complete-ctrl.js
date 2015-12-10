@@ -34,7 +34,6 @@
 
 					firebaseService.book(localStorageService.getUser(), userSelectionService.appointment, userSelectionService.schedule).then(function(){
 						$ionicLoading.hide();
-						localStorageService.addAppointment(userSelectionService.appointment);
 						$scope.apptConfirmedModal.show();
 					}, function error(err){
 							console.log("Booking failed with: ",  err);
@@ -111,7 +110,6 @@
 	                });
 			    	firebaseService.book(localStorageService.getUser(), userSelectionService.appointment, userSelectionService.schedule).then(function(){
 				    	$ionicLoading.hide();
-				    	localStorageService.addAppointment(userSelectionService.appointment);
 				    	$scope.nameNumberModal.hide().then(function(){
 				    		$scope.apptConfirmedModal.show();
 				    	});
