@@ -89,8 +89,11 @@
 			var currentProduct = getCurrentProduct();
 			var ref = new Firebase(constants.FIREBASE_URL + "/appointments/" + userPhoneNumber);
 			var userAppointments = $firebaseArray(ref);
-			userAppointments.$watch(function(event){
+			userAppointments.$loaded(function(){
 				products.forEach(function(product){
+					// reset product appointment/datetime info first
+					product.appointment = null;
+					product.dateTime = null;
 					userAppointments.forEach(function(appointment){
 						var isFutureAppointment = appointment.productKey === product.$id 
 												&& appointment.transactionId;
