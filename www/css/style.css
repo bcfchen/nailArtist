@@ -431,8 +431,12 @@
 
 .ion-close-round {
     float:left;
-    margin-left:0%;
     color:#ed5f5e;
+}
+
+.ion-close-round,
+.ion-ios-arrow-back {
+    margin: 0 10px 0 0;
 }
 
 .button-clear {
