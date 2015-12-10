@@ -289,9 +289,20 @@
     width:80%;
     margin-top:70%;
     margin-left:10%;
-    border-radius:10px;
     text-align:center;
-    background-color:#ffffff;
+    background-color: #fff;
+}
+
+.popup-container {
+    padding: 10px;
+}
+.popup-container .popup {
+    width: 100%;
+}
+
+.status-module,
+.popup-container .popup {
+    border-radius: 10px;
 }
 
 .status-icon-circle {

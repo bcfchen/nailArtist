@@ -33,7 +33,9 @@ button:disabled {
 	padding: 10px 0px 10px;
 }
 .action-button a,
-.action-button button {
+.action-button button,
+.popup-buttons button,
+.popup-vertical-buttons button:first-child {
 	width: 100%;
 	padding: 10px;
 	opacity: .9;
@@ -41,7 +43,7 @@ button:disabled {
 	display: block;
 	height: 44px;
 	line-height: 24px;
-	margin: 0 0 10px;
+	margin: 0 0 10px !important;
 }
 /* Button Colors */
 .primary-button,
