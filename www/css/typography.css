@@ -117,3 +117,7 @@ html {
 .underline {
     text-decoration: underline;
 }
+
+#policies-container div {
+    font-size: 4.5vmin; /* 18px; */    
+}
