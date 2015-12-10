@@ -117,7 +117,7 @@
 
         function isTimeInRange(time, date){
             var now = new moment();
-            var givenDateTimeMoment = new moment(time + " " + date);
+            var givenDateTimeMoment = new moment(date + " " + time);
             var isInRange = givenDateTimeMoment > now.add(constants.BUFFER_HOURS, "hours");
             return isInRange;
         }
