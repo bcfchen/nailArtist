@@ -1,8 +1,8 @@
 (function(){
 	'use strict';
-	angular.module('nailArtist').controller("SettingsCtrl", ["settingsValidatorService", "policies", "$ionicPopup", "firebaseService", "$ionicHistory", "$scope", "$ionicModal", "localStorageService", "userSelectionService", "$state", SettingsCtrl]);
+	angular.module('nailArtist').controller("SettingsCtrl", ["settingsValidatorService", "$ionicPopup", "firebaseService", "$ionicHistory", "$scope", "$ionicModal", "localStorageService", "userSelectionService", "$state", SettingsCtrl]);
 
-	function SettingsCtrl(settingsValidatorService, policies, $ionicPopup, firebaseService, $ionicHistory, $scope, $ionicModal, localStorageService, userSelectionService, $state){
+	function SettingsCtrl(settingsValidatorService, $ionicPopup, firebaseService, $ionicHistory, $scope, $ionicModal, localStorageService, userSelectionService, $state){
 		var vm = this;
 		vm.product = userSelectionService.product;
 		vm.user = localStorageService.getUser();
