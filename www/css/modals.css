@@ -17,16 +17,16 @@
 }
 .rare-modal-title {
     text-align: center;
-    margin-bottom: 2vw;
-    font-size: 7vw;
-    line-height: 8vw;
+    margin-bottom: 2vmin;
+    font-size: 7vmin;
+    line-height: 8vmin;
 }
 .rare-modal-description {
     text-align: center;
-    font-size: 5vw;
+    font-size: 5vmin;
     font-weight: 100;
-    line-height: 6vw;
-    margin: 6vw;
+    line-height: 6vmin;
+    margin: 6vmin;
 }
 .rare-modal-button-container {
     /* TODO: add css here for button wrapper style */

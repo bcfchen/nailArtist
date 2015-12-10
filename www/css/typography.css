@@ -6,33 +6,33 @@ html {
 
 /* Product */
 .big-header {
-    font-size: 10vw; /* 42px; */
+    font-size: 10vmin; /* 42px; */
     font-weight: 300;
-    line-height: 10vw;
+    line-height: 10vmin;
     text-align: left;
 }
 
 .small-header {
-	padding-top: 1.5vw;
-    font-size: 6vw; /* 24px; */
-    line-height: 7vw;
+	padding-top: 1.5vmin;
+    font-size: 6vmin; /* 24px; */
+    line-height: 7vmin;
     font-weight: 300;
     text-align: left;
     opacity: 0.75;
 }
 
 .product-description {
-    padding-top: 4vw;
-    font-size: 5vw; /* 21px; */
-    line-height: 6vw;
+    padding-top: 4vmin;
+    font-size: 5vmin; /* 21px; */
+    line-height: 6vmin;
     font-weight: 300;
     text-align: left;
     width:60%;
 }
 
 .product-price {
-	font-size: 16vw; /* 42px; */
-	margin: 0 2vw 0 6vw;
+	font-size: 16vmin; /* 42px; */
+	margin: 0 2vmin 0 6vmin;
     float:left;
     font-weight: 100;
     text-shadow: 0px 0px 10px #3d3c3a;
@@ -40,9 +40,9 @@ html {
 
 .dollar-sign {
 	position: absolute;
-	top: 2vw;
+	top: 2vmin;
 	left: 0;
-    font-size:8vw;
+    font-size: 8vmin;
     font-weight: 100;
     vertical-align: top;
     text-shadow: 0px 0px 10px #3d3c3a;
@@ -52,8 +52,8 @@ html {
 #appt-date-time,
 #appt-address,
 .deadline-msg {
-	font-size:5vw;
-	line-height: 6vw;
+	font-size:5 vmin;
+	line-height: 6vmin;
 	text-shadow: 0px 0px 10px #3d3c3a;	
 }
 
@@ -62,7 +62,7 @@ html {
 }
 
 .deadline-msg {
-	line-height: 7vw;
+	line-height: 7vmin;
 	width: 50%;
 	display:inline-block;
 	vertical-align:middle;
@@ -70,8 +70,8 @@ html {
 
 /* Booking */
 .booking-sub-header {
-	font-size: 5vw; /* 21px; */
-    line-height: 6vw;
+	font-size: 5vmin; /* 21px; */
+    line-height: 6vmin;
     text-align: center;
     margin-top: 20px;
     margin-bottom: 10px;
@@ -80,14 +80,14 @@ html {
 .day-of-week,
 .time-of-day,
 .address-type {
-    font-size: 5vw;
+    font-size: 5vmin;
     font-weight: 400;
-    margin-bottom: -2vw;
+    margin-bottom: -2vmin;
 }
 .month-day,
 .address-text,
 .address-text-placeholder {
-    font-size: 4vw;
+    font-size: 4vmin;
     font-weight: 100;
     white-space: nowrap;
 	overflow: hidden;
@@ -97,18 +97,18 @@ html {
 /* Modals */
 .complete-modal-title {
     text-align:center;
-    margin-bottom: 2vw;
-    font-size: 7vw;
-    line-height: 8vw;
+    margin-bottom: 2vmin;
+    font-size: 7vmin;
+    line-height: 8vmin;
 }
 
 .complete-modal-description{
     text-align:center;
-    margin-top: 6vw;
+    margin-top: 6vmin;
     margin-bottom:5%;
     margin-left:10%;
     margin-right:10%;
-    font-size: 5vw;
-    line-height: 6vw;
+    font-size: 5vmin;
+    line-height: 6vmin;
     font-weight: 100;
 }

@@ -111,8 +111,8 @@ a#call-btn {
 }
 
 .date-container button {
-    width: 28vw;
-    height: 20vw;
+    width: 28vmin;
+    height: 20vmin;
 }
 
 .date-container button:first-child,
