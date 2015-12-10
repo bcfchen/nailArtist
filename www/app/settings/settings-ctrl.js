@@ -106,7 +106,7 @@
 		vm.editPhoneNumber = function(){
 			$scope.isValidPhoneNumber = true;
 			$ionicPopup.show({
-			    template: '<input class="form-input" type="number form-input" ng-model="vm.user.phoneNumber"><div class="settings-validation-msg" ng-show="!isValidPhoneNumber">Please enter valid phone number</div>',
+			    template: '<input class="form-input" type="tel form-input" ng-model="vm.user.phoneNumber"><div class="settings-validation-msg" ng-show="!isValidPhoneNumber">Please enter valid phone number</div>',
 			    title: "Edit Phone Number",
 			    cssClass: 'popup-vertical-buttons',
 			    scope: $scope,

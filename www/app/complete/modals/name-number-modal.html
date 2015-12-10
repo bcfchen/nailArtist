@@ -4,7 +4,7 @@
 		<div class="complete-modal-title">Payment Processing</div>
 		<div class="complete-modal-description">Before you go, we need to get your name and phone number so we can contact you for your appointment</div>
 	    <input class="name-number-input user-text-input form-input" placeholder="First and Last Name" type="text" ng-model="vm.user.name"/>        
-	    <input class="name-number-input user-text-input form-input" type="number" pattern="\d*" placeholder="Phone Number" ng-model="vm.user.phoneNumber"/>
+	    <input class="name-number-input user-text-input form-input" type="tel" pattern="\d*" placeholder="Phone Number" ng-model="vm.user.phoneNumber"/>
 	    <div id="name-number-validation-msg" class="validation-msg" ng-show="!validNamePhoneNumber">**{{errMsg}}</div>
 	    <div class="action-button no-padding">
 	    	<button class="primary-button" ng-click="nameNumberModal.done()">Done</button>
