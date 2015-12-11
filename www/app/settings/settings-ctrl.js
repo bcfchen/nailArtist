@@ -28,7 +28,7 @@
 		}
 
 		vm.openBrowser = function(url){
-			window.open(url, '_blank', 'location=yes'); 
+			window.open(url, '_system', 'location=yes'); 
 			return false;
 		}
 
