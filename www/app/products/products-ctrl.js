@@ -5,8 +5,8 @@
 	function ProductsCtrl($timeout, $scope, localStorageService, userSelectionService, $firebaseArray, constants, $ionicSlideBoxDelegate, $state){
 		var vm = this;
 		var ref = new Firebase(constants.FIREBASE_URL + "/products");
-		vm.products = $firebaseArray(ref);
-
+		var rawProducts = $firebaseArray(ref);
+		startWatch();
 		/* we're using caching for this page so that when we hit 
 		 * "back" on other pages to return to this one, the slide position
 		 * will maintain. however, if it's cached, then it won't know to update
@@ -15,17 +15,9 @@
 		 * appointment info */
         $scope.$on( "$ionicView.enter", function( scopes, states ) {
         	if( states.fromCache) {
-				assignAppointmentInfo(vm.products);        
+        		load();
 			}
         });
-
-		vm.products.$watch(function(event){
-			$ionicSlideBoxDelegate.update();
-			/* if user exists with valid phone number, check 
-			 * to see if user has future appointments for specific products
-			*/
-			assignAppointmentInfo(vm.products);
-		});
 
 		vm.toProductDetails = function(){
 			userSelectionService.product = getCurrentProduct();
@@ -53,6 +45,53 @@
 		}
 
 		/* private method implementation */
+
+        function load(){
+			rawProducts.$loaded(function(response){
+				postProcessProducts(response);
+			});
+        }
+
+        /* ionSlideBox has bug where if you're currently removing slide box items
+         * from the left, it knows to go to next slide, but if you're removing slide
+         * box items from the right, and you're on the item slide that's been removed,
+         * then it'll give you a blank page. handling this by manually checking the 
+         * slidebox index and slide to previous if necessary */
+         function handleSlideboxIndex(rawProducts){
+         	var shouldSlideToPrev = 
+         	vm.products.length < rawProducts.length
+         	&& $ionicSlideBoxDelegate.currentIndex() === vm.products.length;
+         	if (shouldSlideToPrev){
+         		$ionicSlideBoxDelegate.previous();
+         	}
+         }
+
+        function startWatch(){
+			rawProducts.$watch(function(event){
+				postProcessProducts(rawProducts);
+			});
+        }
+
+        function postProcessProducts(rawProducts){
+    		vm.products = filterByAvailable(rawProducts);
+			handleSlideboxIndex(rawProducts);
+			$ionicSlideBoxDelegate.update();
+			/* if user exists with valid phone number, check 
+			 * to see if user has future appointments for specific products
+			*/
+			assignAppointmentInfo(vm.products);
+        }
+
+        function filterByAvailable(rawProducts){
+			var products = [];
+			rawProducts.forEach(function(rawProduct){
+				if (rawProduct.available){
+					products.push(rawProduct);
+				}
+			});
+
+			return products;
+        }
 
 		function getAppointmentDateTime(appointment){
 			if (!appointment){
