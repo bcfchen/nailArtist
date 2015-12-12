@@ -245,9 +245,10 @@
 }
 
 .state-zip-container {
+    background: transparent;
+    position: relative;
+    overflow: hidden;
     width: 100%;
-    margin-bottom:20%;
-    background-color:blue;
 }
 
 .edit-state {
