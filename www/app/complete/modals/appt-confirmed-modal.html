@@ -1,11 +1,11 @@
-<div id="appt-confirmed-modal" class="complete-page-modal">
+<div id="appt-confirmed-modal" class="complete-page-modal rare-modal">
 	<div class="status-icon-circle" style="background-image:url('../img/icon_check@3x.png')"></div>
-	<div class="complete-modal-title">Thank You So Much!</div>
-	<div class="complete-modal-description">Your appointment is confirmed. If you need to make changes or have questions, contact us.</div>
-	<div class="action-button">
-    	<button id="appt-confirm-contact-us-btn" class="primary-button" ng-click="apptConfirmedModal.contactUs()">Contact Us</button>
-	</div>
-	<div class="action-button">
-    	<button id="close-appt-btn" class="primary-button" ng-click="apptConfirmedModal.close()">Close</button>
+	<div class="rare-modal-content">
+		<div class="complete-modal-title">Thank You So Much!</div>
+		<div class="complete-modal-description">Your appointment is confirmed. If you need to make changes or have questions, contact us.</div>
+		<div class="popup-vertical-buttons">
+	    	<button id="appt-confirm-contact-us-btn" class="primary-button" ng-click="apptConfirmedModal.contactUs()">Contact Us</button>
+	    	<button id="close-appt-btn" class="dismiss-button" ng-click="apptConfirmedModal.close()">Close</button>
+		</div>
 	</div>
 </div>

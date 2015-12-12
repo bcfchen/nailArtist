@@ -390,21 +390,12 @@
 }
 
 #close-appt-btn {
-    margin-top:2%;
     background-color:#9d9c9a;
 }
 
 #reminder-modal {
     height:230px;
     bottom:10%;
-}
-
-#appt-schedule-icon {
-
-}
-
-#appt-confirmed-modal {
-    height:230px;
 }
 
 #appt-confirm-contact-us-btn {

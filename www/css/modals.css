@@ -13,7 +13,7 @@
     margin-top: 48px;
     position: relative;
     overflow: hidden;
-    width: 100%;
+    padding: 0 20px;
 }
 .rare-modal-title {
     text-align: center;
