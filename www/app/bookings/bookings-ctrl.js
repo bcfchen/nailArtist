@@ -128,6 +128,11 @@
 				setAddressFields(vm.user.addresses[vm.selectedAddressType], storedAddress);
 			 	vm.showBookingContainer = true;
 			 });
+
+			 $scope.toContactUs = function(){
+			 		$state.go("contactUs");
+			 		$scope.editAddressModal.hide();
+				}
 		  });
 		}
 

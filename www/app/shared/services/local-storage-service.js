@@ -18,7 +18,9 @@
       return this.getObject("user") ? transformer.transform(this.getObject("user"), User) : new User();
     },
     setUser: function(value) {
-      return this.setObject("user", value);
+      var user = transformer.transform(value, User);
+      user.setPhoneNumber(user.phoneNumber);
+      return this.setObject("user", user);
     },
     removeUser: function() {
       delete $window.localStorage["user"];
@@ -46,8 +48,7 @@
     },
     setUserPhoneNumber: function(phoneNumber){
       var currObject = this.getUser();
-      var formattedPhoneNumber = formatterService.formatPhoneNumber(phoneNumber);
-      currObject.setPhoneNumber(formattedPhoneNumber);
+      currObject.setPhoneNumber(phoneNumber);
       this.setUser(currObject);    
     },
     setUserName: function(name){

@@ -269,6 +269,10 @@
     font-size:10px;
 }
 
+.anchor-text-underline{
+    text-decoration: underline;
+}
+
 #confirm-address-btn {
     margin-top:2.5%;
     margin-bottom:2.5%;
