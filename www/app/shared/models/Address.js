@@ -1,7 +1,7 @@
 function Address()
 {
 	this.street = "";
-	this.city = "";
-	this.state = "";
+	this.city = "San Francisco";
+	this.state = "CA";
 	this.zipCode = "";
 }
