@@ -46,7 +46,7 @@
 		}
 
 		function sendText() {
-			return TwilioVerification.sendCode(vm.user.phoneNumber);
+			return TwilioVerification.sendCode(vm.user.phoneNumber, "Your RARE Nails verification code is ");
 		}
 
 		function initializeNameNumberModal(){
