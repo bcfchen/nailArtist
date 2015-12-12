@@ -8,17 +8,9 @@
 			  	<div class="small-header">{{product.hashtags}}</div>
 			  	<div class="product-description">{{product.description}}</div>
 		  	</div>
-		  	<appt-info appointment="product.appointment" ng-show="product.appointment"></appt-info>
-<!-- 		  	<div id="appt-info-container" ng-show="product.appointment">
-				<div id="appt-schedule-container">
-						<div id="appt-schedule-icon" class="status-icon-circle" style="background-image:url('../img/icon_check@3x.png')"></div>
-				  		<div id="scheduled-for-msg">You are scheduled for</div>
-						<div id="appt-date-time">{{product.dateTime.date}} at {{product.dateTime.time}}</div>
-				  	</div>
-				 <div id="appt-address">{{product.appointment.address.street}}</div>
-		  	</div> -->
+		  	<appt-info appointments="vm.userAppointments" product="product" ng-show="product.appointment"></appt-info>
 		  	<div id="bottom-shader"></div>
-		  	<price-deadline product="product" nav-function="vm.toProductDetails()"></price-deadline>
+		  	<price-deadline product="product" nav-function="vm.toProductDetails()" ng-hide="product.appointment"></price-deadline>
 		  	<div class="fullscreen-image" ng-style="{'background-image':'url({{product.image}})'}">
 		  </ion-slide>
 		  <div class="static-footer action-button">

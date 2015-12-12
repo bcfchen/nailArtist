@@ -25,7 +25,6 @@
 			 * to see if user has future appointments for specific products
 			*/
 			assignAppointmentInfo(vm.products);
-			assignPurchaseDeadline(vm.products);
 		});
 
 		vm.toProductDetails = function(){
@@ -69,13 +68,6 @@
 			}
 		}
 
-		function assignPurchaseDeadline(products){
-			products.forEach(function(product){
-				var productDeadline = product.deadline.replace(/-/g, '/');
-				product.deadlineText = moment(productDeadline).fromNow();
-			});
-		}
-
 		/* get all future appointments. if any one of them is for this current product, 
 		 * then assign that to appointment property of the product
 		*/
@@ -88,13 +80,13 @@
 
 			var currentProduct = getCurrentProduct();
 			var ref = new Firebase(constants.FIREBASE_URL + "/appointments/" + userPhoneNumber);
-			var userAppointments = $firebaseArray(ref);
-			userAppointments.$loaded(function(){
+			vm.userAppointments = $firebaseArray(ref);
+			vm.userAppointments.$loaded(function(){
 				products.forEach(function(product){
 					// reset product appointment/datetime info first
 					product.appointment = null;
 					product.dateTime = null;
-					userAppointments.forEach(function(appointment){
+					vm.userAppointments.forEach(function(appointment){
 						var isFutureAppointment = appointment.productKey === product.$id 
 												&& appointment.transactionId;
 						if (isFutureAppointment){
