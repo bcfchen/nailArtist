@@ -5,6 +5,7 @@
     	    	//SERVER_URL: "http://localhost:3006/charge"
 
     	SERVER_URL: "https://morning-island-6861.herokuapp.com/charge",
-    	BUFFER_HOURS: 2
+    	BUFFER_HOURS: 2,
+    	TWILIO_MSG: "Your RARE Nails verification code is "
     });
 })();
