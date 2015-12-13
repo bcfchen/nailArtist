@@ -1,8 +1,8 @@
 (function(){
 	'use strict';
-	angular.module('nailArtist').controller("ProductsCtrl", ["$timeout", "$scope", "localStorageService", "userSelectionService", "$firebaseArray", "constants", "$ionicSlideBoxDelegate", "$state", ProductsCtrl]);
+	angular.module('nailArtist').controller("ProductsCtrl", ["$q", "$timeout", "$scope", "localStorageService", "userSelectionService", "$firebaseArray", "constants", "$ionicSlideBoxDelegate", "$state", ProductsCtrl]);
 
-	function ProductsCtrl($timeout, $scope, localStorageService, userSelectionService, $firebaseArray, constants, $ionicSlideBoxDelegate, $state){
+	function ProductsCtrl($q, $timeout, $scope, localStorageService, userSelectionService, $firebaseArray, constants, $ionicSlideBoxDelegate, $state){
 		var vm = this;
 		var ref = new Firebase(constants.FIREBASE_URL + "/products");
 		var rawProducts = $firebaseArray(ref);
@@ -73,19 +73,23 @@
         }
 
         function postProcessProducts(rawProducts){
-    		vm.products = filterByAvailable(rawProducts);
-			handleSlideboxIndex(rawProducts);
-			$ionicSlideBoxDelegate.update();
-			/* if user exists with valid phone number, check 
-			 * to see if user has future appointments for specific products
-			*/
-			assignAppointmentInfo(vm.products);
+        	assignAppointmentInfo(rawProducts).then(function(){
+	    		vm.products = filterProducts(rawProducts);
+				handleSlideboxIndex(rawProducts);
+				$ionicSlideBoxDelegate.update();
+				/* if user exists with valid phone number, check 
+				 * to see if user has future appointments for specific products
+				*/
+				// assignAppointmentInfo(vm.products);
+				assignDeadlineInfo(vm.products);
+        	});
+
         }
 
-        function filterByAvailable(rawProducts){
+        function filterProducts(rawProducts){
 			var products = [];
 			rawProducts.forEach(function(rawProduct){
-				if (rawProduct.available){
+				if (rawProduct.available || rawProduct.appointment){
 					products.push(rawProduct);
 				}
 			});
@@ -107,17 +111,40 @@
 			}
 		}
 
+		function isAppointmentInFuture(appointment){
+			if (!appointment){
+				return false;
+			}
+
+			var apptDate = appointment.schedule.date.replace(/-/g, '/');
+			var appointmentDateTimeObj = new moment(apptDate + " " + appointment.schedule.time);
+			return appointmentDateTimeObj > new moment();
+		}
+
+		function getIsDeadlineUp(product){
+			var productDeadline = product.deadline.replace(/-/g, '/');
+            var productDeadlineObj = moment(productDeadline + " " + "23:59:59");
+			var daysFromToday = moment.duration(productDeadlineObj - new moment()).asDays();
+            return daysFromToday < 0;
+		}
+
+		function getDeadlineText(product){
+			var productDeadline = product.deadline.replace(/-/g, '/');
+            var productDeadlineObj = moment(productDeadline + " " + "23:59:59");
+			return productDeadlineObj.fromNow();
+		}
+
 		/* get all future appointments. if any one of them is for this current product, 
 		 * then assign that to appointment property of the product
 		*/
 		function assignAppointmentInfo(products){
+			var deferred = $q.defer();
 			// if there is no user phone number stored, then don't bother
         	var userPhoneNumber = localStorageService.getUserPhoneNumber();
         	if (!userPhoneNumber){
-        		return;
+        		deferred.resolve();
         	}
 
-			var currentProduct = getCurrentProduct();
 			var ref = new Firebase(constants.FIREBASE_URL + "/appointments/" + userPhoneNumber);
 			vm.userAppointments = $firebaseArray(ref);
 			vm.userAppointments.$loaded(function(){
@@ -126,14 +153,27 @@
 					product.appointment = null;
 					product.dateTime = null;
 					vm.userAppointments.forEach(function(appointment){
-						var isFutureAppointment = appointment.productKey === product.$id 
+						var isAppointmentForProduct = appointment.productKey === product.$id 
 												&& appointment.transactionId;
-						if (isFutureAppointment){
+						var apptDateTimeObj = getAppointmentDateTime(appointment);
+						var isFutureAppointment = isAppointmentInFuture(appointment);
+						if (isAppointmentForProduct && isFutureAppointment){
 							product.appointment = appointment;
-							product.dateTime = getAppointmentDateTime(appointment);
+							product.dateTime = apptDateTimeObj;
 						}
 					});
 				});			
+
+				deferred.resolve(products);
+			});
+
+			return deferred.promise;
+		}
+
+		function assignDeadlineInfo(products){
+			products.forEach(function(product){
+				product.isDeadlineUp = getIsDeadlineUp(product);
+				product.deadlineText = getDeadlineText(product);
 			});
 		}
 
