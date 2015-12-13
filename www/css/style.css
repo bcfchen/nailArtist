@@ -124,8 +124,7 @@
 }
 
 /* BOOKINGS PAGE */
-.scroll-bar-indicator
-{
+.scroll-bar-indicator {
     display: none;
 }
 
@@ -133,7 +132,8 @@
     background: rgba(255, 255, 255, 0.85);
     position: absolute;
     bottom: 0px;
-    overflow: hidden;
+    overflow-y: hidden;
+    overflow-x: scroll;
     width: 100%;
 }
 .date-container {
@@ -141,7 +141,8 @@
 }
 
 .wide-as-needed {
-  overflow: scroll;
+  overflow-x: scroll;
+  overflow-y: hidden;
   white-space: nowrap;
 }
 
@@ -156,7 +157,7 @@
     padding: 0;
 }
 
-.scroll { 
+.scroll {
   min-width: 100%;
 }
 
@@ -247,6 +248,9 @@
 }
 
 /* EDIT ADDRESS MODAL */
+.address-selector {
+    margin-bottom: 20px;
+}
 .edit-address-container {
     position:absolute;
     background-color:#ffffff;

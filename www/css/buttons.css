@@ -63,7 +63,11 @@
 /* Scrolling buttons should float */
 .scroll button,
 .scroll .btn {
-	float: left;
+	display: inline-block;
+}
+.wide-as-needed button:last-child,
+.wide-as-needed .btn:last-child {
+	margin-right: 20px;
 }
 
 /* Disabled Button Styles */
