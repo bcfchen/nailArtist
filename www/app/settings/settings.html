@@ -1,4 +1,4 @@
-<ion-view ng-controller="SettingsCtrl as vm">
+<ion-view ng-controller="SettingsCtrl as vm" ng-class="{'shaded-background':vm.blurBackground}">
   <ion-nav-bar>
  <ion-nav-back-button class="button-clear" ng-click="vm.goBack()">
     <i class="ion-close-round"></i> {{vm.user.name}}

@@ -5,7 +5,7 @@
     <input class="user-text-input form-input" type="text" disabled="true" placeholder="{{vm.selectedAddress.city}}"/>
 	<div class="state-zip-container">
 		<input class="edit-state form-input" disabled="true" placeholder="{{vm.selectedAddress.state}}" type="text"/>
-		<input class="edit-zipcode form-input" required placeholder="ZIP" ng-model="vm.selectedAddress.zipCode" type="text"/>
+		<input class="edit-zipcode form-input" required placeholder="ZIP" ng-model="vm.selectedAddress.zipCode" type="number"/>
 	</div>
 	<div class="validation-msg" ng-show="!isAddressValid">**This address is out of our service area. <a class="anchor-text-underline" ng-click="toContactUs()">Contact us</a> to learn more</div>
 	<div class="btn-container no-padding">
