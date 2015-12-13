@@ -162,6 +162,9 @@
 
 
 /* PRODUCT DEATILS */
+.instagram-list .instagram-container:last-child {
+    margin-bottom: 80px;
+}
 .image-container {
     position: relative;
     width: 100%;
