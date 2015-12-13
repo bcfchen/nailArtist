@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('nailArtist', ['ionic', 'exceptionOverride', 'firebase', 'ngCordova', 'mcwebb.twilio', 'mcwebb.twilio-verification'])
+angular.module('nailArtist', ['ionic', 'firebase', 'ngCordova', 'mcwebb.twilio', 'mcwebb.twilio-verification'])
 
 .run(function($ionicPlatform, $window) {
   $ionicPlatform.ready(function() {
@@ -21,7 +21,7 @@ angular.module('nailArtist', ['ionic', 'exceptionOverride', 'firebase', 'ngCordo
       StatusBar.styleDefault();
     }
   });
-}).config(function($ionicConfigProvider, $stateProvider, $urlRouterProvider, TwilioProvider, TwilioVerificationProvider) {
+}).config(function($provide, $ionicConfigProvider, $stateProvider, $urlRouterProvider, TwilioProvider, TwilioVerificationProvider) {
 
     // override default page transitions
     $ionicConfigProvider.views.transition("none");
@@ -63,4 +63,15 @@ angular.module('nailArtist', ['ionic', 'exceptionOverride', 'firebase', 'ngCordo
 
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/products');
+
+     $provide.decorator("$exceptionHandler", ['$delegate', '$window', function($delegate, $window) {
+    return function (exception, cause) {
+      if ($window.atatus) {
+        $window.atatus.notify(exception);
+      }
+      // (Optional) Pass the error through to the delegate
+      $delegate(exception, cause);
+      $window.location.hash = "#products";
+    }
+  }]);
 });
