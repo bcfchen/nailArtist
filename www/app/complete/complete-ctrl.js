@@ -1,6 +1,7 @@
 (function(){
 	'use strict';
-	angular.module('nailArtist').controller('CompleteCtrl', ["phoneValidatorService", "$ionicLoading", "TwilioVerification", "$scope", "localStorageService", "$ionicModal", "constants", "userSelectionService", "$state", "firebaseService", CompleteCtrl]);
+	var module = angular.module('nailArtist');
+	module.controller('CompleteCtrl', ["phoneValidatorService", "$ionicLoading", "TwilioVerification", "$scope", "localStorageService", "$ionicModal", "constants", "userSelectionService", "$state", "firebaseService", CompleteCtrl]);
 
 	function CompleteCtrl(phoneValidatorService, $ionicLoading, TwilioVerification, $scope, localStorageService, $ionicModal, constants, userSelectionService, $state, firebaseService){
 		var vm = this;

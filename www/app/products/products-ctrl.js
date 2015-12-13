@@ -1,5 +1,4 @@
 (function(){
-	'use strict';
 	angular.module('nailArtist').controller("ProductsCtrl", ["$q", "$timeout", "$scope", "localStorageService", "userSelectionService", "$firebaseArray", "constants", "$ionicSlideBoxDelegate", "$state", ProductsCtrl]);
 
 	function ProductsCtrl($q, $timeout, $scope, localStorageService, userSelectionService, $firebaseArray, constants, $ionicSlideBoxDelegate, $state){
