@@ -169,10 +169,7 @@
 }
 
 .user-text-container {
-    margin-left:5%;
-    margin-right:5%;
-    margin-bottom:20px;
-    margin-top:15px;
+    margin: 0 20px 40px;
     background-color: #ffffff;
     color: #3d3c3a;
 }

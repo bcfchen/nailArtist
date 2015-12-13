@@ -18,12 +18,12 @@
     		</div>
     	</div>
     	<div class="user-text-container">
-    		<div class="comments">{{instagram.comments}}</div>
-    		<div class="hashtags">{{instagram.hashtags}}</div>
+    		<span class="comments">{{instagram.comments}}&nbsp;</span>
+    		<span class="hashtags">{{instagram.hashtags}}</span>
     	</div>
     </div>
   </ion-content>
   <div class="static-footer btn-container">
-      <button id="product-details-confirm-btn" ng-disabled="vm.product.appointment"  class="btn primary-btn" ng-click="vm.bookAppointment()">{{vm.product.appointment ? "Booked" : "Book"}}</button>
+      <button id="product-details-confirm-btn" ng-disabled="vm.product.appointment"  ng-class="vm.product.appointment ? 'btn info-btn' : 'btn primary-btn'" ng-click="vm.bookAppointment()">{{vm.product.appointment ? "Booked" : "Book"}}</button>
   </div>
 </ion-view>

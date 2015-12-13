@@ -21,12 +21,17 @@ html {
     opacity: 0.75;
 }
 
+.user-text-container,
 .product-description {
     padding-top: 4vmin;
     font-size: 5vmin; /* 21px; */
     line-height: 6vmin;
     font-weight: 300;
     text-align: left;
+}
+
+.user-text-container .hashtags {
+    color: #9d9c9a;
 }
 
 .product-price {
