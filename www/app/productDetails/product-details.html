@@ -8,6 +8,7 @@
   <ion-content style="margin-bottom:80px; background-color: transparent;" on-swipe-down="vm.toProducts()">
     <div class="instagram-container" ng-repeat="instagram in vm.instagrams">
     	<div class="image-container" ng-style="{'background-image':'url({{instagram.image}})'}">
+            <div id="bottom-shader"></div>
     		<div class="user-info-container">
     			<div class="user-profile-image">
     				<div class="img-small-circle" ></div>
