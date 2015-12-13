@@ -7,7 +7,7 @@
     width: 80%;
     overflow: visible;
     border-radius: 4px;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -60%);
 }
 .rare-modal-content {
     margin-top: 48px;
