@@ -195,7 +195,7 @@
     width: 60px;
     border-radius: 50%;
     background-size: cover;
-    border: 1.5px solid #ffffff;
+    border: 2px solid #fff;
 }
 
 .img-small-circle {
@@ -206,7 +206,7 @@
     background-size:cover;
     bottom: 0;
     left: 0;
-    border: 1.5px solid #ffffff;
+    border: 1px solid #fff;
     background-image:url('../img/icon_instagram_active_large@3x.png');
 }
 
