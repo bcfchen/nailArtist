@@ -19,7 +19,6 @@
 .btn-container.no-padding {
 	padding: 10px 0px 10px;
 }
-button,
 .btn {
 	display: block;
 	font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
@@ -100,7 +99,7 @@ button:disabled,
     border-color:#D6D6D6;
     background-color:#ffffff;
     color: #7d7c7a;
-    height: 64px;
+    height: 64px !important;
     box-shadow:none;
 }
 .date-container button {
