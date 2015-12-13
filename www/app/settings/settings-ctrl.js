@@ -42,8 +42,8 @@
 			    scope: $scope,
 			    buttons: [
 			      {
-			        text: 'Done',
-			        type: "primary-button",
+			        text: 'Save',
+			        type: "btn primary-btn",
 			        onTap: function(e) {
 			        $scope.isValidAddress = settingsValidatorService.validateAddress(vm.selectedAddress);
 			          if (!$scope.isValidAddress ) {
@@ -58,7 +58,7 @@
 			      },
 			      {
 			        text: 'Cancel',
-			        type: "dismiss-button",
+			        type: "btn dismiss-btn",
 			        onTap: function(e) {
 			        	// revert to stored value
 			        	vm.user.addresses[addressType] = localStorageService.getUser().addresses[addressType];
@@ -78,8 +78,8 @@
 			    scope: $scope,
 			    buttons: [
 			      {
-			        text: 'Done',
-			        type: "primary-button",
+			        text: 'Save',
+			        type: "btn primary-btn",
 			        onTap: function(e) {
 			        	$scope.isValidEmail = settingsValidatorService.validateEmail(vm.user.email);
 			          if (!$scope.isValidEmail) {
@@ -93,7 +93,7 @@
 			      },
 			      {
 			        text: 'Cancel',
-			        type: "dismiss-button",
+			        type: "btn dismiss-btn",
 			        onTap: function(e) {
 			        	// revert to stored value
 			        	vm.user.email = localStorageService.getUser().email;
@@ -112,8 +112,8 @@
 			    scope: $scope,
 			    buttons: [
 			      {
-			        text: 'Done',
-			        type: "primary-button",
+			        text: 'Save',
+			        type: "btn primary-btn",
 			        onTap: function(e) {
 			          $scope.isValidPhoneNumber = settingsValidatorService.validatePhoneNumber(vm.user.phoneNumber);
 			          if (!$scope.isValidPhoneNumber ) {
@@ -126,7 +126,7 @@
 			      },
 			      {
 			        text: 'Cancel',
-			        type: "dismiss-button",
+			        type: "btn dismiss-btn",
 			        onTap: function(e) {
 			        	// revert to stored value
 			        	vm.user.phoneNumber = localStorageService.getUser().phoneNumber;
