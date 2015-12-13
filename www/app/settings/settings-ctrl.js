@@ -1,14 +1,16 @@
 (function(){
 	'use strict';
-	angular.module('nailArtist').controller("SettingsCtrl", ["settingsValidatorService", "$ionicPopup", "firebaseService", "$ionicHistory", "$scope", "$ionicModal", "localStorageService", "userSelectionService", "$state", SettingsCtrl]);
+	angular.module('nailArtist').controller("SettingsCtrl", ["constants", "TwilioVerification", "$q", "settingsValidatorService", "$ionicPopup", "firebaseService", "$ionicHistory", "$scope", "$ionicModal", "localStorageService", "userSelectionService", "$state", SettingsCtrl]);
 
-	function SettingsCtrl(settingsValidatorService, $ionicPopup, firebaseService, $ionicHistory, $scope, $ionicModal, localStorageService, userSelectionService, $state){
+	function SettingsCtrl(constants, TwilioVerification, $q, settingsValidatorService, $ionicPopup, firebaseService, $ionicHistory, $scope, $ionicModal, localStorageService, userSelectionService, $state){
 		var vm = this;
 		vm.product = userSelectionService.product;
 		vm.user = localStorageService.getUser();
 		vm.selectedAddress = {};
+		vm.blurBackground = false;
 
 		var selectedAddressType;
+		initializeConfirmPhoneModal();
 
 		vm.toContactUs = function(){
 			$state.go("contactUs");
@@ -18,13 +20,7 @@
 		 * against firebase. else, since the data is already 
 		 * in local storage, we can just go back */
 		vm.goBack = function(){
-			if (localStorageService.getUser().phoneNumber){
-				saveUser().then(function(){
-					$ionicHistory.goBack();
-				});
-			} else {
-				$ionicHistory.goBack();
-			}
+			$ionicHistory.goBack();
 		}
 
 		vm.openBrowser = function(url){
@@ -52,7 +48,7 @@
 			            cordova.plugins.Keyboard.close();
 			          } else {
 			          	vm.user.addresses[addressType] = vm.selectedAddress;
-			          	syncUserLocally();
+			          	saveUser();
 			          }
 			        }
 			      },
@@ -87,7 +83,7 @@
 			            e.preventDefault();
 			            cordova.plugins.Keyboard.close();
 			          } else {
-			          	syncUserLocally();
+			          	saveUser();
 			          }
 			        }
 			      },
@@ -120,7 +116,10 @@
 			            //don't allow the user to close unless he enters a name
 			            e.preventDefault();
 			          } else {
-			          	syncUserLocally();
+			          	vm.blurBackground = true;
+			          	sendText().then(function(){
+							$scope.confirmPhoneModal.show();
+			          	});
 			          }
 			        }
 			      },
@@ -130,6 +129,7 @@
 			        onTap: function(e) {
 			        	// revert to stored value
 			        	vm.user.phoneNumber = localStorageService.getUser().phoneNumber;
+			        	vm.blurBackground = false;
 			        }
 			      }
 		    	]
@@ -138,15 +138,71 @@
 
 		/* private function implementations */
 
+		function initializeConfirmPhoneModal(){
+			return $ionicModal.fromTemplateUrl('app/complete/modals/confirm-phone-modal.html', {
+		    scope: $scope,
+		    animation: 'slide-in-up',
+		    backdropClickToClose: false
+		  }).then(function(modal) {
+		    $scope.confirmPhoneModal = modal;
+		    $scope.confirmPhoneModal.wrongCode = false;
+		    $scope.confirmPhoneModal.confirm = function(){
+		    	var verified = TwilioVerification.verifyCode($scope.confirmPhoneModal.securityCode);
+		        if (verified) {
+		            $scope.confirmPhoneModal.hide().then(function(){
+
+			    	/* set input values */
+			    	saveUser().then(
+			    		function saveSuccess(){
+			    			vm.blurBackground = false;
+			    		}, function saveFailed(err){
+			    			console.log(err);
+			    			alert("Your info cannot be saved at this time. Please try again later");
+			    			vm.blurBackground = false;
+			    		});
+		    		});
+		        } else {
+		           $scope.confirmPhoneModal.wrongCode = true;
+		        }
+		    }
+
+		    $scope.confirmPhoneModal.resend = function() {
+		    	/* reset wrongCode variable to false so that
+				* next time this modal comes up it's not the error msg */
+		    	$scope.confirmPhoneModal.hide().then(function(){
+		    		$scope.confirmPhoneModal.wrongCode = false;
+		    		vm.editPhoneNumber();
+		    	});
+		  	}
+		  });
+		}
+
+		function sendText() {
+			return TwilioVerification.sendCode(vm.user.phoneNumber, constants.TWILIO_MSG);
+		}
+
 		function syncUserLocally(){
 			localStorageService.setUser(vm.user);
 		}
 
 		function saveUser(){
-			return firebaseService.saveUser(localStorageService.getUser()).then(function success(){
-			}, function error(){
-				alert("Please enter valid phone number!");
-			});
+			var deferred = $q.defer();
+			syncUserLocally();
+
+			/* if user provided phone, then save to firebase
+			 * else only save locally with the line above
+			*/
+			if (vm.user.phoneNumber){
+				firebaseService.saveUser(localStorageService.getUser()).then(function success(){
+					deferred.resolve();
+				}, function error(err){
+					deferred.reject(err);
+				});
+			} else {
+				deferred.resolve();
+			}
+
+			return deferred.promise;
 		}
 	}
 })();
