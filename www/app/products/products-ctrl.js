@@ -80,6 +80,7 @@
 			 * to see if user has future appointments for specific products
 			*/
 			assignAppointmentInfo(vm.products);
+			assignDeadlineInfo(vm.products);
         }
 
         function filterByAvailable(rawProducts){
@@ -105,6 +106,19 @@
 				date: scheduleObj.format("MMM DD"),
 				time: scheduleObj.format("h:mm A")
 			}
+		}
+
+		function getIsDeadlineUp(product){
+			var productDeadline = product.deadline.replace(/-/g, '/');
+            var productDeadlineObj = moment(productDeadline + " " + "23:59:59");
+			var daysFromToday = moment.duration(productDeadlineObj - new moment()).asDays();
+            return daysFromToday < 0;
+		}
+
+		function getDeadlineText(product){
+			var productDeadline = product.deadline.replace(/-/g, '/');
+            var productDeadlineObj = moment(productDeadline + " " + "23:59:59");
+			return productDeadlineObj.fromNow();
 		}
 
 		/* get all future appointments. if any one of them is for this current product, 
@@ -134,6 +148,13 @@
 						}
 					});
 				});			
+			});
+		}
+
+		function assignDeadlineInfo(products){
+			products.forEach(function(product){
+				product.isDeadlineUp = getIsDeadlineUp(product);
+				product.deadlineText = getDeadlineText(product);
 			});
 		}
 
