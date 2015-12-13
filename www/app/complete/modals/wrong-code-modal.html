@@ -4,5 +4,7 @@
 	<div class="complete-modal-description">The code that was entered did not match the one we sent. Please try again.</div>
 	<input id="security-code-input" type="text" ng-model="wrongNumberModal.securityCode"></input>
     <div class="resend-code-link" ng-click="wrongNumberModal.resend()">I didn't get it, try again</div>
-    <button id="close-appt-btn" class="primary-button" ng-click="wrongNumberModal.confirm()">Confirm</button>
+    <div class="btn-container">
+    	<button id="close-appt-btn" class="btn primary-btn" ng-click="wrongNumberModal.confirm()">Confirm</button>
+	</div>
 </div>

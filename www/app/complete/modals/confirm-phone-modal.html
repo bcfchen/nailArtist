@@ -1,14 +1,14 @@
-<div id="confirm-phone-modal" class="complete-page-modal">
+<div id="confirm-phone-modal" class="complete-page-modal rare-modal">
 	<div class="status-icon-circle" ng-show="!confirmPhoneModal.wrongCode " style="background-image:url('img/icon_check@3x.png')"></div>
 	<div class="status-icon-circle" ng-show="confirmPhoneModal.wrongCode " style="background-image:url('img/icon_error@3x.png')"></div>
-	<div class="content">
+	<div class="rare-modal-content">
 		<div class="complete-modal-title">{{confirmPhoneModal.wrongCode ? "Oops, wrong code" : "Confirm Phone Number"}}</div>
 		<div class="complete-modal-description">{{confirmPhoneModal.wrongCode ? "The code that was entered did not match the one we sent. Please try again." : "In a moment, you will receive a confirmation code. Please enter it below to confirm your phone number."}}</div>
 		<input id="security-code-input" class="form-input" type="number" pattern="\d*" ng-model="confirmPhoneModal.securityCode"></input>
 		<div id="confirm-phone-sent-to">Sent to {{vm.user.phoneNumber}}</div>
 	    <div class="resend-code-link" ng-click="confirmPhoneModal.resend()">I didn't get it, try again</div>
-	    <div class="action-button no-padding">
-	    	<button class="primary-button" ng-click="confirmPhoneModal.confirm()">Confirm</button>
+	    <div class="btn-container no-padding">
+	    	<button class="btn primary-btn" ng-click="confirmPhoneModal.confirm()">Confirm</button>
 	    </div>
 	</div>
 </div>

@@ -9,79 +9,71 @@
 * #80cfc5   seafoam         *
 * #9d9c9a   ash             *
 ****************************/
-/* Default Button Styles */
+/* Refactored Button Styles */
+.btn-container {
+	position: relative;
+	overflow: hidden;
+	padding: 10px 20px;
+	z-index: 10;
+}
+.btn-container.no-padding {
+	padding: 10px 0px 10px;
+}
 button,
-.action-button a {
+.btn {
+	display: block;
 	font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
 	font-size: 21px;
 	font-weight: 800;
-	text-align:center;
-	text-shadow:none;	
-	box-shadow:none;
+	text-align: center;
+	text-shadow: none;	
+	box-shadow: none;
     overflow: auto;
     text-decoration: none;
-
-}
-button:disabled {
-	opacity: .6;
-}
-.action-button {
-	padding: 10px 20px 10px;
-	z-index: 10;
-}
-.action-button.no-padding {
-	padding: 10px 0px 10px;
-}
-.action-button a,
-.action-button button,
-.popup-buttons button,
-.popup-vertical-buttons button:first-child {
-	width: 100%;
+	margin: 0 0 10px !important;
 	padding: 10px;
-	opacity: .9;
-	border-radius: 4px;
-	display: block;
+	width: 100%;
 	height: 44px;
 	line-height: 24px;
-	margin: 0 0 10px !important;
+	opacity: .9;
+	border-radius: 4px;
+	z-index: 10;
 }
-/* Button Colors */
-.primary-button,
-.unavailable-button,
-.dismiss-button,
-.info-button {
+.primary-btn,
+.unavailable-btn,
+.dismiss-btn,
+.info-btn {
 	color: #fff;
 	border: none;
 }
-.primary-button {
+
+/* Button Colors */
+.primary-btn {
 	background-color: #ed5f5e; /* rare red */
 }
-.unavailable-button {
+.unavailable-btn {
 	background-color: #edbe5e; /* mellow yellow */
 }
-.dismiss-button {
+.dismiss-btn {
 	background-color: #9d9c9a; /* ash */
 }
-.info-button {
+.info-btn {
 	background-color: #80cfc5; /* seafoam */
 }
 
+/* Scrolling buttons should float */
+.scroll button,
+.scroll .btn {
+	float: left;
+}
+
+/* Disabled Button Styles */
+button:disabled, 
 .primary-button:disabled,
 .unavailable-button:disabled,
 .dismiss-button:disabled,
 .info-button:disabled {
 	opacity:0.4;
-}
-
-.myPopup button {
-	background-color: #ed5f5e;
-}
-
-a#call-btn {
-    text-decoration: none;
-}
-#email-btn {
-    background-color:#80cfc5;
 }
 
 /* Profile Button */
@@ -111,28 +103,20 @@ a#call-btn {
     height: 64px;
     box-shadow:none;
 }
-
 .date-container button {
     width: 28vmin;
     height: 20vmin;
 }
-
 .date-container button:first-child,
 .address-selector button:first-child {
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
 }
-
 .date-container button:last-child,
 .address-selector button:last-child {
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
 }
-
-.date-time-selector button {
-	
-}
-
 .date-time-selector button:disabled {
 	background: repeating-linear-gradient(
 		-45deg,
@@ -141,53 +125,33 @@ a#call-btn {
 		#cdccca 5px,
 		#cdccca 6.5px);
 }
-
 .date-time-selector .active {
     border-color: #ed5f5e;
     z-index: 1;
     color: #ed5f5e;
 }
-
 #address-btn-left {
     float:left;
 }
-
 #address-btn-right {
     float:right;
 }
-
-.address-selector .active {
-    border-color: #ed5f5e;
-    color: #ed5f5e;
-}
-
 .address-selector {
     padding: 0px 20px;
     overflow: auto;
 }
-
+.address-selector .active {
+    border-color: #ed5f5e;
+    color: #ed5f5e;
+}
 .address-btn {
     width:48.3%;
 }
 
-#booking-confirm-btn {
-    margin-top: 20px;
-}
-
-/* Settings Popup button */
-.popup-vertical-buttons button {
-	min-width:100%;
-	margin-bottom:5px;
-}
-
-.popup-vertical-buttons .button-positive{
-	background-color:red;
-}
-
+/* TODO: GET RID OF THIS LATER */;
 .popup-vertical-buttons .dismiss-button{
 	background-color:#9d9c9a;
 }
-
 .popup-vertical-buttons .popup-buttons {
 	display:block;
 }

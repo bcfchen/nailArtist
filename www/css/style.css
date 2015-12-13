@@ -85,7 +85,10 @@
     padding: 20px;
     margin-bottom: 54px;
 }
-
+.slider-pager .slider-pager-page {
+    font-size: 14px;
+    margin: 0 4px;
+}
 .slider-pager-page.active {
     color: #fff;
 }
@@ -93,7 +96,7 @@
 /* PRODUCTS PAGE */
 .price-deadline-container {
     position:absolute;
-    left:20px;
+    left: 20px;
     right: 20px;
     color: #fff;
     bottom: 100px;
@@ -340,19 +343,6 @@
 .contact-us-btn {
     width:90%;
     background-color:#7ed321;
-    text-shadow:none;
-    border:none;
-    box-shadow:none;
-    border-radius:2.5px;
-    opacity:0.9;
-    color:#ffffff;
-    margin-top:2.5%;
-    margin-bottom:2.5%;
-}
-
-.dismiss-btn {
-    width:90%;
-    background-color:#ed5f5e;
     text-shadow:none;
     border:none;
     box-shadow:none;

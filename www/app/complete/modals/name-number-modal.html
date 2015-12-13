@@ -6,8 +6,8 @@
 	    <input class="name-number-input user-text-input form-input" placeholder="First and Last Name" type="text" ng-model="vm.user.name"/>        
 	    <input class="name-number-input user-text-input form-input" type="tel" placeholder="Phone Number" ng-model="vm.user.phoneNumber"/>
 	    <div id="name-number-validation-msg" class="validation-msg" ng-show="!validNamePhoneNumber">**{{errMsg}}</div>
-	    <div class="action-button no-padding">
-	    	<button class="primary-button" ng-click="nameNumberModal.done()">Done</button>
+	    <div class="btn-container no-padding">
+	    	<button class="btn primary-btn" ng-click="nameNumberModal.done()">Done</button>
 	    </div>
     </div>
 </div>

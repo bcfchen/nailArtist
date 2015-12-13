@@ -40,7 +40,6 @@ html {
 
 .dollar-sign {
 	position: absolute;
-	top: 2vmin;
 	left: 0;
     font-size: 8vmin;
     font-weight: 100;
@@ -76,6 +75,13 @@ html {
     margin-top: 20px;
     margin-bottom: 10px;
     font-weight: bold;
+}
+.sub-header-description {
+    color: #3d3c3a;
+    font-size: 5vmin; /* 21px; */
+    line-height: 6vmin;
+    text-align: center;
+    margin-bottom: 3vmin;
 }
 .day-of-week,
 .time-of-day,
