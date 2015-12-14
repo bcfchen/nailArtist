@@ -98,9 +98,17 @@
 		}
 
 		function isTimeBooked(time){
-			var numOfAppts = Object.keys(vm.selectedTime.appointments).length;
-			var numOfOpenings = vm.selectedTime.numOfOpenings;
+            var filteredAppts = [];
+            Object.keys(time.appointments).forEach(function(appointmentKey){
+                var apptObj = time.appointments[appointmentKey];
+                if (!apptObj.cancelled){
+                    filteredAppts.push(apptObj);
+                }
+             });
 
+			var numOfAppts = filteredAppts.length;
+			var numOfOpenings = vm.selectedTime.numOfOpenings;
+			
 			return numOfAppts >= numOfOpenings;
 		}
 
