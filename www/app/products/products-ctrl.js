@@ -156,7 +156,7 @@
 												&& appointment.transactionId;
 						var apptDateTimeObj = getAppointmentDateTime(appointment);
 						var isFutureAppointment = isAppointmentInFuture(appointment);
-						if (isAppointmentForProduct && isFutureAppointment){
+						if (isAppointmentForProduct && isFutureAppointment && !appointment.cancelled){
 							product.appointment = appointment;
 							product.dateTime = apptDateTimeObj;
 						}
