@@ -13,6 +13,12 @@
 		}
 
 		vm.bookAppointment = function(){
+			var appointmentExists = userSelectionService.appointment && userSelectionService.appointment !== {};
+			if(!appointmentExists){
+				userSelectionService.appointment = new Appointment();
+			}
+
+			userSelectionService.appointment.setProductKey(userSelectionService.product.$id);
 			$state.go("bookings");
 		}
 	};
