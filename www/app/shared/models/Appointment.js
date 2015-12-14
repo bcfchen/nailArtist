@@ -1,19 +1,15 @@
 function Appointment(){
 	this.userPhone = "";
-	this.available = false;
 	this.transactionId = "";
 	this.productKey = "";
 	this.address = "";
 	this.schedule = "";
+	this.cancelled = false;
 }
 
 Appointment.prototype.setUserPhone = function(phone){
 	var formattedPhone = phone ? phone.toString().replace(/\D+/g, '') : null;
 	this.userPhone = formattedPhone
-}
-
-Appointment.prototype.setAvailable = function(available){
-	this.available = available;
 }
 
 Appointment.prototype.setTransactionId = function(transactionId){
