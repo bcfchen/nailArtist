@@ -88,6 +88,10 @@
 .slider-pager .slider-pager-page {
     font-size: 14px;
     margin: 0 4px;
+    text-shadow: 0 0 3px #fff;
+}
+.slider-pager .slider-pager-page.active {
+    text-shadow: none;
 }
 .slider-pager-page.active {
     color: #fff;
