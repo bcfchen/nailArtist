@@ -45,6 +45,10 @@
 	color: #fff;
 	border: none;
 }
+button.btn:active,
+a.btn:active {
+	opacity: 1;
+}
 
 /* Button Colors */
 .primary-btn {
