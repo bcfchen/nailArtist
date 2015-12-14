@@ -32,7 +32,7 @@
 			vm.selectedAddress = vm.user.addresses[addressType];
 			$scope.isValidAddress = true;
 			$ionicPopup.show({
-			    template: '<div class="settings-address-msg">Currently serving select neighborhoods in San Francisco</div><input type="text" class="settings-address-input form-input" placeholder="Street" ng-model="vm.selectedAddress.street">\n<input type="text" class="settings-address-input form-input" disabled="true" placeholder="{{vm.selectedAddress.city}}">\n<input type="text" class="settings-address-input form-input" disabled="true" placeholder="{{vm.selectedAddress.state}}">\n<input type="text" class="settings-address-input form-input"  placeholder="ZIP" ng-model="vm.selectedAddress.zipCode"><div class="settings-validation-msg" ng-show="!isValidAddress">Please enter valid San Francisco address</div>',
+			    template: '<div class="settings-address-msg">Currently serving select neighborhoods in San Francisco</div><input type="text" class="settings-address-input form-input" placeholder="Street" ng-model="vm.selectedAddress.street">\n<input type="text" class="settings-address-input form-input" disabled="true" placeholder="{{vm.selectedAddress.city}}">\n<input type="text" class="settings-address-input form-input" disabled="true" placeholder="{{vm.selectedAddress.state}}">\n<input type="text" class="settings-address-input form-input"  placeholder="ZIP" ng-model="vm.selectedAddress.zipCode"><div class="settings-validation-msg" ng-show="!isValidAddress">**This address is out of our service area. Contact us to learn more</div>',
 			    title: "Edit Address",
 			    cssClass: 'popup-vertical-buttons',
 			    scope: $scope,

@@ -74,6 +74,14 @@
 			userSelectionService.schedule = new Schedule(vm.selectedDate, vm.selectedTime.$id);
 			userSelectionService.appointment.setAddress(vm.selectedAddress);
 			userSelectionService.appointment.setSchedule(userSelectionService.schedule);
+
+			// check if selected time is  fully booked
+			var timeBooked = isTimeBooked(vm.selectedTime);
+			if (timeBooked){
+				alert("I'm sorry, the time is already booked. Please try another time");
+				return;
+			}
+			
 			stripeService.initialize(userSelectionService.product.price, stripeSuccessCallback, stripeErrorCallback);
 			stripeService.open(userSelectionService.product);
 		}
@@ -87,6 +95,13 @@
 			vm.product = userSelectionService.product;
 			vm.user = localStorageService.getUser();
 			initializeEditAddressModal();
+		}
+
+		function isTimeBooked(time){
+			var numOfAppts = Object.keys(vm.selectedTime.appointments).length;
+			var numOfOpenings = vm.selectedTime.numOfOpenings;
+
+			return numOfAppts >= numOfOpenings;
 		}
 
 		function updateSchedule(currentDateObjs, newDateObj){

@@ -10,6 +10,8 @@
             saveUser: saveUser
         };
 
+        var lastTransactionId = null;
+
         return service;
 
         /* method implementations */
@@ -43,18 +45,43 @@
         }
 
         function addAppointmentToUser(user, appointment){
+            var deferred = $q.defer();
             var userAppointmentsRefUrl = constants.FIREBASE_URL + "/appointments/" + user.phoneNumber;
             var userAppointmentsRef = new Firebase(userAppointmentsRefUrl);
             var userAppointmentsArray = $firebaseArray(userAppointmentsRef);
-            return userAppointmentsArray.$add(appointment);
+            /* de-duping on transactionId after seeing strange issue with
+             * duplicate records with same transactionId created in 
+             * firebaseDB*/
+            if (appointment.transactionId === lastTransactionId){
+                    deferred.resolve();
+            } else {
+                userAppointmentsArray.$add(appointment).then(function success(){
+                    lastTransactionId = appointment.transactionId;
+                    deferred.resolve();
+                });            
+            }
+
+            return deferred.promise;
         }
 
         function saveAppointment(appointment, schedule){
+            var deferred = $q.defer();
         	var appointmentsRefUrl = constants.FIREBASE_URL + "/schedule/" + schedule.date + "/times/" + schedule.time + "/appointments";
 			var appointmentsRef = new Firebase(appointmentsRefUrl);
 			var appointmentsArray = $firebaseArray(appointmentsRef);
+            /* de-duping on transactionId after seeing strange issue with
+             * duplicate records with same transactionId created in 
+             * firebaseDB*/
+            if (appointment.transactionId === lastTransactionId){
+                deferred.resolve();
+            } else {
+                appointmentsArray.$add(appointment).then(function success(){
+                    lastTransactionId = appointment.transactionId;
+                    deferred.resolve();
+                });
+            }
 
-			return appointmentsArray.$add(appointment);
+            return deferred.promise;
         }
 
     }
