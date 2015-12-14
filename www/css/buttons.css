@@ -76,12 +76,14 @@ a.btn:active {
 }
 
 /* Disabled Button Styles */
-button:disabled, 
+button:disabled,
+button.btn:disabled,
+a.btn:disabled,
 .primary-button:disabled,
 .unavailable-button:disabled,
 .dismiss-button:disabled,
 .info-button:disabled {
-	opacity:0.4;
+	opacity: 0.4;
 }
 
 /* Profile Button */
