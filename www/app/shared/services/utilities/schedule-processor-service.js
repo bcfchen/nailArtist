@@ -107,7 +107,16 @@
                 timeObj.appointments = {};
              }
              
-             var numOfAppointments = Object.keys(timeObj.appointments).length;
+             // filter out cancelled appoitnments
+             var filteredAppts = [];
+             Object.keys(timeObj.appointments).forEach(function(appointmentKey){
+                var apptObj = timeObj.appointments[appointmentKey];
+                if (!apptObj.cancelled){
+                    filteredAppts.push(apptObj);
+                }
+             });
+
+             var numOfAppointments = filteredAppts.length;
              if (numOfAppointments >= timeObj.numOfOpenings){
                 return false;
              }
