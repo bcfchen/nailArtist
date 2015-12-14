@@ -21,7 +21,7 @@ angular.module('nailArtist', ['ionic', 'firebase', 'ngCordova', 'mcwebb.twilio',
       StatusBar.styleDefault();
     }
   });
-}).config(function($provide, $ionicConfigProvider, $stateProvider, $urlRouterProvider, TwilioProvider, TwilioVerificationProvider) {
+}).config(function($ionicConfigProvider, $stateProvider, $urlRouterProvider, TwilioProvider, TwilioVerificationProvider) {
 
     // override default page transitions
     $ionicConfigProvider.views.transition("none");
@@ -63,15 +63,4 @@ angular.module('nailArtist', ['ionic', 'firebase', 'ngCordova', 'mcwebb.twilio',
 
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/products');
-
-     $provide.decorator("$exceptionHandler", ['$delegate', '$window', function($delegate, $window) {
-    return function (exception, cause) {
-      if ($window.atatus) {
-        $window.atatus.notify(exception);
-      }
-      // (Optional) Pass the error through to the delegate
-      $delegate(exception, cause);
-      $window.location.hash = "#products";
-    }
-  }]);
 });
