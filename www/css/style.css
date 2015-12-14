@@ -167,8 +167,9 @@
 
 
 /* PRODUCT DEATILS */
-.instagram-list .instagram-container:last-child {
+.instagram-list {
     margin-bottom: 80px;
+    overflow: visible;
 }
 .image-container {
     position: relative;
