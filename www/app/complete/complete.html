@@ -1,10 +1,6 @@
 <ion-view view-title="Complete" ng-controller="CompleteCtrl as vm">
   <ion-content class="blur-fullscreen">
-	  	<div class="product-desc-container">
-		    <div class="big-header">{{vm.product.name}}</div>
-		  	<div class="small-header">#lattenails #fallstyle #autum</div>
-		  	<div class="product-description">{{vm.product.description}}</div>
-	  	</div>
+	  	<product-desc-container product="vm.product"></product-desc-container>
 	  	<div id="booking-status-container" ng-if="vm.bookingComplete">
 			<div id="error-module" class="status-module" ng-if="!vm.bookingSuccessful">
 				<div class="status-icon-circle" style="background-image:url('../img/icon_error@3x.png')"></div>	

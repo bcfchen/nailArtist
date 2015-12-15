@@ -3,11 +3,7 @@
   	<div class="blur-fullscreen">
 		<div id="top-shader"></div>
   		<div id="bottom-shader"></div>
-	    <div class="product-desc-container" ng-click="vm.goBack()">
-		    <div class="big-header">{{vm.product.name}}</div>
-		  	<div class="small-header">{{vm.product.hashtags}}</div>
-		  	<div class="product-description">{{vm.product.description}}</div>
-	  	</div>
+	  	<product-desc-container product="vm.product" ng-click="vm.goBack()"></product-desc-container>
   	</div>
   	<div class="fullscreen-image" ng-click="vm.goBack()" ng-style="{'background-image':'url({{vm.product.image}})'}">
 	  	<div class="booking-container" ng-click="$event.stopPropagation()" ng-show="vm.showBookingContainer">

@@ -27,3 +27,10 @@ Appointment.prototype.setAddress = function(address){
 Appointment.prototype.setSchedule = function(schedule){
 	this.schedule = schedule;
 }
+
+Appointment.prototype.isInFuture = function(){
+	var apptDate = this.schedule.date.replace(/-/g, '/');
+	var appointmentDateTimeObj = new moment(apptDate + " " + this.schedule.time);
+	return appointmentDateTimeObj > new moment();
+}
+

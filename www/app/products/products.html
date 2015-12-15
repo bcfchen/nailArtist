@@ -3,11 +3,7 @@
 		<ion-slide-box on-slide-changed="slideHasChanged($index)" active-slide="activeProductIndex">
 		  <ion-slide ng-repeat="product in vm.products" style="height:100%">
 		  	<div id="top-shader"></div>
-		  	<div class="product-desc-container">
-			    <div class="big-header">{{product.name}}</div>
-			  	<div class="small-header">{{product.hashtags}}</div>
-			  	<div class="product-description">{{product.description}}</div>
-		  	</div>
+		  	<product-desc-container product="product"></product-desc-container>
 		  	<appt-info appointments="vm.userAppointments" product="product" ng-show="product.appointment"></appt-info>
 		  	<div id="bottom-shader"></div>
 		  	<price-deadline product="product" nav-function="vm.toProductDetails()" ng-hide="product.appointment"></price-deadline>
