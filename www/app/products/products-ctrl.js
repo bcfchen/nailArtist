@@ -1,7 +1,7 @@
 (function(){
-	angular.module('nailArtist').controller("ProductsCtrl", ["$q", "$timeout", "$scope", "localStorageService", "userSelectionService", "$firebaseArray", "constants", "$ionicSlideBoxDelegate", "$state", ProductsCtrl]);
+	angular.module('nailArtist').controller("ProductsCtrl", ["$rootScope", "$q", "$timeout", "$scope", "localStorageService", "userSelectionService", "$firebaseArray", "constants", "$ionicSlideBoxDelegate", "$state", ProductsCtrl]);
 
-	function ProductsCtrl($q, $timeout, $scope, localStorageService, userSelectionService, $firebaseArray, constants, $ionicSlideBoxDelegate, $state){
+	function ProductsCtrl($rootScope, $q, $timeout, $scope, localStorageService, userSelectionService, $firebaseArray, constants, $ionicSlideBoxDelegate, $state){
 		var vm = this;
 		var ref = new Firebase(constants.FIREBASE_URL + "/products");
 		var rawProducts = $firebaseArray(ref);
@@ -17,6 +17,11 @@
         		load();
 			}
         });
+
+        vm.slideHasChanged = function(){
+        	$rootScope.$emit('lazyImg:refresh');
+        	$ionicSlideBoxDelegate.update();
+        }
 
 		vm.toProductDetails = function(){
 			userSelectionService.product = getCurrentProduct();
