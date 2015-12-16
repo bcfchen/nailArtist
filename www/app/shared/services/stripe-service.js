@@ -61,7 +61,8 @@
         	handler.open({
 	            name: 'RARE',
 	            description: product.name,
-	            amount: product.price * 100
+	            amount: product.price * 100,
+                billingAddress: true
 	        });
         }
 
