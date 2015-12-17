@@ -42,7 +42,7 @@ angular.module('nailArtist', ['ionic', 'firebase', 'ngCordova', 'mcwebb.twilio',
         cache: true
     }).state('productDetails', {
         url: '/productDetails',
-        templateUrl: 'app/productDetails/product-details.html',
+        templateUrl: 'app/productDetails/instagram.html',
         cache: false
     }).state('bookings', {
         url: '/bookings',
