@@ -1,0 +1,5 @@
+<button class="address-btn" id="address-btn-left" ng-class="{active: address === selectedAddress}" ng-click="onSelect('home', address)">
+	<div class="address-type">{{label}}</div>
+	<div class="address-text" ng-show="address.street">{{address.street}}</div>
+	<div class="address-text-placeholder" ng-show="!address.street">Add location</div>
+</button>	

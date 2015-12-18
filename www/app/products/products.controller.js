@@ -25,7 +25,7 @@
 
 		vm.toProductDetails = function(){
 			userSelectionService.product = getCurrentProduct();
-			$state.go("productDetails");
+			$state.go("instagram");
 		};
 
 		vm.contactUs = function(){

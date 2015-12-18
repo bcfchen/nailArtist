@@ -8,35 +8,16 @@
   	<div class="fullscreen-image" ng-click="vm.goBack()" ng-style="{'background-image':'url({{vm.product.image}})'}">
 	  	<div class="booking-container" ng-click="$event.stopPropagation()" ng-show="vm.showBookingContainer">
 	  		<div class="date-container" style="opacity:1">
-	  			<div class="booking-sub-header">Pick a date</div>
-		  		<ion-scroll direction="x" class="wide-as-needed date-time-selector" >
-					<button ng-repeat="date in vm.schedule" ng-class="{active: date.$id === vm.selectedDate}" ng-click="vm.selectDate(date)" ng-disabled="!date.available">
-						<div class="day-of-week">{{date.dayOfWeek}}</div>
-						<div class="month-day">{{date.monthDay}}</div>
-					</button>	
-			    </ion-scroll>
-			    <div class="booking-sub-header">Pick a time</div>
-			    <ion-scroll direction="x" class="wide-as-needed date-time-selector">
-					<button ng-repeat="time in vm.times" ng-class="{active: time.$id === vm.selectedTime.$id}" ng-click="vm.selectTime(time)" ng-disabled="!time.available">
-						<div class="time-of-day">{{time.$id}}</div>
-					</button>	
-			    </ion-scroll>
+	  			<scroll-selector collection="vm.schedule" selected-item="vm.selectedDate" select-item="vm.selectDate(selection)" selection-type="date" upper-text-prop="dayOfWeek" lower-text-prop="monthDay"></scroll-selector>
+	  			<scroll-selector collection="vm.times" selected-item="vm.selectedTime.$id" select-item="vm.selectTime(selection)" selection-type="time" upper-text-prop="$id" ></scroll-selector>
 	  		</div>
 	  		<hr class="horizontal-divider">
 	  		<div>
 	  			<div class="booking-sub-header">Pick a location</div>
 	  		</div>
 	  		<div class="address-selector">
-				<button id="address-btn-left" class="address-btn" ng-class="{active: vm.user.addresses.home === vm.selectedAddress}" ng-click="vm.selectAddress('home', vm.user.addresses.home)">
-					<div class="address-type">Home</div>
-					<div class="address-text" ng-show="vm.user.addresses.home.street">{{vm.user.addresses.home.street}}</div>
-					<div class="address-text-placeholder" ng-show="!vm.user.addresses.home.street">Add location</div>
-				</button>	
-				<button id="address-btn-right" class="address-btn" ng-class="{active: vm.user.addresses.work === vm.selectedAddress}" ng-click="vm.selectAddress('work', vm.user.addresses.work)">
-					<div class="address-type">Work</div>
-					<div class="address-text" ng-show="vm.user.addresses.work.street">{{vm.user.addresses.work.street}}</div>
-					<div class="address-text-placeholder" ng-show="!vm.user.addresses.work.street">Add location</div>
-				</button>	
+	  			<booking-address-btn address="vm.user.addresses.home" selected-address="vm.selectedAddress" select-address="vm.selectAddress(type, address)" label="Home"></booking-address-btn>
+	  			<booking-address-btn address="vm.user.addresses.work" selected-address="vm.selectedAddress" select-address="vm.selectAddress(type, address)" label="Work"></booking-address-btn>
 	  		</div>
 	  		<div class="btn-container">
 	  			<button id="booking-confirm-btn" class="btn primary-btn" ng-disabled="!(vm.selectedDate && vm.selectedTime.$id && vm.selectedAddress.street)" ng-click="vm.bookAppointment()">Confirm for ${{vm.product.price}}</button>

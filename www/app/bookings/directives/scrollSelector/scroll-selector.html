@@ -1,0 +1,7 @@
+<div class="booking-sub-header">Pick a {{selectionType}}</div>
+	<ion-scroll direction="x" class="wide-as-needed date-time-selector" >
+	<button ng-repeat="item in collection" ng-class="{active: item.$id === selectedItem}" ng-click="onSelect(item)" ng-disabled="!item.available">
+		<div class="upper-text">{{item[upperTextProp]}}</div>
+		<div class="lower-text">{{item[lowerTextProp]}}</div>
+	</button>	
+</ion-scroll>

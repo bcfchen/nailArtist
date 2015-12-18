@@ -47,15 +47,14 @@
 			}
 		}
 
-		vm.selectDate = function(date){
-			vm.selectedDate = date.$id;
-			// 
-			vm.times = date.times; 
+		vm.selectDate = function(selection){
+			vm.selectedDate = selection.$id;
+			vm.times = selection.times; 
 			vm.selectedTime = null;
 		}
 
-		vm.selectTime = function(time){
-			vm.selectedTime = time;
+		vm.selectTime = function(selection){
+			vm.selectedTime = selection;
 		}
 
 		vm.selectAddress = function(type, address){

@@ -87,14 +87,13 @@ html {
     text-align: center;
     margin-bottom: 3vmin;
 }
-.day-of-week,
-.time-of-day,
+.upper-text,
 .address-type {
     font-size: 5vmin;
     font-weight: 400;
     margin-bottom: -2vmin;
 }
-.month-day,
+.lower-text,
 .address-text,
 .address-text-placeholder {
     font-size: 4vmin;

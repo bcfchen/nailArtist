@@ -40,9 +40,9 @@ angular.module('nailArtist', ['ionic', 'firebase', 'ngCordova', 'mcwebb.twilio',
         url: '/products',
         templateUrl: 'app/products/products.html',
         cache: true
-    }).state('productDetails', {
-        url: '/productDetails',
-        templateUrl: 'app/productDetails/instagram.html',
+    }).state('instagram', {
+        url: '/instagram',
+        templateUrl: 'app/instagram/instagram.html',
         cache: false
     }).state('bookings', {
         url: '/bookings',
