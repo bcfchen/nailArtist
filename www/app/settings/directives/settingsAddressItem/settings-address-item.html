@@ -1,0 +1,14 @@
+<div class="item item-divider settings-label">{{label}}</div>
+<a class="item" ng-click="onClick()">
+  <div class="address-settings">
+    <div>
+      <div class="address-placeholder" ng-show="!address.street">Street Address</div>
+      {{address.street}}
+    </div>
+    <div>
+      <div class="address-placeholder" ng-show="!address.city">City, State, Zip</div>
+      {{address.city}} {{address.state}} {{address.zipCode}}
+    </div>
+  </div>
+    <div class="settings-right-btn-address"></div>      
+</a>

@@ -6,48 +6,12 @@
 </ion-nav-bar>
   <ion-content>
   <div class="list">
-    <div class="item item-divider settings-label">Home Address</div>
-    <a class="item" ng-click="vm.editAddress('home')">
-      <div class="address-settings">
-        <div>
-          <div class="address-placeholder" ng-show="!vm.user.addresses.home.street">Street Address</div>
-          {{vm.user.addresses.home.street}}
-        </div>
-        <div>
-          <div class="address-placeholder" ng-show="!vm.user.addresses.home.city">City, State, Zip</div>
-          {{vm.user.addresses.home.city}} {{vm.user.addresses.home.state}} {{vm.user.addresses.home.zipCode}}
-        </div>
-      </div>
-        <div class="settings-right-btn-address"></div>      
-    </a>
-      <div class="item item-divider settings-label">Work Address</div>
-      <a class="item" ng-click="vm.editAddress('work')">
-        <div class="address-settings">
-          <div>
-            <div class="address-placeholder" ng-show="!vm.user.addresses.work.street">Street Address</div>
-            {{vm.user.addresses.work.street}}
-        </div>
-          <div>
-              <div class="address-placeholder" ng-show="!vm.user.addresses.work.city">City, State, Zip</div>
-              {{vm.user.addresses.work.city}} {{vm.user.addresses.work.state}} {{vm.user.addresses.work.zipCode}}</div>
-        </div>
-        <div class="settings-right-btn-address"></div>         
-      </a>
-      <div class="item item-divider settings-label">Contact Email</div>
-      <a class="item" ng-click="vm.editEmail()">
-        <div class="email-phone-text">{{vm.user.email}}</div>
-        <div class="settings-right-btn-email-phone"></div>         
-      </a>  
-      <div class="item item-divider settings-label">Phone</div>
-      <a class="item" ng-click="vm.editPhoneNumber()">
-        <div class="email-phone-text">&zwnj;&zwnj;&zwnj;&zwnj;{{vm.user.phoneNumber}}</div>
-        <div class="settings-right-btn-email-phone"></div>              
-      </a>  
+  <settings-address-item address="vm.user.addresses.home" edit-address="vm.editAddress(addressType)" label="Home Address" address-type="home"></settings-address-item>
+  <settings-address-item address="vm.user.addresses.work" edit-address="vm.editAddress(addressType)" label="Work Address" address-type="work"></settings-address-item>
+  <settings-email-phone-item contact="vm.user.email" edit-info="vm.editEmail()" label="Contact Email"></settings-email-phone-item>
+  <settings-email-phone-item contact="vm.user.phoneNumber" edit-info="vm.editPhoneNumber()" label="Phone"></settings-email-phone-item> 
   </div>
-  <div id="policies-container">
-      <div id="privacy-policy" ng-click="vm.openBrowser('http://www.rarenails.co/privacy-policy')">Privacy Policy&nbsp;&nbsp;</div>
-      <div id="cancellation-policy" ng-click="vm.openBrowser('http://www.rarenails.co/terms-of-use')">&nbsp;&nbsp;Terms of Use</div>
-  </div>
+  <policies-container open-policy="vm.openBrowser(url)"></policies-container>
   </ion-content>
   <div class="settings-footer" ng-click="vm.toContactUs()">
     <div class="settings-footer-text">Contact Us</div>
