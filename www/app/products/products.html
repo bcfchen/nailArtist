@@ -7,10 +7,8 @@
 		  	<appt-info appointments="vm.userAppointments" product="product" ng-show="product.appointment"></appt-info>
 		  	<div id="bottom-shader"></div>
 		  	<price-deadline product="product" nav-function="vm.toProductDetails()" ng-hide="product.appointment"></price-deadline>
-		  	<div class="fullscreen-image" lazy-img="{{product.image}}">
-
-<!-- 		  	<div class="fullscreen-image" ng-style="{'background-image':'url({{product.image}})'}">
- -->		  </ion-slide>
+		  	<div class="fullscreen-image" ng-style="{'background-image':'url({{product.image}})'}">
+		  </ion-slide>
 		  <div class="static-footer btn-container">
 		  	<button ng-show="!product.appointment" class="btn primary-btn" ng-click="vm.bookAppointment()">Book</button>
 		  	<button ng-show="product.appointment" class="btn info-btn" ng-click="vm.contactUs()">Booked</button>

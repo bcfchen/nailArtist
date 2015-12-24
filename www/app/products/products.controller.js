@@ -19,7 +19,6 @@
         });
 
         vm.slideHasChanged = function(){
-        	$rootScope.$emit('lazyImg:refresh');
         	$ionicSlideBoxDelegate.update();
         }
 
