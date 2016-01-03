@@ -1,7 +1,7 @@
 (function(){
-	angular.module('nailArtist').controller("ProductsCtrl", ["$rootScope", "$q", "$timeout", "$scope", "localStorageService", "userSelectionService", "$firebaseArray", "constants", "$ionicSlideBoxDelegate", "$state", ProductsCtrl]);
+	angular.module('nailArtist').controller("ProductsCtrl", ["AppointmentsArray", "$q", "$timeout", "$scope", "localStorageService", "userSelectionService", "$firebaseArray", "constants", "$ionicSlideBoxDelegate", "$state", ProductsCtrl]);
 
-	function ProductsCtrl($rootScope, $q, $timeout, $scope, localStorageService, userSelectionService, $firebaseArray, constants, $ionicSlideBoxDelegate, $state){
+	function ProductsCtrl(AppointmentsArray, $q, $timeout, $scope, localStorageService, userSelectionService, $firebaseArray, constants, $ionicSlideBoxDelegate, $state){
 		var vm = this;
 		var ref = new Firebase(constants.FIREBASE_URL + "/products");
 		var rawProducts = $firebaseArray(ref);
@@ -17,10 +17,6 @@
         		load();
 			}
         });
-
-        vm.slideHasChanged = function(){
-        	$ionicSlideBoxDelegate.update();
-        }
 
 		vm.toProductDetails = function(){
 			userSelectionService.product = getCurrentProduct();
@@ -100,30 +96,6 @@
 			return products;
         }
 
-		function getAppointmentDateTime(appointment){
-			if (!appointment){
-				return;
-			}
-
-			var apptDate = appointment.schedule.date.replace(/-/g, '/');
-			var scheduleObj = new moment(apptDate + " " + appointment.schedule.time);
-			
-			return {
-				date: scheduleObj.format("MMM DD"),
-				time: scheduleObj.format("h:mm A")
-			}
-		}
-
-		function isAppointmentInFuture(appointment){
-			if (!appointment){
-				return false;
-			}
-
-			var apptDate = appointment.schedule.date.replace(/-/g, '/');
-			var appointmentDateTimeObj = new moment(apptDate + " " + appointment.schedule.time);
-			return appointmentDateTimeObj > new moment();
-		}
-
 		function getIsDeadlineUp(product){
 			var productDeadline = product.deadline.replace(/-/g, '/');
             var productDeadlineObj = moment(productDeadline + " " + "23:59:59");
@@ -145,27 +117,22 @@
 			// if there is no user phone number stored, then don't bother
         	var userPhoneNumber = localStorageService.getUserPhoneNumber();
         	if (!userPhoneNumber){
-        		deferred.resolve();
+    		deferred.resolve();
         	}
 
 			var ref = new Firebase(constants.FIREBASE_URL + "/appointments/" + userPhoneNumber);
-			vm.userAppointments = $firebaseArray(ref);
-			vm.userAppointments.$loaded(function(){
+			var apptsArray = new AppointmentsArray(ref);
+			apptsArray.getFutureAppts().then(function(futureAppts){
 				products.forEach(function(product){
-					// reset product appointment/datetime info first
-					product.appointment = null;
-					product.dateTime = null;
-					vm.userAppointments.forEach(function(appointment){
-						var isAppointmentForProduct = appointment.productKey === product.$id 
-												&& appointment.transactionId;
-						var apptDateTimeObj = getAppointmentDateTime(appointment);
-						var isFutureAppointment = isAppointmentInFuture(appointment);
-						if (isAppointmentForProduct && isFutureAppointment && !appointment.cancelled){
-							product.appointment = appointment;
-							product.dateTime = apptDateTimeObj;
+					futureAppts.forEach(function(futureAppt){
+						var isAppointmentForProduct = futureAppt.getProductKey() === product.$id 
+														&& futureAppt.getTransactionId();
+						if (isAppointmentForProduct && futureAppt.isInFuture()){
+							product.appointment = futureAppt;
+							product.dateTime = futureAppt.getAppointmentDateTime();
 						}
 					});
-				});			
+				});
 
 				deferred.resolve(products);
 			});
