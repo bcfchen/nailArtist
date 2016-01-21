@@ -1,6 +1,7 @@
-<div>
+<div style="position:absolute;margin-left:100px;top:100px;width:200px;height:200px;background-color:red;">
+	<div ng-click="exit()">close</div>
 	<button ng-click="toggleIsNewUser(true)">IT'S MY FIRST TIME</button>
 	<button ng-click="toggleIsNewUser(false)">OR SIGN IN</button>
-	<new-user-form ng-show="isNewUser"></new-user-form>
-	<sign-in-form ng-show="!isNewUser"></sign-in-form>
+	<new-user-form proceed="displayPhoneVerification()" ng-show="isNewUser"></new-user-form>
+	<sign-in-form proceed="displayPhoneVerification()" ng-show="!isNewUser"></sign-in-form>
 </div>

@@ -4,21 +4,12 @@
       return {
           restrict: 'EA',
           scope:{
-          	collection: "=",
-            selectionType: "@",
-            selectItem: "&",
-            selectedItem: "=",
-            upperTextProp: "@",
-            lowerTextProp: "@"
+          	proceed:"&"
           },
 		  templateUrl: 'app/bookings/directives/userInfoModal/signInForm/sign-in-form.html',
 	      link: function(scope){
-	          scope.onSelect = function(item){
-	              if (item && scope.selectItem){
-	                scope.selectItem({
-	                  selection: item
-	                });
-	              }
+	          scope.onClick = function(){
+	          	scope.proceed();
 	          }
 	      }
       }

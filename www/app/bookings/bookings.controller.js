@@ -6,7 +6,8 @@
 		var vm = this;
 		initialize();
 		vm.schedule = [];
-
+		vm.showUserInfo = false;
+		vm.showPhoneVerification = false;
 		// rawSchedule.$watch(function(event){
 		// 	// only do this if we already have a selected date
 		// 	if (!isFirstLoad){
@@ -34,6 +35,19 @@
 			vm.selectedDate = selection.$id;
 			vm.times = selection.times; 
 			vm.selectedTime = null;
+		}
+
+		vm.bookAppointment = function(appointment){
+			vm.showUserInfo = true;
+		}
+
+		vm.closeUserInfo = function(){
+			vm.showUserInfo = false;
+		}
+
+		vm.verifyPhone = function(){
+			vm.showUserInfo = false;
+			vm.showPhoneVerification = true;
 		}
 
 		function initialize(){

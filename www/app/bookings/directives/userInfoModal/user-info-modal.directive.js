@@ -1,18 +1,24 @@
  (function () {
      angular.module('nailArtist')
-  .directive('userInfoModal', function () {
+  .directive('userInfoModal', ["userBuilder", function (userBuilder) {
       return {
           restrict: 'EA',
           scope:{
-          	collection: "=",
-            selectionType: "@",
-            selectItem: "&",
-            selectedItem: "=",
-            upperTextProp: "@",
-            lowerTextProp: "@"
+          	closeUserInfo: "&",
+          	verify: "&"
           },
 		  templateUrl: 'app/bookings/directives/userInfoModal/user-info-modal.html',
 	      link: function(scope){
+	      	  scope.isNewUser = true;
+
+	      	  scope.toggleIsNewUser = function(isNewUser){
+	      	  	scope.isNewUser = isNewUser;
+	      	  }
+
+	      	  scope.displayPhoneVerification = function(){
+	      	  	scope.verify();
+	      	  }
+
 	          scope.onSelect = function(item){
 	              if (item && scope.selectItem){
 	                scope.selectItem({
@@ -20,7 +26,11 @@
 	                });
 	              }
 	          }
+
+	          scope.exit = function(){
+	          	scope.closeUserInfo();
+	          }
 	      }
       }
-  });
+  }]);
  })();

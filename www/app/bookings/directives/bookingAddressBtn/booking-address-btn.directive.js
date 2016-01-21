@@ -11,7 +11,7 @@
           },
 		  templateUrl: 'app/bookings/directives/bookingAddressBtn/booking-address-btn.html',
       link: function(scope){
-          scope.onSelect = function(addressType, address){
+          onSelect = function(addressType, address){
               if (addressType && address && scope.selectAddress){
                 scope.selectAddress({
                   type: addressType,

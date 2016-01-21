@@ -2,12 +2,11 @@
   <ion-content>
   	<div>
 	 <product-desc-container product="vm.product" ng-click="vm.goBack()"></product-desc-container>
-	 <date-time-selection></date-time-selection>
+	 <date-time-selection book-appointment="vm.bookAppointment(appointment)"></date-time-selection>
   	</div>
   	<div style="height:500px;width:500px;background-size:cover;" ng-style="{'background-image':'url(' + vm.product.image + ')'}">
 	</div>
-    <div ng-click="$event.stopPropagation()">
-    	<button class="nav-settings-btn" ng-click="vm.toSettings()"></button>
-    </div>
+	<user-info-modal verify="vm.verifyPhone()" close-user-info="vm.closeUserInfo()" ng-show="vm.showUserInfo"></user-info-modal>
+	<phone-verification-form ng-show="vm.showPhoneVerification"></phone-verification-form>
   </ion-content>
 </ion-view>
