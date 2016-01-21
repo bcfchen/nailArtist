@@ -1,1 +1,0 @@
-product-swipe-box.js

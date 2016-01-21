@@ -51,6 +51,17 @@
     <script src="app/bookings/directives/bookingAddressBtn/booking-address-btn.directive.js"></script>
     <script src="app/bookings/directives/scrollSelector/scroll-selector.directive.js"></script>
 
+    <!-- date time selection -->
+    <script src="app/bookings/directives/dateTimeSelection/date-time-selection.directive.js"></script>
+
+    <!-- user info modal -->
+    <script src="app/bookings/directives/userInfoModal/user-info-modal.directive.js"></script>
+    <script src="app/bookings/directives/userInfoModal/newUserForm/new-user-form.directive.js"></script>
+    <script src="app/bookings/directives/userInfoModal/signInForm/sign-in-form.directive.js"></script>
+
+    <!-- place order modal -->
+    <script src="app/bookings/directives/placeOrderModal/place-order-form.directive.js"></script>
+
     <!-- complete -->
     <script src="app/complete/complete.controller.js"></script>    
 
@@ -68,6 +79,8 @@
 
     <!-- firebase -->
     <script src="app/shared/firebase/firebase-appointments.service.js"></script>    
+    <script src="app/shared/firebase/firebase-dates.service.js"></script>    
+    <script src="app/shared/firebase/firebase-product.service.js"></script>    
 
     <!-- services -->
     <script src="app/shared/services/user-selection.service.js"></script>    
@@ -80,6 +93,12 @@
     <script src="app/shared/services/validators/phone-validator.service.js"></script>
     <script src="app/shared/services/utilities/schedule-processor.service.js"></script> 
     <script src="app/shared/services/utilities/formatter.service.js"></script> 
+    <script src="app/shared/services/appointmentBuilder.service.js"></script> 
+    <script src="app/shared/services/userBuilder.service.js"></script> 
+
+    <!-- data services -->
+    <script src="app/shared/dataServices/product-service.service.js"></script> 
+    <script src="app/shared/dataServices/schedule-service.service.js"></script> 
 
     <!-- shared directives -->
     <script src="app/shared/directives/productDescriptionContainer/product-desc-container.directive.js"></script> 
@@ -89,8 +108,9 @@
     <script src="app/shared/models/Address.js"></script>
     <script src="app/shared/models/Appointment.js"></script>
     <script src="app/shared/models/Schedule.js"></script>
-    <script src="app/shared/models/Time.js"></script>
-
+    <script src="app/shared/models/ScheduleTime.js"></script>
+    <script src="app/shared/models/ScheduleDate.js"></script>
+    <script src="app/shared/models/Product.js"></script>
 
   </head>
   <body ng-app="nailArtist">

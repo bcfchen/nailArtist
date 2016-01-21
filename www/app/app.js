@@ -45,7 +45,7 @@ angular.module('nailArtist', ['ionic', 'firebase', 'ngCordova', 'mcwebb.twilio',
         templateUrl: 'app/instagram/instagram.html',
         cache: false
     }).state('bookings', {
-        url: '/bookings',
+        url: '/bookings?productId',
         templateUrl: 'app/bookings/bookings.html',
         cache: false
     }).state('complete', {
@@ -62,5 +62,5 @@ angular.module('nailArtist', ['ionic', 'firebase', 'ngCordova', 'mcwebb.twilio',
     });
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/products');
+    $urlRouterProvider.otherwise('/bookings');
 });

@@ -1,1 +1,0 @@
-firebase-schedule.service.js

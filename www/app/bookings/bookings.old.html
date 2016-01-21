@@ -1,0 +1,31 @@
+<ion-view view-title="Bookings" ng-controller="BookingsCtrl as vm">
+  <ion-content>
+  	<div class="blur-fullscreen">
+		<div id="top-shader"></div>
+  		<div id="bottom-shader"></div>
+	  	<product-desc-container product="vm.product" ng-click="vm.goBack()"></product-desc-container>
+  	</div>
+  	<div class="fullscreen-image" ng-click="vm.goBack()" ng-style="{'background-image':'url({{vm.product.image}})'}">
+	  	<div class="booking-container" ng-click="$event.stopPropagation()" ng-show="vm.showBookingContainer">
+	  		<div class="date-container" style="opacity:1">
+	  			<scroll-selector collection="vm.schedule" selected-item="vm.selectedDate" select-item="vm.selectDate(selection)" selection-type="date" upper-text-prop="dayOfWeek" lower-text-prop="monthDay"></scroll-selector>
+	  			<scroll-selector collection="vm.times" selected-item="vm.selectedTime.$id" select-item="vm.selectTime(selection)" selection-type="time" upper-text-prop="$id" ></scroll-selector>
+	  		</div>
+	  		<hr class="horizontal-divider">
+	  		<div>
+	  			<div class="booking-sub-header">Pick a location</div>
+	  		</div>
+	  		<div class="address-selector">
+	  			<booking-address-btn address="vm.user.addresses.home" selected-address="vm.selectedAddress" select-address="vm.selectAddress(type, address)" label="Home"></booking-address-btn>
+	  			<booking-address-btn address="vm.user.addresses.work" selected-address="vm.selectedAddress" select-address="vm.selectAddress(type, address)" label="Work"></booking-address-btn>
+	  		</div>
+	  		<div class="btn-container">
+	  			<button id="booking-confirm-btn" class="btn primary-btn" ng-disabled="!(vm.selectedDate && vm.selectedTime.$id && vm.selectedAddress.street)" ng-click="vm.bookAppointment()">Confirm for ${{vm.product.price}}</button>
+	  		</div>
+	    </div>
+	</div>
+    <div ng-click="$event.stopPropagation()">
+    	<button class="nav-settings-btn" ng-click="vm.toSettings()"></button>
+    </div>
+  </ion-content>
+</ion-view>
