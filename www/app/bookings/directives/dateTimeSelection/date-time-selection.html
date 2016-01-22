@@ -1,5 +1,9 @@
 <div>
 	<h3>Pick a date &amp; time to book this style</h3>
-
+	<select ng-model="selectedDate" ng-options="date.dateStr for date in dates" ng-change="selectDate(date)">
+	</select>
+	<select ng-model="selectedTime" ng-options="time.timeStr for time in selectedDate.times" ng-change="selectTime(time)">
+	</select>
 	<button ng-click="onClick()">Continue</button>
+	<div ng-show="!isBookingValid">Please enter valid date time</div>
 </div>

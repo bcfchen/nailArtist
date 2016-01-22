@@ -2,7 +2,7 @@
   <ion-content>
   	<div>
 	 <product-desc-container product="vm.product" ng-click="vm.goBack()"></product-desc-container>
-	 <date-time-selection book-appointment="vm.bookAppointment(appointment)"></date-time-selection>
+	 <date-time-selection dates-list="vm.dates" on-date-time-selected="vm.onDateTimeSelected()"></date-time-selection>
   	</div>
   	<div style="height:500px;width:500px;background-size:cover;" ng-style="{'background-image':'url(' + vm.product.image + ')'}">
 	</div>

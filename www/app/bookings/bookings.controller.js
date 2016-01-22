@@ -24,11 +24,11 @@
 		// });
 
 		scheduleService.getFutureDates().then(function(dates){
-			vm.schedule = dates;// scheduleProcessorService.processDateProperties(dates);
-			var firstAvailableDate = _.find(vm.schedule, function(date){ return date.isAvailable() === true});
-			if (firstAvailableDate){
-				vm.selectDate(firstAvailableDate);
-			}
+			vm.dates = dates;// scheduleProcessorService.processDateProperties(dates);
+			// var firstAvailableDate = _.find(vm.schedule, function(date){ return date.isAvailable() === true});
+			// if (firstAvailableDate){
+			// 	vm.selectDate(firstAvailableDate);
+			// }
 		});
 
 		vm.selectDate = function(selection){
@@ -37,7 +37,7 @@
 			vm.selectedTime = null;
 		}
 
-		vm.bookAppointment = function(appointment){
+		vm.onDateTimeSelected = function(){
 			vm.showUserInfo = true;
 		}
 

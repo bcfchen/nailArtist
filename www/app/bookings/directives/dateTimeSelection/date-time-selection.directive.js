@@ -4,17 +4,59 @@
       return {
           restrict: 'EA',
           scope:{
-          	bookAppointment: "&"
+          	datesList: "=",
+          	onDateTimeSelected: "&"
           },
 		  templateUrl: 'app/bookings/directives/dateTimeSelection/date-time-selection.html',
 	      link: function(scope){
+	      	scope.isBookingValid = true;
+        	scope.$watch("datesList", function(dates){
+        		if (!dates){
+        			return;
+        		}
 
+        		scope.dates = dates;
+        		selectDefaultDate(dates);
+        	});
+
+        	// scope.selectedDate is auto-updated since that is ng-model
+        	scope.selectDate = function(){
+        		appointmentBuilder.setDate(scope.selectedDate);
+        		selectDefaultTime(scope.selectedDate);
+        	}
+
+        	// scope.selectedTime is auto-updated since that is ng-model
+        	scope.selectTime = function(){
+        		appointmentBuilder.setTime(scope.selectedTime);
+        	}
 
 	        scope.onClick = function(){
-                scope.bookAppointment({
-                  appointment: "asdf"
-                });
-	          }
+	        	if (appointmentBuilder.getDate() && appointmentBuilder.getTime()){
+	        		scope.isBookingValid = true;
+	        		scope.onDateTimeSelected();
+	        	} else {
+	        		scope.isBookingValid = false;
+	        	}
+	        }
+
+	        /* internal methods */
+        	function selectDefaultTime(date){
+        		var firstAvailableTime = _.find(date.times, function(time){ return time.isAvailable() === true});
+        		scope.selectedTime = firstAvailableTime;
+        		scope.selectTime();
+        		if (firstAvailableTime){
+        			scope.isBookingValid = true;
+        		} 
+        	}
+
+        	function selectDefaultDate(dates){
+        		var firstAvailableDate = _.find(dates, function(date){ return date.isAvailable() === true});
+				if (firstAvailableDate){
+					scope.selectedDate = firstAvailableDate;
+					scope.selectDate();
+				}
+        	}
+
 	      }
       }
   }]);

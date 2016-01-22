@@ -8,7 +8,9 @@
         var service = {
             setAddress: setAddress,
             setDate: setDate,
+            getDate: getDate,
             setTime: setTime,
+            getTime: getTime,
             setUserId: setUserId,
             setProductId: setProductId,
             setTransactionId: setTransactionId,
@@ -32,6 +34,14 @@
 
         function setDate(date){
         	appointment.date = date;
+        }
+
+        function getDate(){
+        	return appointment.date;
+        }
+
+        function getTime(){
+        	return appointment.time;
         }
 
         function setTime(time){
