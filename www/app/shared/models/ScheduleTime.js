@@ -2,12 +2,19 @@ function ScheduleTime(timeStr, obj){
 	this.appointments = [];
 	this.numOfOpenings = 0;	
 	this.timeStr = "";
+	this.displayTimeStr = "";
 
 	if (obj){
 		this.timeStr = timeStr;	
+		this.displayTimeStr = formatTimeStr(timeStr);
 		this.numOfOpenings = obj.numOfOpenings;
 		this.setAppointments(obj.appointments);
 	} 
+
+	function formatTimeStr(timeStr){
+		var timeMoment = new moment("1/11/1911 " + timeStr);
+		return timeMoment.format("h:mm A");
+	}
 }
 
 ScheduleTime.prototype.isAvailable = function(){
